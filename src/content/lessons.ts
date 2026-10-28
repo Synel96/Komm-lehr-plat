@@ -286,11 +286,11 @@ export const ALL_LESSONS: Lesson[] = [
       {
         title: { de: "Pause buchen", hu: "Szünet csekkolása", en: "Booking a break" },
         text: {
-          de: "Wenn du in die Pause gehst, buchst du in der Zeiterfassung „Pause“. Kommst du aus der Pause zurück, drückst du „Kommt Pause“.",
-          hu: "Amikor szünetre mész, a Zeiterfassung menüben becsekkolod a „Pause”-t. Amikor visszajössz a szünetről, a „Kommt Pause” gombot kell megnyomnod.",
-          en: "When you go on a break, you book “Pause” in Zeiterfassung. When you come back from the break, you press “Kommt Pause”.",
+          de: "Kleine Pause oder Mittagspause: Du buchst in der Zeiterfassung „Pause“. Danach meldet dich der Scanner automatisch ab. Kommst du zurück, loggst du dich wieder mit deinen Daten ein, öffnest die Zeiterfassung und buchst „Komm Pause“. Dann geht die Arbeit weiter.",
+          hu: "Kis szünet vagy ebédszünet: a Zeiterfassung menüben becsekkolod a „Pause”-t. Ezután a szkenner automatikusan kiléptet. Amikor visszajössz, újra bejelentkezel (einloggen) az adataiddal, megnyitod a Zeiterfassung-ot, és becsekkolod a „Komm Pause”-t. Utána folytatod a munkát.",
+          en: "Short break or lunch break: book “Pause” in Zeiterfassung. The scanner then logs you out automatically. When you come back, log in again with your details, open Zeiterfassung and book “Komm Pause”. Then you carry on working.",
         },
-        terms: ["pause", "kommt-pause"],
+        terms: ["pause", "einloggen", "komm-pause"],
       },
       {
         title: {
@@ -336,129 +336,157 @@ export const ALL_LESSONS: Lesson[] = [
       {
         type: "order",
         question: {
-          de: "Ein Arbeitstag: Bring die Buchungen in die richtige Reihenfolge.",
-          hu: "Egy munkanap: állítsd a rögzítéseket helyes sorrendbe.",
-          en: "A working day: put the bookings in the right order.",
+          de: "Ein Arbeitstag: Bring die Schritte in die richtige Reihenfolge.",
+          hu: "Egy munkanap: állítsd a lépéseket helyes sorrendbe.",
+          en: "A working day: put the steps in the right order.",
         },
         items: [
           {
-            de: "Am Scanner einloggen",
-            hu: "Bejelentkezés a szkennerre",
-            en: "Log in on the scanner",
+            de: "Mit deinen Daten am Scanner einloggen",
+            hu: "Bejelentkezés a szkennerre az adataiddal",
+            en: "Log in on the scanner with your details",
           },
           {
-            de: "Menü „Zeiterfassung“ öffnen",
-            hu: "A „Zeiterfassung” menü megnyitása",
-            en: "Open the “Zeiterfassung” menu",
+            de: "Zeiterfassung → Kommen",
+            hu: "Zeiterfassung → Kommen",
+            en: "Zeiterfassung → Kommen",
           },
-          { de: "Kommen", hu: "Kommen (munkakezdés)", en: "Kommen (clock in)" },
-          { de: "Pause", hu: "Pause (szünet kezdete)", en: "Pause (start of break)" },
+          { de: "Kommissionieren", hu: "Komissiózás", en: "Picking" },
           {
-            de: "Kommt Pause",
-            hu: "Kommt Pause (vissza a szünetről)",
-            en: "Kommt Pause (back from break)",
+            de: "Zeiterfassung → Pause (der Scanner meldet dich ab)",
+            hu: "Zeiterfassung → Pause (a szkenner kiléptet)",
+            en: "Zeiterfassung → Pause (the scanner logs you out)",
           },
-          { de: "Gehen", hu: "Gehen (munka vége)", en: "Gehen (clock out)" },
           {
-            de: "Am Scanner abmelden",
-            hu: "Kijelentkezés a szkennerről",
-            en: "Log out of the scanner",
+            de: "Nach der Pause wieder einloggen",
+            hu: "Szünet után újra bejelentkezés (einloggen)",
+            en: "Log in again after the break",
           },
+          {
+            de: "Zeiterfassung → Komm Pause",
+            hu: "Zeiterfassung → Komm Pause",
+            en: "Zeiterfassung → Komm Pause",
+          },
+          { de: "Zeiterfassung → Gehen", hu: "Zeiterfassung → Gehen", en: "Zeiterfassung → Gehen" },
+          { de: "Abmelden", hu: "Kijelentkezés (abmelden)", en: "Log out (abmelden)" },
         ],
         explanation: {
-          de: "Zuerst am Scanner einloggen, dann Zeiterfassung → Kommen. Nach der Pause „Kommt Pause“. Am Ende Zeiterfassung → Gehen und erst danach abmelden – ohne Login kann der Scanner nichts buchen.",
-          hu: "Először bejelentkezés a szkennerre, aztán Zeiterfassung → Kommen. Szünet után „Kommt Pause”. A végén Zeiterfassung → Gehen, és csak utána kijelentkezés – bejelentkezés nélkül a szkenner nem tud rögzíteni.",
-          en: "First log in on the scanner, then Zeiterfassung → Kommen. After the break “Kommt Pause”. At the end Zeiterfassung → Gehen and only then log out – without a login the scanner can't book anything.",
-        },
-      },
-      {
-        type: "classify",
-        question: {
-          de: "Was buchst du?",
-          hu: "Mit rögzítesz?",
-          en: "What do you book?",
-        },
-        categories: [
-          { de: "Pause", hu: "Pause", en: "Pause" },
-          { de: "Nebenzeit", hu: "Nebenzeit", en: "Nebenzeit" },
-        ],
-        items: [
-          {
-            text: {
-              de: "Du machst 30 Minuten Mittagspause.",
-              hu: "30 perc ebédszünetet tartasz.",
-              en: "You take a 30-minute lunch break.",
-            },
-            category: 0,
-          },
-          {
-            text: {
-              de: "Keine Kommissionierung – du machst Reinigung im Gang.",
-              hu: "Nincs komissiózás – takarítasz (Reinigung) a sorban.",
-              en: "No picking right now – you do Reinigung (cleaning) in the aisle.",
-            },
-            category: 1,
-          },
-          {
-            text: {
-              de: "Du arbeitest 15 Minuten an der Wickelmaschine.",
-              hu: "15 percig a Wickelmaschine-nál (fóliázógépnél) dolgozol.",
-              en: "You work at the Wickelmaschine (wrapping machine) for 15 minutes.",
-            },
-            category: 1,
-          },
-          {
-            text: {
-              de: "Du bist 20 Minuten in einer Besprechung.",
-              hu: "20 percig megbeszélésen (Besprechung) vagy.",
-              en: "You're in a Besprechung (meeting) for 20 minutes.",
-            },
-            category: 1,
-          },
-          {
-            text: {
-              de: "Du machst eine kurze Raucher- oder Kaffeepause.",
-              hu: "Rövid cigi- vagy kávészünetet tartasz.",
-              en: "You take a short smoke or coffee break.",
-            },
-            category: 0,
-          },
-        ],
-        explanation: {
-          de: "Pause = du machst Pause (zurück mit „Kommt Pause“). Nebenzeit = du arbeitest, aber kommissionierst gerade nicht (Reinigung, Besprechung …) – im eingeloggten Zustand extra buchen.",
-          hu: "Pause = szünetet tartasz (visszatéréskor „Kommt Pause”). Nebenzeit = dolgozol, csak épp nincs komissiózás (Reinigung, Besprechung stb.) – bejelentkezve külön kell csekkolni.",
-          en: "Pause = you take a break (back with “Kommt Pause”). Nebenzeit = you are working but not picking (Reinigung, Besprechung …) – book it separately while logged in.",
+          de: "Einloggen → Zeiterfassung → Kommen → kommissionieren. Pause: Zeiterfassung → Pause, der Scanner meldet dich ab. Zurück: wieder einloggen → Zeiterfassung → Komm Pause. Bei der Mittagspause genauso. Am Ende Zeiterfassung → Gehen, dann abmelden.",
+          hu: "Bejelentkezés → Zeiterfassung → Kommen → komissiózás. Szünet: Zeiterfassung → Pause, a szkenner kiléptet. Vissza: újra einloggen → Zeiterfassung → Komm Pause. Ebédszünetnél ugyanígy. A végén Zeiterfassung → Gehen, aztán abmelden.",
+          en: "Log in → Zeiterfassung → Kommen → picking. Break: Zeiterfassung → Pause, the scanner logs you out. Back: log in again → Zeiterfassung → Komm Pause. Same for lunch. At the end Zeiterfassung → Gehen, then log out.",
         },
       },
       {
         type: "choice",
         question: {
-          de: "Du wartest 10 Minuten auf Nachschub und kannst nicht picken. Was machst du?",
-          hu: "10 percet vársz utántöltésre, és nem tudsz kiszedni. Mit teszel?",
-          en: "You wait 10 minutes for replenishment and can't pick. What do you do?",
+          de: "Du kommst aus der Pause zurück. Der Scanner hat dich abgemeldet. Was machst du?",
+          hu: "Visszajössz a szünetről. A szkenner kiléptetett. Mit csinálsz?",
+          en: "You're back from your break. The scanner has logged you out. What do you do?",
         },
         options: [
           {
-            de: "Nichts – ich warte einfach.",
-            hu: "Semmit – egyszerűen várok.",
-            en: "Nothing – I just wait.",
+            de: "Gleich weiter kommissionieren.",
+            hu: "Rögtön folytatom a komissiózást.",
+            en: "Carry on picking straight away.",
           },
           {
-            de: "Nebenzeit buchen, damit keine Gap-Zeit entsteht.",
-            hu: "Becsekkolom a Nebenzeit-et, hogy ne keletkezzen Gap-Zeit.",
-            en: "Book Nebenzeit so no Gap-Zeit is created.",
+            de: "Wieder einloggen, dann Zeiterfassung → Komm Pause.",
+            hu: "Újra bejelentkezem, aztán Zeiterfassung → Komm Pause.",
+            en: "Log in again, then Zeiterfassung → Komm Pause.",
           },
           {
-            de: "Mich am Scanner abmelden.",
-            hu: "Kijelentkezem a szkennerről.",
-            en: "Log out of the scanner.",
+            de: "Wieder einloggen, dann Zeiterfassung → Kommen.",
+            hu: "Újra bejelentkezem, aztán Zeiterfassung → Kommen.",
+            en: "Log in again, then Zeiterfassung → Kommen.",
           },
         ],
         answer: 1,
         explanation: {
-          de: "Zeit ohne Buchung wird zur Gap-Zeit und senkt deine Leistung. Mit Nebenzeit ist die Wartezeit im System erfasst.",
-          hu: "A rögzítés nélküli idő Gap-Zeit lesz, és rontja a Leistungodat. Nebenzeit-tel a várakozás rögzül a rendszerben.",
-          en: "Time without a booking becomes Gap-Zeit and lowers your Leistung. With Nebenzeit the waiting time is recorded in the system.",
+          de: "Nach der Pause loggst du dich wieder ein und buchst „Komm Pause“. „Kommen“ buchst du nur einmal, am Schichtbeginn.",
+          hu: "Szünet után újra bejelentkezel, és a „Komm Pause”-t csekkolod. A „Kommen”-t csak egyszer, a műszak elején csekkolod.",
+          en: "After the break you log in again and book “Komm Pause”. You book “Kommen” only once, at the start of the shift.",
+        },
+      },
+      {
+        type: "classify",
+        question: {
+          de: "Pause oder Nebenzeit?",
+          hu: "Pause vagy Nebenzeit?",
+          en: "Pause or Nebenzeit?",
+        },
+        categories: [
+          { de: "Zeiterfassung → Pause", hu: "Zeiterfassung → Pause", en: "Zeiterfassung → Pause" },
+          { de: "Nebenzeiterfassung", hu: "Nebenzeiterfassung", en: "Nebenzeiterfassung" },
+        ],
+        items: [
+          {
+            text: { de: "Mittagspause", hu: "Ebédszünet", en: "Lunch break" },
+            category: 0,
+          },
+          {
+            text: { de: "Kleine Pause", hu: "Kis szünet", en: "Short break" },
+            category: 0,
+          },
+          {
+            text: {
+              de: "Du machst Reinigung im Gang.",
+              hu: "Takarítasz (Reinigung) a sorban.",
+              en: "You do Reinigung (cleaning) in the aisle.",
+            },
+            category: 1,
+          },
+          {
+            text: {
+              de: "Du arbeitest an der Wickelmaschine.",
+              hu: "A Wickelmaschine-nál dolgozol.",
+              en: "You work at the Wickelmaschine.",
+            },
+            category: 1,
+          },
+          {
+            text: {
+              de: "Du bist in einer Besprechung.",
+              hu: "Megbeszélésen (Besprechung) vagy.",
+              en: "You're in a Besprechung (meeting).",
+            },
+            category: 1,
+          },
+        ],
+        explanation: {
+          de: "Pausen buchst du in der Zeiterfassung („Pause“, zurück mit „Komm Pause“). Arbeit ohne Kommissionieren buchst du im Menü „Nebenzeiterfassung“ mit der passenden Art: Wickelmaschine, Reinigung oder Besprechung.",
+          hu: "A szüneteket a Zeiterfassung menüben csekkolod („Pause”, visszatéréskor „Komm Pause”). A komissiózáson kívüli munkát a „Nebenzeiterfassung” menüben, a megfelelő típussal: Wickelmaschine, Reinigung vagy Besprechung.",
+          en: "Breaks are booked in Zeiterfassung (“Pause”, back with “Komm Pause”). Work other than picking is booked in the “Nebenzeiterfassung” menu with the right type: Wickelmaschine, Reinigung or Besprechung.",
+        },
+      },
+      {
+        type: "choice",
+        question: {
+          de: "Du sollst 20 Minuten an der Wickelmaschine arbeiten. Wie buchst du das?",
+          hu: "20 percig a Wickelmaschine-nál kell dolgoznod. Hogyan csekkolod?",
+          en: "You're asked to work at the Wickelmaschine for 20 minutes. How do you book it?",
+        },
+        options: [
+          {
+            de: "Zeiterfassung → Pause",
+            hu: "Zeiterfassung → Pause",
+            en: "Zeiterfassung → Pause",
+          },
+          {
+            de: "Gar nicht – ich gehe einfach hin.",
+            hu: "Sehogy – egyszerűen odamegyek.",
+            en: "Not at all – I just go there.",
+          },
+          {
+            de: "Menü „Nebenzeiterfassung“ → Art „Wickelmaschine“",
+            hu: "„Nebenzeiterfassung” menü → „Wickelmaschine” típus",
+            en: "“Nebenzeiterfassung” menu → type “Wickelmaschine”",
+          },
+        ],
+        answer: 2,
+        explanation: {
+          de: "Arbeit ohne Kommissionieren ist Nebenzeit: im Menü „Nebenzeiterfassung“ die Art wählen. Ohne Buchung entsteht Gap-Zeit, und die senkt deine Leistung.",
+          hu: "A komissiózáson kívüli munka Nebenzeit: a „Nebenzeiterfassung” menüben kiválasztod a típust. Csekkolás nélkül Gap-Zeit keletkezik, ami rontja a Leistungodat.",
+          en: "Work other than picking is Nebenzeit: choose the type in the “Nebenzeiterfassung” menu. Without a booking, Gap-Zeit is created, which lowers your Leistung.",
         },
       },
     ],

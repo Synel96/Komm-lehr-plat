@@ -268,9 +268,9 @@ export const GLOSSARY: GlossaryEntry[] = [
     kind: "word",
     category: "zeiterfassung",
     explanation: {
-      de: "Menüpunkt am Scanner, in dem du deine Arbeitszeit buchst: Kommen, Pause, Kommt Pause und Gehen. Erreichbar nach dem Einloggen. Nebenzeit buchst du über den eigenen Menüpunkt Nebenzeiterfassung. Daraus wird deine Arbeitszeit berechnet.",
-      hu: "Időnyilvántartás: menüpont a szkenneren, ahol a munkaidődet rögzíted: Kommen, Pause, Kommt Pause és Gehen. Bejelentkezés után érhető el. A Nebenzeit-et a külön Nebenzeiterfassung menüpontban csekkolod. Ebből számolják a munkaidődet.",
-      en: "Menu item on the scanner where you book your working time: Kommen, Pause, Kommt Pause and Gehen. Available after logging in. Nebenzeit is booked in the separate Nebenzeiterfassung menu item. Your working hours are calculated from it.",
+      de: "Menüpunkt am Scanner, in dem du deine Arbeitszeit buchst: Kommen, Pause, Komm Pause und Gehen. Erreichbar nach dem Einloggen. Nebenzeit buchst du über den eigenen Menüpunkt Nebenzeiterfassung. Daraus wird deine Arbeitszeit berechnet.",
+      hu: "Időnyilvántartás: menüpont a szkenneren, ahol a munkaidődet rögzíted: Kommen, Pause, Komm Pause és Gehen. Bejelentkezés után érhető el. A Nebenzeit-et a külön Nebenzeiterfassung menüpontban csekkolod. Ebből számolják a munkaidődet.",
+      en: "Menu item on the scanner where you book your working time: Kommen, Pause, Komm Pause and Gehen. Available after logging in. Nebenzeit is booked in the separate Nebenzeiterfassung menu item. Your working hours are calculated from it.",
     },
   },
   {
@@ -323,20 +323,20 @@ export const GLOSSARY: GlossaryEntry[] = [
     kind: "word",
     category: "zeiterfassung",
     explanation: {
-      de: "Wenn du in die Pause gehst, buchst du in der Zeiterfassung „Pause“. Zurück aus der Pause drückst du „Kommt Pause“.",
-      hu: "Amikor szünetre mész, a Zeiterfassung menüben a „Pause”-t csekkolod. Amikor visszajössz, a „Kommt Pause” gombot nyomod meg.",
-      en: "When you go on a break, you book “Pause” in Zeiterfassung. When you come back, you press “Kommt Pause”.",
+      de: "Wenn du in die Pause gehst (kleine Pause oder Mittagspause), buchst du in der Zeiterfassung „Pause“. Danach meldet dich der Scanner ab. Zurück aus der Pause loggst du dich wieder ein und buchst „Komm Pause“.",
+      hu: "Amikor szünetre mész (kis szünet vagy ebédszünet), a Zeiterfassung menüben a „Pause”-t csekkolod. Ezután a szkenner kiléptet. Amikor visszajössz, újra bejelentkezel (einloggen), és a „Komm Pause”-t csekkolod.",
+      en: "When you go on a break (short break or lunch), you book “Pause” in Zeiterfassung. The scanner then logs you out. When you come back, you log in again and book “Komm Pause”.",
     },
   },
   {
-    id: "kommt-pause",
-    term: "Kommt Pause",
+    id: "komm-pause",
+    term: "Komm Pause",
     kind: "word",
     category: "zeiterfassung",
     explanation: {
-      de: "Buchung in der Zeiterfassung, wenn du aus der Pause zurückkommst.",
-      hu: "Csekkolás a Zeiterfassung menüben, amikor visszajössz a szünetről.",
-      en: "Booking in Zeiterfassung when you come back from your break.",
+      de: "Buchung in der Zeiterfassung, wenn du aus der Pause zurückkommst. Vorher musst du dich wieder einloggen, weil der Scanner dich bei „Pause“ abmeldet.",
+      hu: "Csekkolás a Zeiterfassung menüben, amikor visszajössz a szünetről. Előtte újra be kell jelentkezned (einloggen), mert a „Pause” után a szkenner kiléptet.",
+      en: "Booking in Zeiterfassung when you come back from your break. First log in again, because the scanner logs you out after “Pause”.",
     },
   },
   {
