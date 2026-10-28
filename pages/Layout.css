@@ -1,0 +1,141 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "./tokens.css";
+
+@source "../pages";
+@source "../components";
+
+/* `dark:` follows the theme toggle (the .dark class set by src/theme.ts),
+   not the OS setting, which is Tailwind v4's default. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Maps the design tokens (tokens.css) onto Tailwind's theme so utilities
+   like bg-primary, text-muted-foreground and ring-foreground/10 exist.
+   Without this, shadcn components silently render unstyled colors. */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* Only the Latin subset (@fontsource-variable/geist ships Latin, Latin-ext,
+   Cyrillic, Cyrillic-ext, and Vietnamese as separate @font-face blocks in its
+   default import) — pulling in the full package inflates the render-blocking
+   CSS with subsets this app never uses. Add more @font-face blocks here if
+   the app needs other scripts. */
+@font-face {
+  font-family: "Geist Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("@fontsource-variable/geist/files/geist-latin-wght-normal.woff2")
+    format("woff2-variations");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Page Transition Animation */
+#page-content {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 60;
+  transform: translateY(-200%);
+  border: 1px solid color-mix(in oklch, var(--brand-on-surface), transparent 75%);
+  background: var(--brand-surface);
+  color: var(--brand-on-surface);
+  padding: 0.75rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: none;
+}
+
+body.page-transition #page-content {
+  opacity: 0;
+}
+
+.page-loading-overlay {
+  opacity: 0;
+  pointer-events: none;
+}
+
+body.page-transition .page-loading-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.page-loading-spinner {
+  animation: page-loading-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes page-loading-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.92);
+  }
+}
+
+* {
+  border-color: var(--border);
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+html {
+  font-family: "Geist Variable", sans-serif;
+}
