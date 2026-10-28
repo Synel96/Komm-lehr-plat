@@ -11,6 +11,7 @@ import { filterGlossary, groupByCategory, sortGlossary } from "@/src/content/sea
 import type { SupportedLang } from "@/src/i18n-config";
 import { useLang } from "@/src/hooks/use-lang";
 import { clearLessonReturn, readLessonReturn, type LessonReturn } from "@/src/lesson-position";
+import { CATEGORY_STYLES } from "@/components/glossary/category-styles";
 import { cn } from "@/lib/utils";
 
 const SORTED_GLOSSARY = sortGlossary(GLOSSARY);
@@ -51,33 +52,41 @@ function ToggleButton({
   );
 }
 
+function CategoryBadge({ category, lang }: { category: GlossaryCategory; lang: SupportedLang }) {
+  return (
+    <span
+      lang={lang}
+      className={cn(
+        "inline-block rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap",
+        CATEGORY_STYLES[category].badge
+      )}
+    >
+      {categoryLabel(category, lang)}
+    </span>
+  );
+}
+
 function EntryCard({
   entry,
   lang,
-  showCategory,
   exampleLabel,
 }: {
   entry: GlossaryEntry;
   lang: SupportedLang;
-  showCategory: boolean;
   exampleLabel: string;
 }) {
   return (
     <li
       id={entry.id}
-      className="bg-card text-card-foreground scroll-mt-6 rounded-xl border p-5 target:ring-2 target:ring-amber-400"
+      className={cn(
+        "text-card-foreground scroll-mt-6 rounded-xl border border-l-4 p-5 target:ring-2 target:ring-amber-400",
+        CATEGORY_STYLES[entry.category].card
+      )}
     >
       <div lang="de" className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
         <span className="text-lg font-bold">{entry.term}</span>
         {entry.full && <span className="text-muted-foreground italic">{entry.full}</span>}
-        {showCategory && (
-          <span
-            lang={lang}
-            className="rounded-full bg-amber-400/20 px-2 py-0.5 text-xs font-medium text-amber-800 dark:text-amber-300"
-          >
-            {categoryLabel(entry.category, lang)}
-          </span>
-        )}
+        <CategoryBadge category={entry.category} lang={lang} />
       </div>
       <p className="mt-2">{entry.explanation[lang]}</p>
       {entry.example && (
@@ -186,6 +195,13 @@ export default function Page() {
                 active={category === option.id}
                 onClick={() => setCategory(option.id)}
               >
+                <span
+                  className={cn(
+                    "mr-1.5 inline-block size-2 rounded-full align-middle",
+                    CATEGORY_STYLES[option.id].dot
+                  )}
+                  aria-hidden="true"
+                />
                 {option.label[lang]}
               </ToggleButton>
             ))}
@@ -208,8 +224,15 @@ export default function Page() {
           >
             <h2
               id={`group-${group.category.id}`}
-              className="flex items-baseline gap-2 border-b pb-2 text-xl font-semibold"
+              className="flex items-center gap-2 border-b pb-2 text-xl font-semibold"
             >
+              <span
+                className={cn(
+                  "size-3 shrink-0 rounded-full",
+                  CATEGORY_STYLES[group.category.id].dot
+                )}
+                aria-hidden="true"
+              />
               {group.category.label[lang]}
               <span className="text-muted-foreground text-sm font-normal">
                 {group.entries.length}
@@ -217,13 +240,7 @@ export default function Page() {
             </h2>
             <ul className="mt-3 grid gap-3">
               {group.entries.map((entry) => (
-                <EntryCard
-                  key={entry.id}
-                  entry={entry}
-                  lang={lang}
-                  showCategory={false}
-                  exampleLabel={exampleLabel}
-                />
+                <EntryCard key={entry.id} entry={entry} lang={lang} exampleLabel={exampleLabel} />
               ))}
             </ul>
           </section>
@@ -232,13 +249,7 @@ export default function Page() {
       {view === "flat" && (
         <ul className="mt-4 grid gap-3">
           {results.map((entry) => (
-            <EntryCard
-              key={entry.id}
-              entry={entry}
-              lang={lang}
-              showCategory
-              exampleLabel={exampleLabel}
-            />
+            <EntryCard key={entry.id} entry={entry} lang={lang} exampleLabel={exampleLabel} />
           ))}
         </ul>
       )}
@@ -264,8 +275,13 @@ export default function Page() {
                   id={entry.id}
                   className="bg-card scroll-mt-6 align-top target:ring-2 target:ring-amber-400"
                 >
-                  <th scope="row" lang="de" className="px-4 py-3 font-bold whitespace-nowrap">
-                    {entry.term}
+                  <th scope="row" className="px-4 py-3 align-top">
+                    <span lang="de" className="block font-bold whitespace-nowrap">
+                      {entry.term}
+                    </span>
+                    <span className="mt-1 block">
+                      <CategoryBadge category={entry.category} lang={lang} />
+                    </span>
                   </th>
                   <td className="px-4 py-3">
                     <span lang="de" className="font-medium">
