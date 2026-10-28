@@ -143,11 +143,11 @@ export const ALL_LESSONS: Lesson[] = [
           en: "Scan the right code",
         },
         text: {
-          de: "Auf vielen Kartons sind mehrere Barcodes. Der Scanner sagt dir, was er erwartet (z. B. „Lagerplatz scannen“ oder „Artikel scannen“). Lies die Anzeige, bevor du scannst.",
-          hu: "Sok kartonon több vonalkód is van. A szkenner kiírja, mit vár (pl. „Lagerplatz scannen” vagy „Artikel scannen”). Olvasd el a kijelzőt, mielőtt beolvasol.",
-          en: "Many cartons carry several barcodes. The scanner tells you what it expects (e.g. “Lagerplatz scannen” or “Artikel scannen”). Read the display before you scan.",
+          de: "Wir scannen immer die EAN auf dem Artikel. Ausnahme: Steht die Position am Scanner in roter Schrift, scannst du vorübergehend den Barcode des Komm-Platzes – weil der Barcode des Artikels fehlerhaft ist oder fehlt.",
+          hu: "Mindig az artikelen (terméken) lévő EAN-t szkenneljük. Kivétel: ha a pozíció a szkenneren piros színnel van kiírva, ideiglenesen a Komm-Platz vonalkódját kell beszkennelni – mert a termék barcode-ja hibás vagy hiányzik.",
+          en: "We always scan the EAN on the article. Exception: if the position is shown in red on the scanner, you temporarily scan the barcode of the Komm-Platz instead – because the article's barcode is faulty or missing.",
         },
-        terms: ["ean", "lp"],
+        terms: ["ean", "komm-platz"],
       },
     ],
     exercises: [
@@ -168,6 +168,32 @@ export const ALL_LESSONS: Lesson[] = [
           de: "ENT (Enter) bestätigt. ESC geht zurück, die Löschtaste ⌫ löscht.",
           hu: "Az ENT (Enter) erősít meg. Az ESC visszalép, a törlés gomb ⌫ töröl.",
           en: "ENT (Enter) confirms. ESC goes back, the delete key ⌫ clears.",
+        },
+      },
+      {
+        type: "choice",
+        question: {
+          de: "Die Position steht am Scanner in roter Schrift. Was scannst du?",
+          hu: "A pozíció a szkenneren piros színnel van kiírva. Mit szkennelsz be?",
+          en: "The position is shown in red on the scanner. What do you scan?",
+        },
+        options: [
+          {
+            de: "Die EAN auf dem Artikel",
+            hu: "Az artikelen lévő EAN-t",
+            en: "The EAN on the article",
+          },
+          {
+            de: "Den Barcode des Komm-Platzes",
+            hu: "A Komm-Platz vonalkódját",
+            en: "The barcode of the Komm-Platz",
+          },
+        ],
+        answer: 1,
+        explanation: {
+          de: "Rot heißt: Der Artikel-Barcode ist fehlerhaft oder fehlt. Dann vorübergehend den Komm-Platz scannen – sonst immer die EAN.",
+          hu: "A piros azt jelenti: a termék barcode-ja hibás vagy hiányzik. Ilyenkor ideiglenesen a Komm-Platzot szkenneled – egyébként mindig az EAN-t.",
+          en: "Red means: the article barcode is faulty or missing. Then scan the Komm-Platz temporarily – otherwise always the EAN.",
         },
       },
       {

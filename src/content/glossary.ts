@@ -213,9 +213,9 @@ export const GLOSSARY: GlossaryEntry[] = [
     kind: "abbr",
     category: "auftrag",
     explanation: {
-      de: "Der Lagerplatz, von dem kommissioniert wird. Vor dem Öffnen eines Kartons immer prüfen, ob du am richtigen Komm-Platz bist.",
-      hu: "Kiszedőhely: az a tárhely, ahonnan komissiózunk. Doboz bontása előtt mindig ellenőrizd, hogy a megfelelő Komm-Platzon vagy.",
-      en: "Pick location: the storage location you pick from. Before opening a carton, always check you're at the right Komm-Platz.",
+      de: "Der Lagerplatz, von dem kommissioniert wird. Vor dem Öffnen eines Kartons immer prüfen, ob du am richtigen Komm-Platz bist. Steht die Position am Scanner rot, scannst du vorübergehend den Barcode des Komm-Platzes statt der EAN.",
+      hu: "Kiszedőhely: az a tárhely, ahonnan komissiózunk. Doboz bontása előtt mindig ellenőrizd, hogy a megfelelő Komm-Platzon vagy. Ha a pozíció a szkenneren piros, ideiglenesen a Komm-Platz vonalkódját szkenneled az EAN helyett.",
+      en: "Pick location: the storage location you pick from. Before opening a carton, always check you're at the right Komm-Platz. If the position is red on the scanner, you temporarily scan the Komm-Platz barcode instead of the EAN.",
     },
   },
   {
