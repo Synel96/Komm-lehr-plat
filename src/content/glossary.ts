@@ -596,30 +596,6 @@ export const GLOSSARY: GlossaryEntry[] = [
     },
   },
   {
-    id: "fifo",
-    term: "FIFO",
-    full: "First In – First Out",
-    kind: "abbr",
-    category: "auftrag",
-    explanation: {
-      de: "Was zuerst eingelagert wurde, wird zuerst ausgelagert.",
-      hu: "Ami először került be a raktárba, az megy ki először.",
-      en: "What was stored first goes out first.",
-    },
-  },
-  {
-    id: "fefo",
-    term: "FEFO",
-    full: "First Expired – First Out",
-    kind: "abbr",
-    category: "auftrag",
-    explanation: {
-      de: "Die Ware mit dem frühesten MHD wird zuerst ausgelagert.",
-      hu: "A legkorábban lejáró (legkorábbi MHD-jú) áru megy ki először.",
-      en: "Goods with the earliest best-before date go out first.",
-    },
-  },
-  {
     id: "ma",
     term: "MA",
     full: "Mitarbeiter / Mitarbeiterin",
