@@ -299,11 +299,11 @@ export const ALL_LESSONS: Lesson[] = [
           en: "Nebenzeit: when you're not picking",
         },
         text: {
-          de: "Arbeitest du gerade an etwas anderem als Kommissionieren – z. B. Reinigung, Besprechung oder Schulung –, buchst du im eingeloggten Zustand „Nebenzeit“. Ist die Tätigkeit vorbei, geht es mit dem Kommissionieren weiter.",
-          hu: "Ha épp nem komissiózol, hanem mást dolgozol – pl. Reinigung (takarítás), Besprechung (megbeszélés) vagy oktatás –, bejelentkezett állapotban becsekkolod a „Nebenzeit”-et. Ha vége, folytatod a komissiózást.",
-          en: "If you're doing something other than picking – e.g. Reinigung (cleaning), Besprechung (meeting) or training – book “Nebenzeit” while logged in. When it's done, you continue picking.",
+          de: "Arbeitest du gerade an etwas anderem als Kommissionieren, öffnest du im eingeloggten Zustand im Menü die „Nebenzeiterfassung“ und wählst dort die Art der Nebenzeit aus: Wickelmaschine, Reinigung oder Besprechung. Ist die Tätigkeit vorbei, geht es mit dem Kommissionieren weiter.",
+          hu: "Ha épp nem komissiózol, hanem mást dolgozol, bejelentkezett állapotban a menüben megnyitod a „Nebenzeiterfassung”-ot, és azon belül kiválasztod a Nebenzeit típusát: Wickelmaschine (fóliázógép), Reinigung (takarítás) vagy Besprechung (megbeszélés). Ha vége, folytatod a komissiózást.",
+          en: "If you're doing something other than picking, open “Nebenzeiterfassung” in the menu while logged in and choose the type of Nebenzeit there: Wickelmaschine (wrapping machine), Reinigung (cleaning) or Besprechung (meeting). When it's done, you continue picking.",
         },
-        terms: ["nebenzeit", "reinigung", "besprechung"],
+        terms: ["nebenzeiterfassung", "nebenzeit", "wickelmaschine", "reinigung", "besprechung"],
       },
       {
         title: {
@@ -396,6 +396,14 @@ export const ALL_LESSONS: Lesson[] = [
               de: "Keine Kommissionierung – du machst Reinigung im Gang.",
               hu: "Nincs komissiózás – takarítasz (Reinigung) a sorban.",
               en: "No picking right now – you do Reinigung (cleaning) in the aisle.",
+            },
+            category: 1,
+          },
+          {
+            text: {
+              de: "Du arbeitest 15 Minuten an der Wickelmaschine.",
+              hu: "15 percig a Wickelmaschine-nál (fóliázógépnél) dolgozol.",
+              en: "You work at the Wickelmaschine (wrapping machine) for 15 minutes.",
             },
             category: 1,
           },

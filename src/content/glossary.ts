@@ -246,9 +246,9 @@ export const GLOSSARY: GlossaryEntry[] = [
     kind: "word",
     category: "zeiterfassung",
     explanation: {
-      de: "Reinigen bzw. Aufräumen des Arbeitsbereichs. Wird als Nebenzeit gebucht.",
-      hu: "Takarítás, a munkaterület rendbetétele. Nebenzeit-ként kell csekkolni.",
-      en: "Cleaning or tidying up the work area. Booked as Nebenzeit.",
+      de: "Reinigen bzw. Aufräumen des Arbeitsbereichs. Wird als Nebenzeit gebucht: Nebenzeiterfassung → Reinigung.",
+      hu: "Takarítás, a munkaterület rendbetétele. Nebenzeit-ként kell csekkolni: Nebenzeiterfassung → Reinigung.",
+      en: "Cleaning or tidying up the work area. Booked as Nebenzeit: Nebenzeiterfassung → Reinigung.",
     },
   },
   {
@@ -257,9 +257,9 @@ export const GLOSSARY: GlossaryEntry[] = [
     kind: "word",
     category: "zeiterfassung",
     explanation: {
-      de: "Meeting bzw. Teambesprechung, z. B. zu Schichtbeginn. Wird als Nebenzeit gebucht.",
-      hu: "Megbeszélés, csapateligazítás, pl. a műszak elején. Nebenzeit-ként kell csekkolni.",
-      en: "Meeting or team briefing, e.g. at the start of the shift. Booked as Nebenzeit.",
+      de: "Meeting bzw. Teambesprechung, z. B. zu Schichtbeginn. Wird als Nebenzeit gebucht: Nebenzeiterfassung → Besprechung.",
+      hu: "Megbeszélés, csapateligazítás, pl. a műszak elején. Nebenzeit-ként kell csekkolni: Nebenzeiterfassung → Besprechung.",
+      en: "Meeting or team briefing, e.g. at the start of the shift. Booked as Nebenzeit: Nebenzeiterfassung → Besprechung.",
     },
   },
   {
@@ -268,9 +268,9 @@ export const GLOSSARY: GlossaryEntry[] = [
     kind: "word",
     category: "zeiterfassung",
     explanation: {
-      de: "Menüpunkt am Scanner, in dem du deine Arbeitszeit buchst: Kommen, Pause, Kommt Pause, Nebenzeit und Gehen. Erreichbar nach dem Einloggen. Daraus wird deine Arbeitszeit berechnet.",
-      hu: "Időnyilvántartás: menüpont a szkenneren, ahol a munkaidődet rögzíted: Kommen, Pause, Kommt Pause, Nebenzeit és Gehen. Bejelentkezés után érhető el. Ebből számolják a munkaidődet.",
-      en: "Menu item on the scanner where you book your working time: Kommen, Pause, Kommt Pause, Nebenzeit and Gehen. Available after logging in. Your working hours are calculated from it.",
+      de: "Menüpunkt am Scanner, in dem du deine Arbeitszeit buchst: Kommen, Pause, Kommt Pause und Gehen. Erreichbar nach dem Einloggen. Nebenzeit buchst du über den eigenen Menüpunkt Nebenzeiterfassung. Daraus wird deine Arbeitszeit berechnet.",
+      hu: "Időnyilvántartás: menüpont a szkenneren, ahol a munkaidődet rögzíted: Kommen, Pause, Kommt Pause és Gehen. Bejelentkezés után érhető el. A Nebenzeit-et a külön Nebenzeiterfassung menüpontban csekkolod. Ebből számolják a munkaidődet.",
+      en: "Menu item on the scanner where you book your working time: Kommen, Pause, Kommt Pause and Gehen. Available after logging in. Nebenzeit is booked in the separate Nebenzeiterfassung menu item. Your working hours are calculated from it.",
     },
   },
   {
@@ -345,9 +345,31 @@ export const GLOSSARY: GlossaryEntry[] = [
     kind: "word",
     category: "zeiterfassung",
     explanation: {
-      de: "Zeit, in der du arbeitest, aber gerade nicht kommissionierst – z. B. Reinigung, Besprechung, Schulung oder Leergut wegbringen. Im eingeloggten Zustand in der Zeiterfassung buchen, damit sie nicht als langsames Picken zählt.",
-      hu: "Mellékidő: amikor dolgozol, de épp nincs komissiózás – pl. Reinigung (takarítás), Besprechung (megbeszélés), oktatás vagy üres göngyöleg elvitele. Bejelentkezett állapotban a Zeiterfassung menüben kell csekkolni, hogy ne számítson lassú kiszedésnek.",
-      en: "Time when you're working but not picking – e.g. Reinigung (cleaning), Besprechung (meeting), training or taking away empties. Book it in Zeiterfassung while logged in, so it doesn't count as slow picking.",
+      de: "Zeit, in der du arbeitest, aber gerade nicht kommissionierst – z. B. an der Wickelmaschine, Reinigung oder Besprechung. Im eingeloggten Zustand im Menü Nebenzeiterfassung buchen und dort die Art auswählen, damit sie nicht als langsames Picken zählt.",
+      hu: "Mellékidő: amikor dolgozol, de épp nincs komissiózás – pl. Wickelmaschine (fóliázógép), Reinigung (takarítás) vagy Besprechung (megbeszélés). Bejelentkezett állapotban a Nebenzeiterfassung menüben kell csekkolni, ott kiválasztva a típusát, hogy ne számítson lassú kiszedésnek.",
+      en: "Time when you're working but not picking – e.g. Wickelmaschine (wrapping machine), Reinigung (cleaning) or Besprechung (meeting). Book it in the Nebenzeiterfassung menu while logged in, choosing the type there, so it doesn't count as slow picking.",
+    },
+  },
+  {
+    id: "nebenzeiterfassung",
+    term: "Nebenzeiterfassung",
+    kind: "word",
+    category: "zeiterfassung",
+    explanation: {
+      de: "Menüpunkt am Scanner, in dem du Nebenzeit buchst. Dort wählst du die Art aus: Wickelmaschine, Reinigung oder Besprechung.",
+      hu: "Menüpont a szkenneren, ahol a Nebenzeit-et csekkolod. Itt kell kiválasztani a típusát: Wickelmaschine, Reinigung vagy Besprechung.",
+      en: "Menu item on the scanner where you book Nebenzeit. There you choose the type: Wickelmaschine, Reinigung or Besprechung.",
+    },
+  },
+  {
+    id: "wickelmaschine",
+    term: "Wickelmaschine",
+    kind: "word",
+    category: "zeiterfassung",
+    explanation: {
+      de: "Maschine, die Paletten mit Stretchfolie umwickelt. Arbeit daran wird als Nebenzeit gebucht: Nebenzeiterfassung → Wickelmaschine.",
+      hu: "Fóliázógép: a raklapokat sztreccsfóliával tekeri be. Az itt végzett munkát Nebenzeit-ként kell csekkolni: Nebenzeiterfassung → Wickelmaschine.",
+      en: "Wrapping machine that wraps pallets in stretch film. Work there is booked as Nebenzeit: Nebenzeiterfassung → Wickelmaschine.",
     },
   },
   {
