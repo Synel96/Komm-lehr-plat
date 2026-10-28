@@ -1,9 +1,10 @@
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { AREA_ICONS } from "@/components/lessons/area-icons";
+import { AREA_ICONS, AREA_STYLES } from "@/components/lessons/area-icons";
 import { AREAS, lessonsInArea } from "@/src/content/lessons";
 import { useLang } from "@/src/hooks/use-lang";
 import { useLessonProgress } from "@/src/hooks/use-lesson-progress";
+import { cn } from "@/lib/utils";
 
 export default function Page() {
   const { t } = useTranslation();
@@ -24,9 +25,14 @@ export default function Page() {
             <li key={area.id}>
               <a
                 href={href(`/lektionen/${area.id}`)}
-                className="group bg-card text-card-foreground hover:border-foreground/30 hover:bg-muted flex h-full flex-col rounded-xl border p-6 transition-colors"
+                className="group bg-card text-card-foreground flex h-full flex-col rounded-2xl border p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
               >
-                <span className="bg-muted inline-flex size-14 items-center justify-center rounded-xl">
+                <span
+                  className={cn(
+                    "inline-flex size-14 items-center justify-center rounded-xl",
+                    AREA_STYLES[area.id].tile
+                  )}
+                >
                   <Icon className="size-7" aria-hidden="true" />
                 </span>
                 <span className="mt-4 text-2xl font-semibold">{area.title[lang]}</span>
@@ -40,11 +46,11 @@ export default function Page() {
                   aria-hidden="true"
                 >
                   <span
-                    className="block h-full rounded-full bg-amber-400"
+                    className={cn("block h-full rounded-full", AREA_STYLES[area.id].bar)}
                     style={{ width: `${Math.round((done / chapters.length) * 100)}%` }}
                   />
                 </span>
-                <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium">
+                <span className="text-primary mt-4 inline-flex items-center gap-1 text-sm font-semibold">
                   {t("lessons.chooseChapterCta")}
                   <ArrowRight
                     className="size-4 transition-transform group-hover:translate-x-0.5"

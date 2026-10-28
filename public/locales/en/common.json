@@ -20,7 +20,13 @@
     "scannerText": "What is where on the display, what each key does, and what to do when an error appears.",
     "glossaryText": "A small dictionary: abbreviations like MHD, NVE or LE and important terms – with search.",
     "open": "Open",
-    "lessonsText": "Interactive lessons by topic: read, click through and check yourself with short exercises."
+    "lessonsText": "Interactive lessons by topic: read, click through and check yourself with short exercises.",
+    "badge": "Learning platform for the warehouse",
+    "ctaLessons": "Start lessons",
+    "ctaGlossary": "Open glossary",
+    "statLessons": "lessons",
+    "statWords": "terms",
+    "statLangs": "languages"
   },
   "scanner": {
     "title": "Scanner explained",

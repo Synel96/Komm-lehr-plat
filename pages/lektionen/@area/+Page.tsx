@@ -1,7 +1,7 @@
 import { ArrowLeft, CircleCheck, Clock } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
-import { AREA_ICONS } from "@/components/lessons/area-icons";
+import { AREA_ICONS, AREA_STYLES } from "@/components/lessons/area-icons";
 import { getArea, lessonPath, lessonsInArea } from "@/src/content/lessons";
 import { useLang } from "@/src/hooks/use-lang";
 import { useLessonProgress } from "@/src/hooks/use-lesson-progress";
@@ -30,7 +30,12 @@ export default function Page() {
       </a>
 
       <div className="mt-6 flex items-center gap-4">
-        <span className="bg-muted inline-flex size-14 shrink-0 items-center justify-center rounded-xl">
+        <span
+          className={cn(
+            "inline-flex size-14 shrink-0 items-center justify-center rounded-xl",
+            AREA_STYLES[area.id].tile
+          )}
+        >
           <Icon className="size-7" aria-hidden="true" />
         </span>
         <div>
@@ -49,7 +54,7 @@ export default function Page() {
             <li key={lesson.slug}>
               <a
                 href={href(lessonPath(lesson))}
-                className="bg-card text-card-foreground hover:border-foreground/30 hover:bg-muted flex items-start gap-4 rounded-xl border p-5 transition-colors"
+                className="bg-card text-card-foreground flex items-start gap-4 rounded-2xl border p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
               >
                 <span
                   className={cn(

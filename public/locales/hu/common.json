@@ -20,7 +20,13 @@
     "scannerText": "Mi hol van a kijelzőn, melyik gomb mire való, és mit tegyél egy hibaüzenetnél?",
     "glossaryText": "Kis szótár: rövidítések, mint MHD, NVE vagy LE, és fontos szakszavak – kereséssel.",
     "open": "Megnyitás",
-    "lessonsText": "Interaktív leckék témakörönként: olvasd el, kattints végig, és ellenőrizd magad kis feladatokkal."
+    "lessonsText": "Interaktív leckék témakörönként: olvasd el, kattints végig, és ellenőrizd magad kis feladatokkal.",
+    "badge": "Tanulóplatform a raktárhoz",
+    "ctaLessons": "Leckék indítása",
+    "ctaGlossary": "Szótár megnyitása",
+    "statLessons": "lecke",
+    "statWords": "szó",
+    "statLangs": "nyelv"
   },
   "scanner": {
     "title": "A szkenner magyarázata",

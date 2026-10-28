@@ -79,7 +79,7 @@ function EntryCard({
     <li
       id={entry.id}
       className={cn(
-        "text-card-foreground scroll-mt-6 rounded-xl border border-l-4 p-5 target:ring-2 target:ring-amber-400",
+        "text-card-foreground scroll-mt-6 rounded-2xl border border-l-4 p-5 shadow-sm target:ring-2 target:ring-amber-400",
         CATEGORY_STYLES[entry.category].card
       )}
     >
@@ -138,7 +138,7 @@ export default function Page() {
       <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">{t("glossary.title")}</h1>
       <p className="text-muted-foreground mt-3 max-w-2xl text-lg">{t("glossary.intro")}</p>
 
-      <div className="bg-card mt-8 space-y-4 rounded-xl border p-4">
+      <div className="bg-card mt-8 space-y-4 rounded-2xl border p-4 shadow-sm">
         <label className="relative block">
           <span className="sr-only">{t("glossary.searchLabel")}</span>
           <Search
@@ -256,7 +256,7 @@ export default function Page() {
 
       {view === "abbr" && results.length > 0 && (
         // Abbreviation list: every abbreviation written out in full.
-        <div className="mt-4 overflow-hidden rounded-xl border">
+        <div className="mt-4 overflow-hidden rounded-2xl border shadow-sm">
           <table className="w-full text-left text-sm">
             <thead className="bg-muted">
               <tr>

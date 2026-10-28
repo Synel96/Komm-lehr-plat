@@ -20,7 +20,13 @@
     "scannerText": "Was steht wo auf dem Display, welche Taste macht was, und was tun bei einer Fehlermeldung?",
     "glossaryText": "Kurzes Wörterbuch: Abkürzungen wie MHD, NVE oder LE und wichtige Fachbegriffe – mit Suche.",
     "open": "Öffnen",
-    "lessonsText": "Interaktive Lektionen nach Themen: lesen, durchklicken und mit kleinen Übungen prüfen."
+    "lessonsText": "Interaktive Lektionen nach Themen: lesen, durchklicken und mit kleinen Übungen prüfen.",
+    "badge": "Lernplattform für das Lager",
+    "ctaLessons": "Lektionen starten",
+    "ctaGlossary": "Zum Wörterbuch",
+    "statLessons": "Lektionen",
+    "statWords": "Begriffe",
+    "statLangs": "Sprachen"
   },
   "scanner": {
     "title": "Scanner erklärt",

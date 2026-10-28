@@ -94,7 +94,7 @@ export default function Page() {
         <h2 id="keys-heading" className="text-2xl font-semibold">
           {t("scanner.keysHeading")}
         </h2>
-        <dl className="mt-6 divide-y rounded-xl border">
+        <dl className="bg-card mt-6 divide-y rounded-2xl border shadow-sm">
           {SCANNER_KEYS.map((key) => (
             <div key={key.key} className="flex flex-col gap-1 p-4 sm:flex-row sm:gap-4">
               <dt className="sm:w-32 sm:shrink-0">
@@ -123,7 +123,7 @@ export default function Page() {
           {SCANNER_MESSAGES.map((message) => (
             <li
               key={message.message}
-              className="bg-card text-card-foreground rounded-xl border p-5"
+              className="bg-card text-card-foreground rounded-2xl border p-5 shadow-sm"
             >
               <p lang="de" className="flex items-center gap-2 font-mono font-semibold">
                 <TriangleAlert className="size-4 shrink-0 text-amber-500" aria-hidden="true" />

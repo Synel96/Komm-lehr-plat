@@ -166,7 +166,7 @@ export function LessonPlayer({ lesson, nextLesson, onFinished }: Props) {
         </div>
       )}
 
-      <div className="bg-card text-card-foreground mt-6 rounded-xl border p-6 sm:p-8">
+      <div className="bg-card text-card-foreground mt-6 rounded-2xl border p-6 shadow-sm sm:p-8">
         {phase === "steps" && (
           <>
             <p className="text-muted-foreground text-sm font-medium">

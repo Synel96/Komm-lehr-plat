@@ -1,3 +1,4 @@
+import logoUrl from "../assets/logo.svg";
 import { MenuIcon, XIcon } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -44,20 +45,21 @@ export function Navbar({ menuOpen, onMenuOpenChange }: NavbarProps = {}) {
 
   const navLinkClass = (href: string) =>
     isActive(href)
-      ? "font-medium text-(--brand-on-surface)"
-      : "text-white/70 transition-colors hover:text-(--brand-on-surface)";
+      ? "rounded-full bg-white/15 px-3 py-1.5 font-medium text-(--brand-on-surface)"
+      : "rounded-full px-3 py-1.5 text-white/75 transition-colors hover:bg-white/10 hover:text-(--brand-on-surface)";
 
   return (
-    <header className="border-b border-white/10 bg-(--brand-surface) text-(--brand-on-surface) backdrop-blur supports-backdrop-filter:bg-[color-mix(in_oklch,var(--brand-surface),transparent_5%)]">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-(--brand-surface) text-(--brand-on-surface) shadow-sm backdrop-blur supports-backdrop-filter:bg-[color-mix(in_oklch,var(--brand-surface),transparent_8%)]">
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6">
         <a
           href={langHref("/")}
-          className="text-base font-semibold tracking-tight text-(--brand-on-surface)"
+          className="flex items-center gap-2.5 text-base font-semibold tracking-tight text-(--brand-on-surface)"
         >
+          <img src={logoUrl} alt="" width="32" height="32" className="size-8 rounded-lg" />
           {BRAND_NAME}
         </a>
 
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden items-center gap-1 text-sm md:flex">
           {NAV_LINKS.map((item) => (
             <a key={item.href} href={langHref(item.href)} className={navLinkClass(item.href)}>
               {t(item.labelKey)}
