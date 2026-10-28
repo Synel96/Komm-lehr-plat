@@ -231,6 +231,28 @@ export const GLOSSARY: GlossaryEntry[] = [
     example: "Vorsicht Glas!",
   },
   {
+    id: "vorsicht-glas",
+    term: "Vorsicht Glas!",
+    kind: "word",
+    category: "qualitaet",
+    explanation: {
+      de: "Warnhinweis auf dem Karton: Achtung, im Karton ist Glas. Vorsichtig nehmen, nicht werfen, nichts Schweres darauf stellen.",
+      hu: "„Vigyázat, üveg!” Figyelmeztetés a kartonon: a dobozban üveg van. Óvatosan fogd meg, ne dobd, és ne tegyél rá nehezet.",
+      en: "“Caution, glass!” Warning on the carton: there is glass inside. Handle with care, don't throw it and don't put anything heavy on top.",
+    },
+  },
+  {
+    id: "vorsicht",
+    term: "Vorsicht",
+    kind: "word",
+    category: "qualitaet",
+    explanation: {
+      de: "Achtung, aufpassen. Steht auf Warnhinweisen, z. B. „Vorsicht Glas!“ oder „Vorsicht zerbrechlich!“.",
+      hu: "Vigyázat, figyelj. Figyelmeztető feliratokon szerepel, pl. „Vorsicht Glas!” (Vigyázat, üveg!) vagy „Vorsicht zerbrechlich!” (Vigyázat, törékeny!).",
+      en: "Caution, watch out. Appears on warning labels, e.g. “Vorsicht Glas!” (caution, glass) or “Vorsicht zerbrechlich!” (caution, fragile).",
+    },
+  },
+  {
     id: "komm-platz",
     term: "Komm-Platz",
     full: "Kommissionierplatz",
