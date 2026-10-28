@@ -122,9 +122,9 @@ export const ALL_LESSONS: Lesson[] = [
           en: "The most important keys",
         },
         text: {
-          de: "ENT bestätigt und geht weiter. ESC geht einen Schritt zurück. CLR löscht deine Eingabe. Die F-Tasten haben Sonderfunktionen – welche, steht meist unten im Display.",
-          hu: "Az ENT megerősít és továbblép. Az ESC egy lépést visszalép. A CLR törli a bevitelt. Az F-gomboknak különleges funkcióik vannak – hogy melyiknek mi, az általában a kijelző alján látszik.",
-          en: "ENT confirms and continues. ESC goes back one step. CLR clears your input. The F keys have special functions – usually shown at the bottom of the display.",
+          de: "ENT bestätigt und geht weiter. ESC geht einen Schritt zurück. Die Löschtaste ⌫ (Pfeil nach links mit X) löscht deine Eingabe. ALP wechselt zwischen Buchstaben und Zahlen. Die F-Tasten haben Sonderfunktionen – welche, steht meist unten im Display.",
+          hu: "Az ENT megerősít és továbblép. Az ESC egy lépést visszalép. A törlés gomb ⌫ (balra mutató nyíl, benne X) törli a bevitelt. Az ALP a betű- és a számbevitel között vált. Az F-gomboknak különleges funkcióik vannak – hogy melyiknek mi, az általában a kijelző alján látszik.",
+          en: "ENT confirms and continues. ESC goes back one step. The delete key ⌫ (arrow pointing left with an X) clears your input. ALP switches between letters and numbers. The F keys have special functions – usually shown at the bottom of the display.",
         },
         terms: ["quittieren"],
       },
@@ -161,13 +161,13 @@ export const ALL_LESSONS: Lesson[] = [
         options: [
           { de: "ESC", hu: "ESC", en: "ESC" },
           { de: "ENT", hu: "ENT", en: "ENT" },
-          { de: "CLR", hu: "CLR", en: "CLR" },
+          { de: "Löschtaste ⌫", hu: "Törlés gomb ⌫", en: "Delete key ⌫" },
         ],
         answer: 1,
         explanation: {
-          de: "ENT (Enter) bestätigt. ESC geht zurück, CLR löscht.",
-          hu: "Az ENT (Enter) erősít meg. Az ESC visszalép, a CLR töröl.",
-          en: "ENT (Enter) confirms. ESC goes back, CLR clears.",
+          de: "ENT (Enter) bestätigt. ESC geht zurück, die Löschtaste ⌫ löscht.",
+          hu: "Az ENT (Enter) erősít meg. Az ESC visszalép, a törlés gomb ⌫ töröl.",
+          en: "ENT (Enter) confirms. ESC goes back, the delete key ⌫ clears.",
         },
       },
       {

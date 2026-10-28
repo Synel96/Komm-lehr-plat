@@ -1,4 +1,4 @@
-import { Info, TriangleAlert } from "lucide-react";
+import { Delete, Info, TriangleAlert } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import {
   SCANNER_FIELDS,
@@ -62,13 +62,13 @@ export default function Page() {
                 <span>ESC</span>
               </div>
             </div>
-            <div className="mt-4 grid grid-cols-3 gap-2" aria-hidden="true">
-              {["F1", "F2", "F3", "ESC", "CLR", "ENT"].map((key) => (
+            <div className="mt-4 grid grid-cols-4 gap-2" aria-hidden="true">
+              {["F1", "F2", "F3", "ALP", "ESC", "DEL", "ENT", "SCAN"].map((key) => (
                 <span
                   key={key}
-                  className="rounded-md bg-neutral-600 py-1 text-center text-xs font-semibold text-white"
+                  className="flex items-center justify-center rounded-md bg-neutral-600 py-1 text-xs font-semibold text-white"
                 >
-                  {key}
+                  {key === "DEL" ? <Delete className="size-4" /> : key}
                 </span>
               ))}
             </div>
@@ -98,8 +98,15 @@ export default function Page() {
           {SCANNER_KEYS.map((key) => (
             <div key={key.key} className="flex flex-col gap-1 p-4 sm:flex-row sm:gap-4">
               <dt className="sm:w-32 sm:shrink-0">
-                <kbd className="bg-muted rounded-md border px-2 py-0.5 font-mono text-sm font-semibold">
-                  {key.key}
+                <kbd
+                  className="bg-muted inline-flex items-center rounded-md border px-2 py-0.5 font-mono text-sm font-semibold"
+                  aria-label={key.label?.[lang]}
+                >
+                  {key.icon === "delete" ? (
+                    <Delete className="size-4" aria-hidden="true" />
+                  ) : (
+                    key.key
+                  )}
                 </kbd>
               </dt>
               <dd className="text-muted-foreground">{key.explanation[lang]}</dd>

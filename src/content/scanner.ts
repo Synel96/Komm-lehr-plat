@@ -17,6 +17,10 @@ export type ScannerField = {
 
 export type ScannerKey = {
   key: string;
+  /** Keys printed with a symbol instead of text, e.g. the delete key (⌫). */
+  icon?: "delete";
+  /** Accessible name for icon keys. */
+  label?: Localized;
   explanation: Localized;
 };
 
@@ -129,11 +133,21 @@ export const SCANNER_KEYS: ScannerKey[] = [
     },
   },
   {
-    key: "CLR / BKSP",
+    key: "DEL",
+    icon: "delete",
+    label: { de: "Löschtaste", hu: "Törlés gomb", en: "Delete key" },
     explanation: {
-      de: "Eingabe löschen.",
-      hu: "Bevitel törlése.",
-      en: "Clear the input.",
+      de: "Löschtaste (Pfeil nach links mit X): löscht deine Eingabe.",
+      hu: "Törlés gomb (balra mutató nyíl, benne X): törli a bevitelt.",
+      en: "Delete key (arrow pointing left with an X): clears your input.",
+    },
+  },
+  {
+    key: "ALP",
+    explanation: {
+      de: "Wechselt die Eingabe zwischen Buchstaben und Zahlen.",
+      hu: "Vált a betű- és a számbevitel között.",
+      en: "Switches the input between letters and numbers.",
     },
   },
   {
