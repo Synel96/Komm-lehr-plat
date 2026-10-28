@@ -1,6 +1,7 @@
 {
   "nav": {
     "home": "Start",
+    "lessons": "Lektionen",
     "scanner": "Scanner erklärt",
     "glossary": "Abkürzungen & Begriffe",
     "openMenu": "Menü öffnen",
@@ -18,7 +19,8 @@
     "intro": "Hier findest du schnell, was die Anzeigen am Scanner bedeuten und was hinter den vielen Abkürzungen steckt.",
     "scannerText": "Was steht wo auf dem Display, welche Taste macht was, und was tun bei einer Fehlermeldung?",
     "glossaryText": "Kurzes Wörterbuch: Abkürzungen wie MHD, NVE oder LE und wichtige Fachbegriffe – mit Suche.",
-    "open": "Öffnen"
+    "open": "Öffnen",
+    "lessonsText": "Interaktive Lektionen nach Themen: lesen, durchklicken und mit kleinen Übungen prüfen."
   },
   "scanner": {
     "title": "Scanner erklärt",
@@ -51,5 +53,37 @@
     "errorTitle": "Fehler",
     "errorText": "Etwas ist schiefgelaufen.",
     "backHome": "Zur Startseite"
+  },
+  "lessons": {
+    "title": "Lektionen",
+    "intro": "Kurze, interaktive Lektionen nach Themen. Lies die Schritte durch und teste dich danach mit kleinen Übungen.",
+    "overallProgress": "{{done}} von {{total}} Lektionen abgeschlossen (auf diesem Gerät)",
+    "minutes_one": "{{count}} Min.",
+    "minutes_other": "{{count}} Min.",
+    "exerciseCount_one": "{{count}} Übung",
+    "exerciseCount_other": "{{count}} Übungen",
+    "doneScore": "Erledigt · {{score}}/{{total}}",
+    "progress": "Fortschritt",
+    "stepOf": "Schritt {{current}} von {{total}}",
+    "exerciseOf": "Übung {{current}} von {{total}}",
+    "terms": "Begriffe im Wörterbuch",
+    "back": "Zurück",
+    "next": "Weiter",
+    "toExercises": "Zu den Übungen",
+    "answers": "Antworten",
+    "orderHint": "Tippe die Schritte in der richtigen Reihenfolge an.",
+    "check": "Prüfen",
+    "reset": "Neu anfangen",
+    "correctOrder": "Richtige Reihenfolge:",
+    "correct": "Richtig!",
+    "wrong": "Leider falsch.",
+    "showResult": "Ergebnis anzeigen",
+    "result": "{{score}} von {{total}} richtig",
+    "perfect": "Super – alles richtig!",
+    "almost": "Fast geschafft. Versuch die Übungen ruhig noch einmal.",
+    "retry": "Übungen wiederholen",
+    "restart": "Lektion von vorn",
+    "nextLesson": "Nächste Lektion",
+    "backToOverview": "Alle Lektionen"
   }
 }

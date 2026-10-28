@@ -1,6 +1,7 @@
 {
   "nav": {
     "home": "Főoldal",
+    "lessons": "Leckék",
     "scanner": "A szkenner",
     "glossary": "Rövidítések és szavak",
     "openMenu": "Menü megnyitása",
@@ -18,7 +19,8 @@
     "intro": "Itt gyorsan megtalálod, mit jelentenek a szkenner kijelzései, és mi rejlik a sok német rövidítés mögött.",
     "scannerText": "Mi hol van a kijelzőn, melyik gomb mire való, és mit tegyél egy hibaüzenetnél?",
     "glossaryText": "Kis szótár: rövidítések, mint MHD, NVE vagy LE, és fontos szakszavak – kereséssel.",
-    "open": "Megnyitás"
+    "open": "Megnyitás",
+    "lessonsText": "Interaktív leckék témakörönként: olvasd el, kattints végig, és ellenőrizd magad kis feladatokkal."
   },
   "scanner": {
     "title": "A szkenner magyarázata",
@@ -51,5 +53,37 @@
     "errorTitle": "Hiba",
     "errorText": "Valami hiba történt.",
     "backHome": "Vissza a főoldalra"
+  },
+  "lessons": {
+    "title": "Leckék",
+    "intro": "Rövid, interaktív leckék témakörönként. Olvasd végig a lépéseket, aztán teszteld magad kis feladatokkal.",
+    "overallProgress": "{{done}} / {{total}} lecke kész (ezen az eszközön)",
+    "minutes_one": "{{count}} perc",
+    "minutes_other": "{{count}} perc",
+    "exerciseCount_one": "{{count}} feladat",
+    "exerciseCount_other": "{{count}} feladat",
+    "doneScore": "Kész · {{score}}/{{total}}",
+    "progress": "Haladás",
+    "stepOf": "{{current}}. lépés / {{total}}",
+    "exerciseOf": "{{current}}. feladat / {{total}}",
+    "terms": "Szavak a szótárban",
+    "back": "Vissza",
+    "next": "Tovább",
+    "toExercises": "Jöhetnek a feladatok",
+    "answers": "Válaszok",
+    "orderHint": "Koppints a lépésekre a helyes sorrendben.",
+    "check": "Ellenőrzés",
+    "reset": "Újrakezdés",
+    "correctOrder": "A helyes sorrend:",
+    "correct": "Helyes!",
+    "wrong": "Sajnos nem jó.",
+    "showResult": "Eredmény",
+    "result": "{{total}} kérdésből {{score}} helyes",
+    "perfect": "Szuper – minden helyes!",
+    "almost": "Majdnem! Próbáld meg nyugodtan újra a feladatokat.",
+    "retry": "Feladatok újra",
+    "restart": "Lecke elölről",
+    "nextLesson": "Következő lecke",
+    "backToOverview": "Összes lecke"
   }
 }

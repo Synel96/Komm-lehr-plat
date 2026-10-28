@@ -14,6 +14,7 @@ export const OG_IMAGE_PATH = "/og-image.png";
 
 export const NAV_LINKS = [
   { href: "/", labelKey: "nav.home" },
+  { href: "/lektionen", labelKey: "nav.lessons" },
   { href: "/scanner", labelKey: "nav.scanner" },
   { href: "/abkuerzungen", labelKey: "nav.glossary" },
 ] as const;

@@ -8,6 +8,7 @@ Abkürzungen / Fachbegriffe nachschlagen. Standardsprache ist Deutsch
 
 | Was                                    | Datei                          |
 | -------------------------------------- | ------------------------------ |
+| Lektionen (Themen, Schritte, Übungen)  | `src/content/lessons.ts`       |
 | Wörterbuch (Abkürzungen & Begriffe)    | `src/content/glossary.ts`      |
 | Scanner: Bildschirm, Tasten, Meldungen | `src/content/scanner.ts`       |
 | Texte der Oberfläche (Menü, Titel …)   | `public/locales/*/common.json` |

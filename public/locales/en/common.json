@@ -1,6 +1,7 @@
 {
   "nav": {
     "home": "Home",
+    "lessons": "Lessons",
     "scanner": "Scanner explained",
     "glossary": "Abbreviations & terms",
     "openMenu": "Open menu",
@@ -18,7 +19,8 @@
     "intro": "Quickly look up what the scanner screens mean and what the many German abbreviations stand for.",
     "scannerText": "What is where on the display, what each key does, and what to do when an error appears.",
     "glossaryText": "A small dictionary: abbreviations like MHD, NVE or LE and important terms – with search.",
-    "open": "Open"
+    "open": "Open",
+    "lessonsText": "Interactive lessons by topic: read, click through and check yourself with short exercises."
   },
   "scanner": {
     "title": "Scanner explained",
@@ -51,5 +53,37 @@
     "errorTitle": "Error",
     "errorText": "Something went wrong.",
     "backHome": "Back to home"
+  },
+  "lessons": {
+    "title": "Lessons",
+    "intro": "Short, interactive lessons by topic. Read through the steps, then test yourself with small exercises.",
+    "overallProgress": "{{done}} of {{total}} lessons completed (on this device)",
+    "minutes_one": "{{count}} min",
+    "minutes_other": "{{count}} min",
+    "exerciseCount_one": "{{count}} exercise",
+    "exerciseCount_other": "{{count}} exercises",
+    "doneScore": "Done · {{score}}/{{total}}",
+    "progress": "Progress",
+    "stepOf": "Step {{current}} of {{total}}",
+    "exerciseOf": "Exercise {{current}} of {{total}}",
+    "terms": "Terms in the glossary",
+    "back": "Back",
+    "next": "Next",
+    "toExercises": "Go to exercises",
+    "answers": "Answers",
+    "orderHint": "Tap the steps in the right order.",
+    "check": "Check",
+    "reset": "Start over",
+    "correctOrder": "Correct order:",
+    "correct": "Correct!",
+    "wrong": "Not quite.",
+    "showResult": "Show result",
+    "result": "{{score}} of {{total}} correct",
+    "perfect": "Great – all correct!",
+    "almost": "Almost there. Feel free to try the exercises again.",
+    "retry": "Repeat exercises",
+    "restart": "Restart lesson",
+    "nextLesson": "Next lesson",
+    "backToOverview": "All lessons"
   }
 }

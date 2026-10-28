@@ -19,15 +19,18 @@ export function Head() {
     urlPathname: string;
     lang?: SupportedLang;
     config?: {
-      title?: string;
+      // A page's +title.ts can export a function of pageContext (see
+      // pages/lektionen/@slug/+title.ts) instead of a plain string.
+      title?: string | ((pageContext: unknown) => string);
       description?: string;
     };
   };
   const lang = pageContext.lang ?? DEFAULT_LANG;
+  const configTitle = pageContext.config?.title;
   const meta = buildMeta({
     pathname: pageContext.urlPathname,
     lang,
-    title: pageContext.config?.title,
+    title: typeof configTitle === "function" ? configTitle(pageContext) : configTitle,
     description: pageContext.config?.description,
   });
 

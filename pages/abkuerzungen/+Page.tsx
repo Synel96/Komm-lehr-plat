@@ -81,7 +81,11 @@ export default function Page() {
 
       <ul className="mt-4 grid gap-3">
         {results.map((entry) => (
-          <li key={entry.id} className="bg-card text-card-foreground rounded-xl border p-5">
+          <li
+            key={entry.id}
+            id={entry.id}
+            className="bg-card text-card-foreground scroll-mt-6 rounded-xl border p-5 target:ring-2 target:ring-amber-400"
+          >
             <div lang="de" className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
               <span className="text-lg font-bold">{entry.term}</span>
               {entry.full && <span className="text-muted-foreground italic">{entry.full}</span>}

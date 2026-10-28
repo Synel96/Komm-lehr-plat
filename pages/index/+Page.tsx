@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, ScanLine } from "lucide-react";
+import { ArrowRight, BookOpen, GraduationCap, ScanLine } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useLang } from "@/src/hooks/use-lang";
 
@@ -7,6 +7,12 @@ export default function Page() {
   const { href } = useLang();
 
   const sections = [
+    {
+      path: "/lektionen",
+      icon: GraduationCap,
+      title: t("nav.lessons"),
+      text: t("home.lessonsText"),
+    },
     { path: "/scanner", icon: ScanLine, title: t("nav.scanner"), text: t("home.scannerText") },
     {
       path: "/abkuerzungen",
@@ -21,7 +27,7 @@ export default function Page() {
       <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">{t("home.title")}</h1>
       <p className="text-muted-foreground mt-3 max-w-2xl text-lg">{t("home.intro")}</p>
 
-      <div className="mt-10 grid gap-4 sm:grid-cols-2">
+      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {sections.map(({ path, icon: Icon, title, text }) => (
           <a
             key={path}
