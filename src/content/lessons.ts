@@ -12,7 +12,8 @@
 //
 // `terms` verweist auf Einträge im Wörterbuch (ids aus glossary.ts).
 // Neue Lektion: an LESSONS anhängen (Bereich in `area`), `slug` wird Teil der
-// URL: /lektionen/<area>/<slug>.
+// URL: /lektionen/<area>/<slug>. Mit `draft: true` ist eine Lektion
+// ausgeblendet (noch nicht veröffentlicht).
 
 import type { Localized } from "./types";
 
@@ -58,6 +59,8 @@ export type Exercise = ChoiceExercise | OrderExercise | ClassifyExercise;
 
 export type Lesson = {
   slug: string;
+  /** Not published yet: hidden from the site, still checked by the tests. */
+  draft?: boolean;
   area: AreaId;
   title: Localized;
   summary: Localized;
@@ -80,14 +83,14 @@ export const AREAS: Area[] = [
     id: "kommissionierung",
     title: { de: "Kommissionierung", hu: "Komissiózás", en: "Order picking" },
     description: {
-      de: "Vom Pickauftrag bis zu Fehlmenge und Anbruch.",
-      hu: "A kiszedési megbízástól a hiányig és a bontott kartonig.",
-      en: "From the pick order to shortages and broken cases.",
+      de: "GVE, EVE und Faktor – wann ein Karton geöffnet wird.",
+      hu: "GVE, EVE és faktor – mikor kell megbontani a kartont.",
+      en: "GVE, EVE and factor – when a carton has to be opened.",
     },
   },
 ];
 
-export const LESSONS: Lesson[] = [
+export const ALL_LESSONS: Lesson[] = [
   {
     slug: "scanner-grundlagen",
     area: "scanner",
@@ -535,6 +538,7 @@ export const LESSONS: Lesson[] = [
   },
   {
     slug: "pickauftrag",
+    draft: true,
     area: "kommissionierung",
     minutes: 7,
     title: {
@@ -685,6 +689,7 @@ export const LESSONS: Lesson[] = [
   },
   {
     slug: "fifo-fefo",
+    draft: true,
     area: "kommissionierung",
     minutes: 4,
     title: {
@@ -1048,6 +1053,7 @@ export const LESSONS: Lesson[] = [
   },
   {
     slug: "fehlmenge-schaden",
+    draft: true,
     area: "kommissionierung",
     minutes: 6,
     title: {
@@ -1177,6 +1183,9 @@ export const LESSONS: Lesson[] = [
     ],
   },
 ];
+
+/** The published lessons – drafts are left out. */
+export const LESSONS = ALL_LESSONS.filter((lesson) => !lesson.draft);
 
 export function getArea(id: string) {
   return AREAS.find((area) => area.id === id);

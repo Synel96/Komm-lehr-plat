@@ -4,7 +4,7 @@ import en from "../../public/locales/en/common.json";
 import hu from "../../public/locales/hu/common.json";
 import { SUPPORTED_LANGS } from "../i18n-config";
 import { GLOSSARY } from "./glossary";
-import { AREAS, LESSONS } from "./lessons";
+import { ALL_LESSONS, AREAS, LESSONS } from "./lessons";
 import type { Localized } from "./types";
 
 function expectTranslated(text: Localized) {
@@ -23,7 +23,7 @@ function keysOf(value: object, prefix = ""): string[] {
 
 describe("lessons", () => {
   it("has unique, URL-safe slugs", () => {
-    const slugs = LESSONS.map((lesson) => lesson.slug);
+    const slugs = ALL_LESSONS.map((lesson) => lesson.slug);
     expect(new Set(slugs).size).toBe(slugs.length);
     for (const slug of slugs) expect(slug).toMatch(/^[a-z0-9-]+$/);
   });
@@ -36,7 +36,7 @@ describe("lessons", () => {
 
   it("has every text translated", () => {
     for (const area of AREAS) [area.title, area.description].forEach(expectTranslated);
-    for (const lesson of LESSONS) {
+    for (const lesson of ALL_LESSONS) {
       [lesson.title, lesson.summary].forEach(expectTranslated);
       for (const step of lesson.steps) [step.title, step.text].forEach(expectTranslated);
       for (const exercise of lesson.exercises) {
@@ -52,7 +52,7 @@ describe("lessons", () => {
   });
 
   it("has steps and valid exercises", () => {
-    for (const lesson of LESSONS) {
+    for (const lesson of ALL_LESSONS) {
       expect(lesson.steps.length, lesson.slug).toBeGreaterThan(0);
       expect(lesson.exercises.length, lesson.slug).toBeGreaterThan(0);
       for (const exercise of lesson.exercises) {
@@ -78,7 +78,7 @@ describe("lessons", () => {
 
   it("only links to existing glossary entries", () => {
     const ids = new Set(GLOSSARY.map((entry) => entry.id));
-    for (const lesson of LESSONS) {
+    for (const lesson of ALL_LESSONS) {
       for (const step of lesson.steps) {
         for (const term of step.terms ?? []) expect(ids, `${lesson.slug}: ${term}`).toContain(term);
       }
