@@ -1,6 +1,8 @@
 {
   "nav": {
     "home": "Home",
+    "scanner": "Scanner explained",
+    "glossary": "Abbreviations & terms",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "navigationMenu": "Navigation menu"
@@ -10,5 +12,44 @@
   },
   "a11y": {
     "skipToContent": "Skip to content"
+  },
+  "home": {
+    "title": "Help for everyday work",
+    "intro": "Quickly look up what the scanner screens mean and what the many German abbreviations stand for.",
+    "scannerText": "What is where on the display, what each key does, and what to do when an error appears.",
+    "glossaryText": "A small dictionary: abbreviations like MHD, NVE or LE and important terms – with search.",
+    "open": "Open"
+  },
+  "scanner": {
+    "title": "Scanner explained",
+    "intro": "How to read the screen while picking. The numbers in the picture match the explanations below.",
+    "sampleNote": "Example only – labels may differ depending on the device and software.",
+    "screenLabel": "Sample scanner screen",
+    "screenHeading": "The screen",
+    "keysHeading": "The keys",
+    "messagesHeading": "Messages & what to do",
+    "meaning": "Meaning",
+    "action": "What to do"
+  },
+  "glossary": {
+    "title": "Abbreviations & terms",
+    "intro": "Search for an abbreviation or word – in German or in English.",
+    "searchLabel": "Search",
+    "searchPlaceholder": "e.g. MHD, pallet, Fehlmenge …",
+    "filterLabel": "Show",
+    "filterAll": "All",
+    "filterAbbr": "Abbreviations",
+    "filterWord": "Terms",
+    "count_one": "{{count}} entry",
+    "count_other": "{{count}} entries",
+    "noResults": "Nothing found. Try another word.",
+    "example": "Example"
+  },
+  "error": {
+    "notFoundTitle": "Page not found",
+    "notFoundText": "This page could not be found.",
+    "errorTitle": "Error",
+    "errorText": "Something went wrong.",
+    "backHome": "Back to home"
   }
 }

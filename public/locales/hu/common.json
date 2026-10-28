@@ -1,6 +1,8 @@
 {
   "nav": {
     "home": "Főoldal",
+    "scanner": "A szkenner",
+    "glossary": "Rövidítések és szavak",
     "openMenu": "Menü megnyitása",
     "closeMenu": "Menü bezárása",
     "navigationMenu": "Navigációs menü"
@@ -10,5 +12,44 @@
   },
   "a11y": {
     "skipToContent": "Ugrás a tartalomhoz"
+  },
+  "home": {
+    "title": "Segítség a mindennapi munkához",
+    "intro": "Itt gyorsan megtalálod, mit jelentenek a szkenner kijelzései, és mi rejlik a sok német rövidítés mögött.",
+    "scannerText": "Mi hol van a kijelzőn, melyik gomb mire való, és mit tegyél egy hibaüzenetnél?",
+    "glossaryText": "Kis szótár: rövidítések, mint MHD, NVE vagy LE, és fontos szakszavak – kereséssel.",
+    "open": "Megnyitás"
+  },
+  "scanner": {
+    "title": "A szkenner magyarázata",
+    "intro": "Így olvasd a képernyőt komissiózás közben. A képen lévő számok az alatta lévő magyarázatokhoz tartoznak.",
+    "sampleNote": "Példa – a feliratok a készüléktől és a szoftvertől függően eltérhetnek.",
+    "screenLabel": "Egy szkenner példa-képernyője",
+    "screenHeading": "A képernyő",
+    "keysHeading": "A gombok",
+    "messagesHeading": "Üzenetek és teendők",
+    "meaning": "Jelentés",
+    "action": "Teendő"
+  },
+  "glossary": {
+    "title": "Rövidítések és szavak",
+    "intro": "Keress rá egy rövidítésre vagy szóra – németül vagy magyarul.",
+    "searchLabel": "Keresés",
+    "searchPlaceholder": "pl. MHD, raklap, Fehlmenge …",
+    "filterLabel": "Megjelenítés",
+    "filterAll": "Mind",
+    "filterAbbr": "Rövidítések",
+    "filterWord": "Szavak",
+    "count_one": "{{count}} találat",
+    "count_other": "{{count}} találat",
+    "noResults": "Nincs találat. Próbálj egy másik szót.",
+    "example": "Példa"
+  },
+  "error": {
+    "notFoundTitle": "Az oldal nem található",
+    "notFoundText": "Ez az oldal nem létezik.",
+    "errorTitle": "Hiba",
+    "errorText": "Valami hiba történt.",
+    "backHome": "Vissza a főoldalra"
   }
 }

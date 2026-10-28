@@ -4,8 +4,9 @@ import type { Config } from "vike/types";
 // src/seo.ts) — don't hardcode the brand name here, since +config.ts files
 // can't import it (they run outside Vite's env replacement).
 const config: Config = {
-  title: "Home",
-  description: "Starter home page description. Replace for your project.",
+  title: "Start",
+  description:
+    "Hilfe für den Arbeitsalltag: Scanner-Anzeigen verstehen und Abkürzungen nachschlagen.",
 };
 
 export default config;

@@ -1,3 +1,24 @@
+# Komm-Lehrplattform
+
+Lernhilfe für Kolleginnen und Kollegen: Scanner-Anzeigen verstehen und
+Abkürzungen / Fachbegriffe nachschlagen. Standardsprache ist Deutsch
+(`/de/`), dazu Ungarisch (`/hu/`) und Englisch (`/en/`).
+
+## Inhalte bearbeiten
+
+| Was                                    | Datei                          |
+| -------------------------------------- | ------------------------------ |
+| Wörterbuch (Abkürzungen & Begriffe)    | `src/content/glossary.ts`      |
+| Scanner: Bildschirm, Tasten, Meldungen | `src/content/scanner.ts`       |
+| Texte der Oberfläche (Menü, Titel …)   | `public/locales/*/common.json` |
+
+Jeder Text braucht eine Übersetzung für `de`, `hu` und `en` — `npm run test`
+schlägt fehl, wenn eine fehlt. Neue Seite: Ordner unter `pages/` mit
+`+Page.tsx`, `+config.ts` und `+onBeforePrerenderStart.ts` (siehe
+`pages/scanner/`), dann in `NAV_LINKS` (`components/site.ts`) eintragen.
+
+---
+
 # Hydration Starter Kit
 
 Opinionated starter for new projects, built on [Vike](https://vike.dev),

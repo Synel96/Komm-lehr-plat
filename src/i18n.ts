@@ -1,6 +1,6 @@
 // src/i18n.ts
 // Initializes i18next with in-bundle translations.
-// Language is determined exclusively by the URL prefix (/en/, /hu/, …) via
+// Language is determined exclusively by the URL prefix (/de/, /hu/, /en/) via
 // Vike's onBeforeRoute hook — NOT by browser detection.
 // To add a language: extend SUPPORTED_LANGS in i18n-config.ts, add a JSON
 // file under /public/locales/{lang}/common.json, and add it to RESOURCES.
@@ -8,6 +8,7 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
+import deCommon from "../public/locales/de/common.json";
 import enCommon from "../public/locales/en/common.json";
 import huCommon from "../public/locales/hu/common.json";
 
@@ -15,7 +16,8 @@ import { SUPPORTED_LANGS, DEFAULT_LANG, type SupportedLang } from "./i18n-config
 // Re-export so components can import everything from one place
 export { SUPPORTED_LANGS, DEFAULT_LANG, type SupportedLang };
 
-const RESOURCES: Record<SupportedLang, { common: typeof enCommon }> = {
+const RESOURCES: Record<SupportedLang, { common: typeof deCommon }> = {
+  de: { common: deCommon },
   en: { common: enCommon },
   hu: { common: huCommon },
 };

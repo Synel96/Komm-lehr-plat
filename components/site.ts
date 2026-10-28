@@ -12,4 +12,8 @@ export const COMPANY_PHONE = env.VITE_COMPANY_PHONE;
 // Placeholder Open Graph image — replace public/og-image.png with real artwork per project.
 export const OG_IMAGE_PATH = "/og-image.png";
 
-export const NAV_LINKS = [{ href: "/", labelKey: "nav.home" }] as const;
+export const NAV_LINKS = [
+  { href: "/", labelKey: "nav.home" },
+  { href: "/scanner", labelKey: "nav.scanner" },
+  { href: "/abkuerzungen", labelKey: "nav.glossary" },
+] as const;

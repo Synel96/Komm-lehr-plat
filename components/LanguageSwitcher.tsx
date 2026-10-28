@@ -1,6 +1,6 @@
 // components/LanguageSwitcher.tsx
 // Switches language by navigating to the same logical path under the new
-// lang prefix, e.g. /en/about → /hu/about.
+// lang prefix, e.g. /de/scanner → /hu/scanner.
 // The URL is the single source of truth — no localStorage involved.
 
 import { navigate } from "vike/client/router";
@@ -9,6 +9,7 @@ import { SUPPORTED_LANGS, DEFAULT_LANG, type SupportedLang } from "@/src/i18n-co
 import { Button } from "@/components/ui/button";
 
 const LABELS: Record<SupportedLang, string> = {
+  de: "DE",
   en: "EN",
   hu: "HU",
 };

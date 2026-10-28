@@ -6,7 +6,7 @@
 // /           → serves default lang (no redirect — avoids extra round-trip)
 // /en/about   → urlLogical: /about, lang: "en"
 // /hu/        → urlLogical: /,      lang: "hu"
-// /unknown    → urlLogical: /unknown, lang: "en" (default)
+// /unknown    → urlLogical: /unknown, lang: "de" (default)
 
 import { SUPPORTED_LANGS, DEFAULT_LANG, type SupportedLang } from "../src/i18n-config";
 

@@ -1,0 +1,55 @@
+{
+  "nav": {
+    "home": "Start",
+    "scanner": "Scanner erklärt",
+    "glossary": "Abkürzungen & Begriffe",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
+    "navigationMenu": "Navigationsmenü"
+  },
+  "footer": {
+    "allRightsReserved": "Alle Rechte vorbehalten."
+  },
+  "a11y": {
+    "skipToContent": "Zum Inhalt springen"
+  },
+  "home": {
+    "title": "Hilfe für den Arbeitsalltag",
+    "intro": "Hier findest du schnell, was die Anzeigen am Scanner bedeuten und was hinter den vielen Abkürzungen steckt.",
+    "scannerText": "Was steht wo auf dem Display, welche Taste macht was, und was tun bei einer Fehlermeldung?",
+    "glossaryText": "Kurzes Wörterbuch: Abkürzungen wie MHD, NVE oder LE und wichtige Fachbegriffe – mit Suche.",
+    "open": "Öffnen"
+  },
+  "scanner": {
+    "title": "Scanner erklärt",
+    "intro": "So liest du den Bildschirm beim Kommissionieren. Die Nummern im Bild gehören zu den Erklärungen darunter.",
+    "sampleNote": "Beispielhafte Darstellung – je nach Gerät und Software können Beschriftungen abweichen.",
+    "screenLabel": "Beispiel-Bildschirm eines Scanners",
+    "screenHeading": "Der Bildschirm",
+    "keysHeading": "Die Tasten",
+    "messagesHeading": "Meldungen & was zu tun ist",
+    "meaning": "Bedeutung",
+    "action": "Was tun"
+  },
+  "glossary": {
+    "title": "Abkürzungen & Begriffe",
+    "intro": "Suche nach einer Abkürzung oder einem Wort – auf Deutsch oder in deiner Sprache.",
+    "searchLabel": "Suchen",
+    "searchPlaceholder": "z. B. MHD, Palette, Fehlmenge …",
+    "filterLabel": "Anzeigen",
+    "filterAll": "Alle",
+    "filterAbbr": "Abkürzungen",
+    "filterWord": "Begriffe",
+    "count_one": "{{count}} Eintrag",
+    "count_other": "{{count}} Einträge",
+    "noResults": "Nichts gefunden. Versuche ein anderes Wort.",
+    "example": "Beispiel"
+  },
+  "error": {
+    "notFoundTitle": "Seite nicht gefunden",
+    "notFoundText": "Diese Seite gibt es nicht.",
+    "errorTitle": "Fehler",
+    "errorText": "Etwas ist schiefgelaufen.",
+    "backHome": "Zur Startseite"
+  }
+}

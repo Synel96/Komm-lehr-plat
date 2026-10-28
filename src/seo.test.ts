@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { BRAND_NAME } from "../components/site";
 import { buildMeta } from "./seo";
 
 describe("buildMeta", () => {
@@ -6,7 +7,7 @@ describe("buildMeta", () => {
     const meta = buildMeta({ pathname: "/about", lang: "en" });
 
     expect(meta.canonicalUrl).toBe("https://example.com/en/about");
-    expect(meta.title).toBe("Brand Name");
+    expect(meta.title).toBe(BRAND_NAME);
     expect(meta.description).toContain("Replace with page-specific text.");
     expect(meta.image).toBe("https://example.com/og-image.png");
   });
@@ -19,7 +20,7 @@ describe("buildMeta", () => {
       description: "Custom description",
     });
 
-    expect(meta.title).toBe("Home | Brand Name");
+    expect(meta.title).toBe(`Home | ${BRAND_NAME}`);
     expect(meta.description).toBe("Custom description");
   });
 
@@ -30,7 +31,7 @@ describe("buildMeta", () => {
       expect.arrayContaining([
         { hreflang: "en", href: "https://example.com/en/" },
         { hreflang: "hu", href: "https://example.com/hu/" },
-        { hreflang: "x-default", href: "https://example.com/en/" },
+        { hreflang: "x-default", href: "https://example.com/de/" },
       ])
     );
   });
