@@ -44,9 +44,9 @@ export const GLOSSARY: GlossaryEntry[] = [
     kind: "abbr",
     category: "mengen",
     explanation: {
-      de: "Die Verpackung bzw. der Karton, wie er im Regal steht. Kann ein einzelnes Produkt oder mehrere EVE enthalten. „1 GVE“ ohne Klammer ist meist ein einzelnes Stück.",
-      hu: "A csomagolás, illetve karton, ahogy a polcon áll. Lehet benne egy termék vagy több EVE. Az „1 GVE” zárójel nélkül általában egy darab.",
-      en: "The package or carton as it stands on the shelf. May hold one product or several EVE. “1 GVE” without brackets is usually a single piece.",
+      de: "Die Packung, die kommissioniert wird. Mehrere GVE stecken oft in einem Export- bzw. Überkarton. Eine GVE kann ein einzelnes Produkt oder mehrere EVE enthalten. „1 GVE“ ohne Klammer ist meist ein einzelnes Stück.",
+      hu: "A csomag, amit kiszedünk. Több GVE gyakran egy Export-, illetve Überkartonban van. Egy GVE-ben lehet egy termék vagy több EVE. Az „1 GVE” zárójel nélkül általában egy darab.",
+      en: "The package that is picked. Several GVE often sit in one Export- or Überkarton. A GVE may hold one product or several EVE. “1 GVE” without brackets is usually a single piece.",
     },
     example: "1 GVE(6)",
   },
@@ -165,9 +165,9 @@ export const GLOSSARY: GlossaryEntry[] = [
     kind: "word",
     category: "mengen",
     explanation: {
-      de: "Hinweis auf dem Karton (aufgedruckt oder Etikett): Der Karton muss geöffnet werden, die Produkte werden einzeln kommissioniert. Nicht jeder zu öffnende Karton hat diesen Hinweis.",
-      hu: "Felirat vagy címke a kartonon: a kartont meg kell bontani, a termékeket egyenként kell kiszedni. Nem minden bontós kartonon van ilyen jelzés.",
-      en: "Note on the carton (printed or label): the carton must be opened and the products picked individually. Not every carton that must be opened has this note.",
+      de: "Hinweis auf dem Karton (aufgedruckt oder Etikett): Dieser Überkarton muss geöffnet werden, die GVE darin werden einzeln herausgenommen. Nicht jeder zu öffnende Überkarton hat diesen Hinweis.",
+      hu: "Felirat vagy címke a kartonon: ezt az Überkartont meg kell bontani, a benne lévő GVE-ket egyenként kell kivenni. Nem minden bontós Überkartonon van ilyen jelzés.",
+      en: "Note on the carton (printed or label): this Überkarton must be opened and the GVE inside taken out one by one. Not every Überkarton that must be opened has this note.",
     },
   },
   {
@@ -451,14 +451,14 @@ export const GLOSSARY: GlossaryEntry[] = [
     example: "1 VE = 6 Stk.",
   },
   {
-    id: "anbruch",
-    term: "Anbruch",
+    id: "ueberkarton",
+    term: "Exportkarton / Überkarton",
     kind: "word",
     category: "mengen",
     explanation: {
-      de: "Ein geöffneter Karton, aus dem einzelne Stücke genommen werden. Gegenteil: ganze (geschlossene) VE.",
-      hu: "Bontott karton: megnyitott karton, amiből egyenként veszünk ki darabokat. Ellentéte: az egész (zárt) VE.",
-      en: "Broken case: an opened carton single pieces are taken from. Opposite: a full (closed) case.",
+      de: "Der äußere Karton, in dem die GVE stecken. Wenn wir „einen Karton öffnen“, ist das der Überkarton – die GVE darin werden herausgenommen.",
+      hu: "A külső karton, amiben a GVE-k vannak. Amikor „bontunk”, az az Überkarton – a benne lévő GVE-ket vesszük ki.",
+      en: "The outer carton holding the GVE. When we “open a carton”, it's the Überkarton – the GVE inside are taken out.",
     },
   },
   {

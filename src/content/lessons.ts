@@ -778,7 +778,7 @@ export const ALL_LESSONS: Lesson[] = [
     ],
   },
   {
-    slug: "anbruch",
+    slug: "karton-oeffnen",
     area: "kommissionierung",
     minutes: 9,
     title: {
@@ -793,13 +793,17 @@ export const ALL_LESSONS: Lesson[] = [
     },
     steps: [
       {
-        title: { de: "GVE und EVE", hu: "GVE és EVE", en: "GVE and EVE" },
-        text: {
-          de: "Wir arbeiten mit GVE. Eine GVE (Großverpackungseinheit) ist der Karton bzw. die Verpackung, wie sie im Regal steht. In einer GVE können mehrere EVE (Einzelverpackungseinheiten) sein – also einzelne Produkte. Ein geöffneter Karton, aus dem einzelne Stücke genommen werden, heißt Anbruch.",
-          hu: "Mi GVE-vel dolgozunk. A GVE (Großverpackungseinheit) a karton, illetve csomagolás, ahogy a polcon áll. Egy GVE-ben több EVE (Einzelverpackungseinheit), vagyis több darab termék is lehet. A megbontott kartont, amiből egyenként veszünk ki, Anbruch-nak (bontott kartonnak) hívjuk.",
-          en: "We work with GVE. A GVE (Großverpackungseinheit, large packaging unit) is the carton or package as it stands on the shelf. A GVE can contain several EVE (Einzelverpackungseinheiten, single units) – i.e. single products. An opened carton you take single pieces from is called Anbruch.",
+        title: {
+          de: "Überkarton, GVE und EVE",
+          hu: "Überkarton, GVE és EVE",
+          en: "Outer carton, GVE and EVE",
         },
-        terms: ["gve", "eve", "anbruch"],
+        text: {
+          de: "Wir arbeiten mit GVE (Großverpackungseinheiten). Der äußere Karton heißt Exportkarton oder Überkarton – darin stecken die GVE. In einer GVE können wiederum mehrere EVE (Einzelverpackungseinheiten), also einzelne Produkte, sein. Wenn wir einen Karton öffnen („bontani“), ist das der Überkarton: Wir nehmen die GVE heraus.",
+          hu: "Mi GVE-vel (Großverpackungseinheit) dolgozunk. A külső doboz neve Exportkarton vagy Überkarton – ebben vannak a GVE-k. Egy GVE-ben pedig több EVE (Einzelverpackungseinheit), vagyis több darab termék is lehet. Amikor bontunk, az az Überkarton: kinyitjuk, és kivesszük belőle a GVE-ket.",
+          en: "We work with GVE (Großverpackungseinheiten). The outer carton is called Exportkarton or Überkarton – the GVE are inside it. A GVE in turn can contain several EVE (Einzelverpackungseinheiten), i.e. single products. When we open a carton, it's the Überkarton: we take the GVE out.",
+        },
+        terms: ["ueberkarton", "gve", "eve"],
       },
       {
         title: {
@@ -808,9 +812,9 @@ export const ALL_LESSONS: Lesson[] = [
           en: "“1 GVE” – usually a single piece",
         },
         text: {
-          de: "Zeigt der Scanner beim Kommissionieren z. B. „1 GVE“ ohne Klammer, ist das Produkt meist ein einzelnes Stück – z. B. ein Staubsauger, ein Küchengerät oder ein Spielzeug. Du nimmst die ganze Verpackung, nichts wird geöffnet.",
-          hu: "Ha a szkenner komissiózáskor pl. „1 GVE”-t ír zárójel nélkül, az általában azt jelenti, hogy a termék egy darab – pl. porszívó, konyhai eszköz vagy játék. Az egész csomagot viszed, nem bontasz semmit.",
-          en: "If the scanner shows e.g. “1 GVE” without brackets while picking, the product is usually a single piece – e.g. a vacuum cleaner, a kitchen appliance or a toy. You take the whole package; nothing is opened.",
+          de: "Zeigt der Scanner beim Kommissionieren z. B. „1 GVE“ ohne Klammer, ist das Produkt meist ein einzelnes Stück – z. B. ein Staubsauger, ein Küchengerät oder ein Spielzeug. Die GVE selbst wird nicht geöffnet.",
+          hu: "Ha a szkenner komissiózáskor pl. „1 GVE”-t ír zárójel nélkül, az általában azt jelenti, hogy a termék egy darab – pl. porszívó, konyhai eszköz vagy játék. Magát a GVE-t nem bontod meg.",
+          en: "If the scanner shows e.g. “1 GVE” without brackets while picking, the product is usually a single piece – e.g. a vacuum cleaner, a kitchen appliance or a toy. The GVE itself is not opened.",
         },
         terms: ["gve"],
       },
@@ -821,9 +825,9 @@ export const ALL_LESSONS: Lesson[] = [
           en: "“1 GVE(6)” – the factor",
         },
         text: {
-          de: "Steht nach GVE eine Zahl in Klammern, heißt das Faktor. Er zeigt, wie viele EVE in einer GVE sind. „1 GVE(6)“ bedeutet: In einem Karton sind 6 Produkte. Brauchst du weniger Stück, als im Karton sind, musst du den Karton öffnen (Anbruch).",
-          hu: "Ha a GVE után zárójelben egy szám áll, azt faktornak hívjuk. Azt mutatja, hány EVE van egy GVE-ben. Az „1 GVE(6)” azt jelenti: egy kartonban 6 termék van. Ha kevesebb darab kell, mint amennyi a kartonban van, meg kell bontanod a kartont (Anbruch).",
-          en: "A number in brackets after GVE is called the factor. It shows how many EVE are in one GVE. “1 GVE(6)” means: one carton holds 6 products. If you need fewer pieces than the carton holds, you have to open it (Anbruch).",
+          de: "Steht nach GVE eine Zahl in Klammern, heißt das Faktor. Er zeigt, wie viele EVE in einer GVE sind. „1 GVE(6)“ bedeutet: In einem Karton sind 6 Produkte.",
+          hu: "Ha a GVE után zárójelben egy szám áll, azt faktornak hívjuk. Azt mutatja, hány EVE van egy GVE-ben. Az „1 GVE(6)” azt jelenti: egy kartonban 6 termék van.",
+          en: "A number in brackets after GVE is called the factor. It shows how many EVE are in one GVE. “1 GVE(6)” means: one carton holds 6 products.",
         },
         terms: ["faktor", "eve"],
       },
@@ -834,11 +838,11 @@ export const ALL_LESSONS: Lesson[] = [
           en: "Label “ACHTUNG AUSPACK!”",
         },
         text: {
-          de: "Manchmal steht auf dem Karton „ACHTUNG AUSPACK!“ oder es klebt ein solches Etikett drauf. Das heißt: Dieser Karton muss geöffnet werden – die Produkte werden einzeln (als EVE) kommissioniert. Aber Achtung: Nicht jeder Karton, den man öffnen muss, hat diesen Hinweis. Verlass dich deshalb nicht nur darauf, sondern prüfe auch Faktor und Stückzahl.",
-          hu: "Néha a dobozra rá van írva vagy ragasztva: „ACHTUNG AUSPACK!”. Ez azt jelenti: ezt a kartont meg kell bontani – a termékeket egyenként (EVE-ként) kell kiszedni. De figyelj: nem minden bontós kartonon van ilyen jelzés. Ezért ne csak erre hagyatkozz, a faktort és a darabszámot is ellenőrizd.",
-          en: "Sometimes a carton has “ACHTUNG AUSPACK!” written or stuck on it. It means: this carton must be opened – the products are picked individually (as EVE). But note: not every carton that has to be opened carries this label. So don't rely on it alone – also check the factor and the quantity.",
+          de: "Manchmal steht auf dem Karton „ACHTUNG AUSPACK!“ oder es klebt ein solches Etikett drauf. Das heißt: Das ist ein Überkarton, der geöffnet werden muss – du nimmst die GVE darin einzeln heraus. Aber Achtung: Nicht jeder Überkarton, den man öffnen muss, hat diesen Hinweis. Verlass dich deshalb nicht nur darauf, sondern prüfe auch Faktor und Stückzahl.",
+          hu: "Néha a dobozra rá van írva vagy ragasztva: „ACHTUNG AUSPACK!”. Ez azt jelenti: ez egy Überkarton, amit meg kell bontani – a benne lévő GVE-ket egyenként veszed ki. De figyelj: nem minden bontós Überkartonon van ilyen jelzés. Ezért ne csak erre hagyatkozz, a faktort és a darabszámot is ellenőrizd.",
+          en: "Sometimes a carton has “ACHTUNG AUSPACK!” written or stuck on it. It means: this is an Überkarton that must be opened – you take the GVE inside out one by one. But note: not every Überkarton that has to be opened carries this label. So don't rely on it alone – also check the factor and the quantity.",
         },
-        terms: ["auspack", "anbruch", "faktor"],
+        terms: ["auspack", "ueberkarton", "faktor"],
       },
       {
         title: {
@@ -914,9 +918,9 @@ export const ALL_LESSONS: Lesson[] = [
             en: "Don't open the carton.",
           },
           {
-            de: "Den Karton öffnen und die Produkte einzeln kommissionieren.",
-            hu: "A kartont meg kell bontani, és a termékeket egyenként kell kiszedni.",
-            en: "Open the carton and pick the products individually.",
+            de: "Den Überkarton öffnen und die GVE einzeln herausnehmen.",
+            hu: "Az Überkartont meg kell bontani, és a GVE-ket egyenként kell kivenni.",
+            en: "Open the Überkarton and take the GVE out one by one.",
           },
           {
             de: "Der Karton ist beschädigt.",
@@ -926,9 +930,9 @@ export const ALL_LESSONS: Lesson[] = [
         ],
         answer: 1,
         explanation: {
-          de: "„Auspacken“ = auspacken, öffnen. Aber: Nicht jeder Karton, der geöffnet werden muss, hat diesen Hinweis.",
-          hu: "„Auspacken” = kicsomagolni, megbontani. De: nem minden bontós kartonon van ilyen jelzés.",
-          en: "“Auspacken” = unpack, open. But: not every carton that must be opened has this label.",
+          de: "„Auspacken“ = auspacken, öffnen. Aber: Nicht jeder Überkarton, der geöffnet werden muss, hat diesen Hinweis.",
+          hu: "„Auspacken” = kicsomagolni, megbontani. De: nem minden bontós Überkartonon van ilyen jelzés.",
+          en: "“Auspacken” = unpack, open. But: not every Überkarton that must be opened has this label.",
         },
       },
       {
