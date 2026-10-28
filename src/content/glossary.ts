@@ -480,11 +480,11 @@ export const GLOSSARY: GlossaryEntry[] = [
     kind: "abbr",
     category: "lager",
     explanation: {
-      de: "Fester Ort im Lager, an dem Ware liegt. Die Nummer zeigt meist Gang – Regal – Ebene – Fach.",
-      hu: "Tárhely: a raktár egy konkrét helye, ahol az áru van. A száma általában sor – állvány – szint – rekesz.",
-      en: "Storage location. The number usually shows aisle – rack – level – bin.",
+      de: "Fester Ort im Lager, an dem Ware liegt. Aufbau: Gang – Fachnummer – Fach. Beispiel 502 62 30: Gang 502, Fachnummer 62, Fach 30. Jede Fachnummer hat 3 Fächer (10, 20, 30). Ungerade Fachnummern liegen links, gerade rechts. In Gängen mit Kleinfächern zeigt die letzte Zahl die Ebene: 10 = Boden, 11, 12 darüber, 13 meist ganz oben.",
+      hu: "Tárhely: a raktár egy konkrét helye, ahol az áru van. Felépítése: sor – fakkszám – fakk. Példa: 502 62 30 = 502-es sor, 62-es fakkszám, 30-as fakk. Egy fakkszámon belül 3 fakk van (10, 20, 30). A páratlan fakkszámok bal kéz, a párosak jobb kéz felől vannak. Emeletes kisfakkos soroknál az utolsó szám a szint: 10 = földszint, 11, 12 afelett, 13 általában a legfelső.",
+      en: "Storage location. Structure: aisle – compartment number – compartment. Example 502 62 30: aisle 502, compartment number 62, compartment 30. Each compartment number has 3 compartments (10, 20, 30). Odd numbers are on the left, even ones on the right. In aisles with small compartments the last number is the level: 10 = floor, 11, 12 above, 13 usually the top.",
     },
-    example: "12-04-02-B",
+    example: "502 62 30",
   },
   {
     id: "ve",

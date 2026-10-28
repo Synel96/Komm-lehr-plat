@@ -427,7 +427,7 @@ export const ALL_LESSONS: Lesson[] = [
   {
     slug: "etiketten-lesen",
     area: "scanner",
-    minutes: 6,
+    minutes: 8,
     title: {
       de: "Etiketten und Nummern lesen",
       hu: "Címkék és számok olvasása",
@@ -442,9 +442,35 @@ export const ALL_LESSONS: Lesson[] = [
       {
         title: { de: "Die Lagerplatz-Nummer", hu: "A tárhelyszám", en: "The location number" },
         text: {
-          de: "12-04-02-B bedeutet meist: Gang 12, Regal 04, Ebene 02 (von unten gezählt), Fach B. So findest du jeden Platz, ohne zu suchen.",
-          hu: "A 12-04-02-B általában ezt jelenti: 12-es sor, 04-es állvány, 02-es szint (alulról számolva), B rekesz. Így bármelyik helyet keresgélés nélkül megtalálod.",
-          en: "12-04-02-B usually means: aisle 12, rack 04, level 02 (counted from the bottom), bin B. This way you find every location without searching.",
+          de: "Ein Lagerplatz sieht bei uns so aus: 502 62 30. Die erste Zahl ist der Gang (502), die zweite die Fachnummer (62), die dritte das Fach (30). Jede Fachnummer hat drei Fächer: 10, 20 und 30.",
+          hu: "Nálunk egy tárhely így néz ki: 502 62 30. Az első szám a sor (Gang, 502), a második a fakkszám (62), a harmadik a fakk (30). Egy fakkszámon belül három fakk van: 10, 20 és 30.",
+          en: "A location looks like this here: 502 62 30. The first number is the aisle (502), the second the compartment number (62), the third the compartment (30). Each compartment number has three compartments: 10, 20 and 30.",
+        },
+        terms: ["lp", "komm-platz"],
+      },
+      {
+        title: {
+          de: "Linke oder rechte Seite?",
+          hu: "Bal vagy jobb oldal?",
+          en: "Left or right side?",
+        },
+        text: {
+          de: "An der Fachnummer siehst du sofort die Seite im Gang: Ungerade Fachnummern (01, 17, 63 …) sind auf der linken Seite, gerade (02, 18, 62 …) auf der rechten Seite. 502 62 30 ist also rechts.",
+          hu: "A fakkszámból rögtön látod, a sor melyik oldalán van: a páratlan fakkszámok (01, 17, 63 …) bal kéz felől, a párosak (02, 18, 62 …) jobb kéz felől vannak. Az 502 62 30 tehát jobb oldalt van.",
+          en: "The compartment number tells you the side of the aisle: odd numbers (01, 17, 63 …) are on the left, even ones (02, 18, 62 …) on the right. So 502 62 30 is on the right.",
+        },
+        terms: ["lp"],
+      },
+      {
+        title: {
+          de: "Kleinfächer mit Ebenen",
+          hu: "Emeletes kisfakkok",
+          en: "Small compartments with levels",
+        },
+        text: {
+          de: "In manchen Gängen gibt es Kleinfächer auf mehreren Ebenen. Dort zeigt die letzte Zahl die Ebene: 502 62 10 ist die unterste Ebene (Boden), 11 die Ebene darüber, 12 die nächste und 13 meistens die oberste.",
+          hu: "Vannak sorok, ahol emeletes kisfakkok vannak. Ott az utolsó szám a szintet mutatja: az 502 62 10 az alsó szint (földszint), a 11 a földszint feletti, a 12 afölötti, a 13 pedig általában a legfelső.",
+          en: "Some aisles have small compartments on several levels. There the last number shows the level: 502 62 10 is the bottom level (floor), 11 the level above, 12 the next and 13 usually the top.",
         },
         terms: ["lp"],
       },
@@ -480,20 +506,74 @@ export const ALL_LESSONS: Lesson[] = [
       {
         type: "choice",
         question: {
-          de: "Lagerplatz 07-15-03-A: In welchem Gang ist er?",
-          hu: "07-15-03-A tárhely: melyik sorban van?",
-          en: "Location 07-15-03-A: which aisle is it in?",
+          de: "Lagerplatz 503 17 20: In welchem Gang ist er?",
+          hu: "503 17 20 tárhely: melyik sorban van?",
+          en: "Location 503 17 20: which aisle is it in?",
         },
         options: [
-          { de: "Gang 07", hu: "07-es sor", en: "Aisle 07" },
-          { de: "Gang 15", hu: "15-ös sor", en: "Aisle 15" },
-          { de: "Gang 03", hu: "03-as sor", en: "Aisle 03" },
+          { de: "Gang 503", hu: "503-as sor", en: "Aisle 503" },
+          { de: "Gang 17", hu: "17-es sor", en: "Aisle 17" },
+          { de: "Gang 20", hu: "20-as sor", en: "Aisle 20" },
         ],
         answer: 0,
         explanation: {
-          de: "Die erste Zahl ist der Gang: 07. Dann Regal 15, Ebene 03, Fach A.",
-          hu: "Az első szám a sor: 07. Utána 15-ös állvány, 03-as szint, A rekesz.",
-          en: "The first number is the aisle: 07. Then rack 15, level 03, bin A.",
+          de: "Die erste Zahl ist der Gang: 503. Dann Fachnummer 17 und Fach 20.",
+          hu: "Az első szám a sor: 503. Utána a 17-es fakkszám és a 20-as fakk.",
+          en: "The first number is the aisle: 503. Then compartment number 17 and compartment 20.",
+        },
+      },
+      {
+        type: "classify",
+        question: {
+          de: "Auf welcher Seite im Gang ist der Lagerplatz?",
+          hu: "A sor melyik oldalán van a tárhely?",
+          en: "Which side of the aisle is the location on?",
+        },
+        categories: [
+          { de: "Links", hu: "Bal kéz felől", en: "Left" },
+          { de: "Rechts", hu: "Jobb kéz felől", en: "Right" },
+        ],
+        items: [
+          { text: { de: "502 62 30", hu: "502 62 30", en: "502 62 30" }, category: 1 },
+          { text: { de: "502 01 10", hu: "502 01 10", en: "502 01 10" }, category: 0 },
+          { text: { de: "503 17 20", hu: "503 17 20", en: "503 17 20" }, category: 0 },
+          { text: { de: "504 44 30", hu: "504 44 30", en: "504 44 30" }, category: 1 },
+        ],
+        explanation: {
+          de: "Es zählt die mittlere Zahl, die Fachnummer: ungerade = links, gerade = rechts.",
+          hu: "A középső szám, a fakkszám számít: páratlan = bal kéz, páros = jobb kéz felől.",
+          en: "What counts is the middle number, the compartment number: odd = left, even = right.",
+        },
+      },
+      {
+        type: "choice",
+        question: {
+          de: "Gang mit Kleinfächern: Wo findest du 502 62 12?",
+          hu: "Kisfakkos sor: hol találod az 502 62 12-t?",
+          en: "Aisle with small compartments: where is 502 62 12?",
+        },
+        options: [
+          {
+            de: "Unten auf dem Boden",
+            hu: "Lent, a földszinten",
+            en: "At the bottom, on the floor",
+          },
+          {
+            de: "Zwei Ebenen über dem Boden",
+            hu: "Két szinttel a földszint felett",
+            en: "Two levels above the floor",
+          },
+          {
+            de: "Ganz oben",
+            hu: "Legfelül",
+            en: "At the very top",
+          },
+        ],
+        answer: 1,
+        explanation: {
+          de: "10 = Boden, 11 = eine Ebene darüber, 12 = zwei Ebenen darüber, 13 = meist ganz oben.",
+          hu: "10 = földszint, 11 = egy szinttel feljebb, 12 = két szinttel feljebb, 13 = általában a legfelső.",
+          en: "10 = floor, 11 = one level up, 12 = two levels up, 13 = usually the top.",
         },
       },
       {
@@ -577,9 +657,9 @@ export const ALL_LESSONS: Lesson[] = [
       {
         title: { de: "Zum Lagerplatz gehen", hu: "Menj a tárhelyhez", en: "Go to the location" },
         text: {
-          de: "Der Scanner zeigt den Lagerplatz, z. B. 12-04-02-B. Geh hin und scanne das Platzetikett. So prüft das System, dass du am richtigen Platz bist.",
-          hu: "A szkenner mutatja a tárhelyet, pl. 12-04-02-B. Menj oda, és olvasd be a hely címkéjét. Így ellenőrzi a rendszer, hogy jó helyen vagy.",
-          en: "The scanner shows the location, e.g. 12-04-02-B. Go there and scan the location label. This lets the system check you are at the right place.",
+          de: "Der Scanner zeigt den Lagerplatz, z. B. 502 62 30. Geh hin und scanne das Platzetikett. So prüft das System, dass du am richtigen Platz bist.",
+          hu: "A szkenner mutatja a tárhelyet, pl. 502 62 30. Menj oda, és olvasd be a hely címkéjét. Így ellenőrzi a rendszer, hogy jó helyen vagy.",
+          en: "The scanner shows the location, e.g. 502 62 30. Go there and scan the location label. This lets the system check you are at the right place.",
         },
         terms: ["lp"],
       },

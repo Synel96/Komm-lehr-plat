@@ -52,11 +52,11 @@ export const SCANNER_FIELDS: ScannerField[] = [
   {
     marker: 3,
     label: "LP",
-    value: "12-04-02-B",
+    value: "502 62 30",
     explanation: {
-      de: "Lagerplatz, zu dem du gehen sollst: Gang 12, Regal 04, Ebene 02, Fach B.",
-      hu: "A tárhely, ahová menned kell: 12-es sor, 04-es állvány, 02-es szint, B rekesz.",
-      en: "Location to go to: aisle 12, rack 04, level 02, bin B.",
+      de: "Lagerplatz, zu dem du gehen sollst: Gang 502, Fachnummer 62 (gerade = rechte Hand), Fach 30 (das dritte der drei Fächer 10, 20, 30).",
+      hu: "A tárhely, ahová menned kell: 502-es sor, 62-es fakkszám (páros = jobb kéz felől), 30-as fakk (a 10, 20, 30 közül a harmadik).",
+      en: "Location to go to: aisle 502, compartment number 62 (even = right-hand side), compartment 30 (the third of 10, 20, 30).",
     },
   },
   {
