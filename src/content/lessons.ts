@@ -957,9 +957,9 @@ export const ALL_LESSONS: Lesson[] = [
           en: "Before you open a carton",
         },
         text: {
-          de: "Vergewissere dich, dass du am richtigen Komm-Platz bist. Manchmal wurde der Barcode eines Artikels geändert oder es sind mehrere Barcodes drauf – dann prüfe immer alle Barcodes. Geht keiner, vergleiche die Stückzahl auf dem Karton mit dem, was du brauchst, und prüfe auch den Artikelnamen.",
-          hu: "Győződj meg róla, hogy a megfelelő Komm-Platzon (kiszedőhelyen) vagy. Néha egy áru vonalkódját átdolgozták, vagy több barcode is van rajta – ilyenkor mindig ellenőrizd az összes barcode-ot. Ha egyik sem megy, ellenőrizd, hogy a kartonon lévő darabszám egyezik-e azzal, amire szükséged van, és a termék nevét is ellenőrizd.",
-          en: "Make sure you're at the right Komm-Platz (pick location). Sometimes an item's barcode was changed or there are several barcodes on it – then always try all of them. If none works, compare the quantity on the carton with what you need and check the article name too.",
+          de: "Vergewissere dich, dass du am richtigen Komm-Platz bist. Manchmal wurde der Barcode eines Artikels geändert oder es sind mehrere Barcodes drauf – dann prüfe immer alle Barcodes. Geht keiner, vergleiche die Stückzahl auf dem Karton mit dem, was du brauchst, und prüfe auch den Artikelnamen. In welcher Reihenfolge du das kontrollierst, ist egal – wichtig ist nur: Erst prüfen, dann öffnen.",
+          hu: "Győződj meg róla, hogy a megfelelő Komm-Platzon (kiszedőhelyen) vagy. Néha egy áru vonalkódját átdolgozták, vagy több barcode is van rajta – ilyenkor mindig ellenőrizd az összes barcode-ot. Ha egyik sem megy, ellenőrizd, hogy a kartonon lévő darabszám egyezik-e azzal, amire szükséged van, és a termék nevét is ellenőrizd. Hogy milyen sorrendben ellenőrzöl, az mindegy – a lényeg: előbb ellenőrizz, csak utána bonts.",
+          en: "Make sure you're at the right Komm-Platz (pick location). Sometimes an item's barcode was changed or there are several barcodes on it – then always try all of them. If none works, compare the quantity on the carton with what you need and check the article name too. The order of these checks doesn't matter – what matters: check first, then open.",
         },
         terms: ["komm-platz", "ean"],
       },
@@ -1099,38 +1099,78 @@ export const ALL_LESSONS: Lesson[] = [
         },
       },
       {
-        type: "order",
+        type: "classify",
         question: {
-          de: "Der Barcode lässt sich nicht scannen. In welcher Reihenfolge prüfst du, bevor du öffnest?",
-          hu: "A vonalkód nem olvasható be. Milyen sorrendben ellenőrzöl, mielőtt bontasz?",
-          en: "The barcode won't scan. In which order do you check before opening?",
+          de: "Der Barcode lässt sich nicht scannen. Was gehört vor das Öffnen – und was nicht? (Die Reihenfolge der Kontrollen ist egal.)",
+          hu: "A vonalkód nem olvasható be. Mi tartozik a bontás elé – és mi nem? (Az ellenőrzések sorrendje mindegy.)",
+          en: "The barcode won't scan. What belongs before opening – and what doesn't? (The order of the checks doesn't matter.)",
         },
+        categories: [
+          {
+            de: "Vor dem Öffnen prüfen",
+            hu: "Bontás előtt ellenőrzöm",
+            en: "Check before opening",
+          },
+          {
+            de: "Nicht so – erst prüfen",
+            hu: "Nem így – előbb ellenőrizni kell",
+            en: "Not like this – check first",
+          },
+        ],
         items: [
           {
-            de: "Richtiger Komm-Platz?",
-            hu: "Jó Komm-Platzon vagyok?",
-            en: "Right Komm-Platz?",
+            text: {
+              de: "Prüfen, ob ich am richtigen Komm-Platz bin",
+              hu: "Megnézem, jó Komm-Platzon vagyok-e",
+              en: "Check that I'm at the right Komm-Platz",
+            },
+            category: 0,
           },
           {
-            de: "Alle Barcodes auf dem Karton probieren",
-            hu: "Az összes barcode kipróbálása a kartonon",
-            en: "Try all barcodes on the carton",
+            text: {
+              de: "Den Karton sofort öffnen und dann schauen",
+              hu: "Rögtön kibontom a kartont, és utána nézem meg",
+              en: "Open the carton straight away and look afterwards",
+            },
+            category: 1,
           },
           {
-            de: "Stückzahl auf dem Karton vergleichen",
-            hu: "A kartonon lévő darabszám összevetése",
-            en: "Compare the quantity on the carton",
+            text: {
+              de: "Alle Barcodes auf dem Karton probieren",
+              hu: "Kipróbálom az összes barcode-ot a kartonon",
+              en: "Try all barcodes on the carton",
+            },
+            category: 0,
           },
           {
-            de: "Artikelnamen prüfen",
-            hu: "A termék nevének ellenőrzése",
-            en: "Check the article name",
+            text: {
+              de: "Stückzahl auf dem Karton mit meinem Bedarf vergleichen",
+              hu: "Összevetem a kartonon lévő darabszámot azzal, ami kell",
+              en: "Compare the quantity on the carton with what I need",
+            },
+            category: 0,
+          },
+          {
+            text: {
+              de: "Irgendeinen Karton aus dem Regal nehmen und öffnen",
+              hu: "Leveszek egy kartont a polcról, és kibontom",
+              en: "Take any carton from the shelf and open it",
+            },
+            category: 1,
+          },
+          {
+            text: {
+              de: "Den Artikelnamen prüfen",
+              hu: "Ellenőrzöm a termék nevét",
+              en: "Check the article name",
+            },
+            category: 0,
           },
         ],
         explanation: {
-          de: "Erst den Platz sicherstellen, dann alle Barcodes probieren. Geht keiner, helfen Stückzahl und Artikelname weiter.",
-          hu: "Előbb a hely legyen biztos, aztán próbáld ki az összes barcode-ot. Ha egyik sem megy, a darabszám és a termék neve segít.",
-          en: "First make sure of the location, then try all barcodes. If none works, the quantity and article name help.",
+          de: "In welcher Reihenfolge du kontrollierst, ist egal – wichtig ist nur: zuerst prüfen (Platz, Barcodes, Stückzahl, Name), erst dann öffnen.",
+          hu: "Hogy milyen sorrendben ellenőrzöl, az mindegy – a lényeg: előbb ellenőrizz (hely, barcode-ok, darabszám, név), és csak utána bonts.",
+          en: "The order of your checks doesn't matter – what matters: check first (location, barcodes, quantity, name), open only afterwards.",
         },
       },
     ],
