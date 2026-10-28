@@ -207,6 +207,30 @@ export const GLOSSARY: GlossaryEntry[] = [
     },
   },
   {
+    id: "zerbrechlich",
+    term: "Zerbrechlich",
+    kind: "word",
+    category: "qualitaet",
+    explanation: {
+      de: "Hinweis auf dem Karton: Die Ware ist zerbrechlich. Vorsichtig nehmen, nicht werfen und nichts Schweres darauf stellen.",
+      hu: "Törékeny. Figyelmeztetés a kartonon: az áru törékeny. Óvatosan fogd meg, ne dobd, és ne tegyél rá nehezet.",
+      en: "Fragile. Note on the carton: the goods are fragile. Handle with care, don't throw them and don't put anything heavy on top.",
+    },
+    example: "Vorsicht zerbrechlich!",
+  },
+  {
+    id: "glas",
+    term: "Glas",
+    kind: "word",
+    category: "qualitaet",
+    explanation: {
+      de: "Warnhinweis auf dem Karton: Im Karton ist Glas. Wie zerbrechliche Ware behandeln – vorsichtig nehmen und nicht werfen.",
+      hu: "Üveg. Figyelmeztetés a kartonon: a dobozban üveg van. Úgy kezeld, mint a törékeny árut – óvatosan, ne dobd.",
+      en: "Glass. Warning on the carton: there is glass inside. Treat it like fragile goods – handle with care and don't throw it.",
+    },
+    example: "Vorsicht Glas!",
+  },
+  {
     id: "komm-platz",
     term: "Komm-Platz",
     full: "Kommissionierplatz",
