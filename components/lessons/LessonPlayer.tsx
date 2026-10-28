@@ -7,6 +7,7 @@ import type { Lesson } from "@/src/content/lessons";
 import type { LessonResult } from "@/src/hooks/use-lesson-progress";
 import { useLang } from "@/src/hooks/use-lang";
 import { ChoiceExercise } from "./ChoiceExercise";
+import { ClassifyExercise } from "./ClassifyExercise";
 import { OrderExercise } from "./OrderExercise";
 
 type Phase = "steps" | "exercises" | "result";
@@ -164,15 +165,24 @@ export function LessonPlayer({ lesson, nextLesson, onFinished }: Props) {
             <p className="text-muted-foreground mb-3 text-sm font-medium">
               {t("lessons.exerciseOf", { current: exerciseIndex + 1, total: totalExercises })}
             </p>
-            {exercise.type === "choice" ? (
+            {exercise.type === "choice" && (
               <ChoiceExercise
                 key={`${attempt}-${exerciseIndex}`}
                 exercise={exercise}
                 lang={lang}
                 onAnswered={(correct) => setAnswers([...answers, correct])}
               />
-            ) : (
+            )}
+            {exercise.type === "order" && (
               <OrderExercise
+                key={`${attempt}-${exerciseIndex}`}
+                exercise={exercise}
+                lang={lang}
+                onAnswered={(correct) => setAnswers([...answers, correct])}
+              />
+            )}
+            {exercise.type === "classify" && (
+              <ClassifyExercise
                 key={`${attempt}-${exerciseIndex}`}
                 exercise={exercise}
                 lang={lang}

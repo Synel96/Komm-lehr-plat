@@ -169,6 +169,16 @@ export const GLOSSARY: GlossaryEntry[] = [
     example: "1 VE = 6 Stk.",
   },
   {
+    id: "anbruch",
+    term: "Anbruch",
+    kind: "word",
+    explanation: {
+      de: "Ein geöffneter Karton, aus dem einzelne Stücke genommen werden. Gegenteil: ganze (geschlossene) VE.",
+      hu: "Bontott karton: megnyitott karton, amiből egyenként veszünk ki darabokat. Ellentéte: az egész (zárt) VE.",
+      en: "Broken case: an opened carton single pieces are taken from. Opposite: a full (closed) case.",
+    },
+  },
+  {
     id: "stk",
     term: "Stk. / ST",
     full: "Stück",

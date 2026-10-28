@@ -5,6 +5,8 @@
 // - "choice": eine richtige Antwort aus mehreren (answer = Index, ab 0)
 // - "order":  Schritte in die richtige Reihenfolge bringen (items in der
 //             RICHTIGEN Reihenfolge eintragen — gemischt wird automatisch)
+// - "classify": Fälle einer von mehreren Kategorien zuordnen (category =
+//             Index in `categories`, ab 0)
 //
 // `terms` verweist auf Einträge im Wörterbuch (ids aus glossary.ts).
 // Neue Lektion: unten an LESSONS anhängen, `slug` wird Teil der URL.
@@ -40,7 +42,15 @@ export type OrderExercise = {
   explanation: Localized;
 };
 
-export type Exercise = ChoiceExercise | OrderExercise;
+export type ClassifyExercise = {
+  type: "classify";
+  question: Localized;
+  categories: Localized[];
+  items: { text: Localized; category: number }[];
+  explanation: Localized;
+};
+
+export type Exercise = ChoiceExercise | OrderExercise | ClassifyExercise;
 
 export type Lesson = {
   slug: string;
@@ -469,6 +479,205 @@ export const LESSONS: Lesson[] = [
           de: "First In – First Out.",
           hu: "First In – First Out: ami először be, az először ki.",
           en: "First In – First Out.",
+        },
+      },
+    ],
+  },
+  {
+    slug: "anbruch",
+    topic: "kommissionierung",
+    minutes: 6,
+    title: {
+      de: "Karton öffnen oder nicht? Anbruch & ganze VE",
+      hu: "Bontós vagy nem bontós? Bontott és egész karton",
+      en: "Open the carton or not? Broken & full cases",
+    },
+    summary: {
+      de: "Wann du einen Karton anbrichst – und wann er zu bleiben muss.",
+      hu: "Mikor kell megbontani egy kartont – és mikor kell zárva maradnia.",
+      en: "When to break open a carton – and when it must stay closed.",
+    },
+    steps: [
+      {
+        title: {
+          de: "Ganze VE und Anbruch",
+          hu: "Egész karton és bontott karton",
+          en: "Full case and broken case",
+        },
+        text: {
+          de: "Viele Artikel liegen in Kartons mit fester Stückzahl – der Verpackungseinheit (VE), z. B. 6 Stück pro Karton. Ein geschlossener Karton ist eine ganze VE. Ein geöffneter Karton, aus dem einzelne Stücke genommen werden, heißt Anbruch.",
+          hu: "Sok cikk fix darabszámú kartonban van – ez a csomagolási egység (VE), pl. kartonként 6 darab. A zárt karton egy egész VE (nem bontós). A kinyitott karton, amiből egyenként veszünk ki darabokat, az Anbruch (bontott, „bontós” karton).",
+          en: "Many items come in cartons with a fixed quantity – the packaging unit (VE), e.g. 6 pieces per carton. A closed carton is a full case. An opened carton you take single pieces from is called Anbruch (broken case).",
+        },
+        terms: ["ve", "anbruch"],
+      },
+      {
+        title: {
+          de: "Erst rechnen, dann öffnen",
+          hu: "Előbb számolj, aztán bonts",
+          en: "Calculate first, then open",
+        },
+        text: {
+          de: "Teile die Soll-Menge durch die VE. Ganze Kartons nimmst du geschlossen. Nur der Rest kommt aus einem geöffneten Karton. Beispiel: Soll 14 Stk., VE 6 → 2 ganze Kartons (12) + 2 Stück aus dem Anbruch.",
+          hu: "Oszd el az előírt mennyiséget a VE-vel. Az egész kartonokat bontatlanul viszed. Csak a maradék jön megbontott kartonból. Példa: Soll 14 db, VE 6 → 2 egész karton (12) + 2 darab bontott kartonból.",
+          en: "Divide the target quantity by the VE. Take full cartons closed. Only the remainder comes from an opened carton. Example: Soll 14 pcs, VE 6 → 2 full cartons (12) + 2 pieces from the broken case.",
+        },
+        terms: ["soll-ist", "stk"],
+      },
+      {
+        title: { de: "Anbruch zuerst", hu: "Először a bontottból", en: "Broken case first" },
+        text: {
+          de: "Steht am Platz schon ein geöffneter Karton, nimm die Einzelstücke zuerst daraus. Öffne keinen neuen Karton, solange im Anbruch noch genug ist – sonst stehen bald überall halbvolle Kartons.",
+          hu: "Ha a helyen már van megbontott karton, a darabokat először abból vedd ki. Ne bonts meg új kartont, amíg a bontottban van elég – különben hamar mindenhol félig üres kartonok lesznek.",
+          en: "If there's already an opened carton at the location, take single pieces from it first. Don't open a new carton while the broken one still has enough – otherwise half-empty cartons pile up everywhere.",
+        },
+      },
+      {
+        title: { de: "Nicht anbrechen!", hu: "Nem bontós!", en: "Do not break!" },
+        text: {
+          de: "Manche Artikel dürfen nur als ganze VE raus, z. B. wenn der Scanner „Nur ganze VE“ zeigt, bei Originalverschluss oder Siegel, oder bei Gefahrgut. Diese Kartons nie öffnen. Passt die Soll-Menge nicht zur VE, frag deinen Vorgesetzten.",
+          hu: "Bizonyos cikkek csak egész VE-ként mehetnek ki, pl. ha a szkenner azt írja: „Nur ganze VE”, ha gyári zárás vagy plomba van rajta, vagy veszélyes árunál. Ezeket a kartonokat soha ne bontsd meg. Ha az előírt mennyiség nem jön ki egész kartonokban, kérdezd a vezetőt.",
+          en: "Some items may only leave as full cases, e.g. when the scanner shows “Nur ganze VE”, with an original seal, or with dangerous goods. Never open these cartons. If the target quantity doesn't fit the VE, ask your supervisor.",
+        },
+      },
+      {
+        title: { de: "Sauber anbrechen", hu: "Rendes bontás", en: "Opening cleanly" },
+        text: {
+          de: "Öffne den Karton oben vorsichtig, ohne mit dem Messer tief hineinzuschneiden. Lass die restliche Ware ordentlich im Karton und stell ihn mit der offenen Seite nach vorn zurück – so sieht der Nächste sofort, dass es ein Anbruch ist.",
+          hu: "A kartont felül óvatosan nyisd ki, ne vágj mélyen bele a késsel. A maradék árut hagyd rendesen a kartonban, és a nyitott oldalával előre tedd vissza – így a következő ember rögtön látja, hogy ez bontott karton.",
+          en: "Open the carton carefully at the top without cutting deep with the knife. Leave the remaining goods neatly in the carton and put it back with the open side facing forward – so the next person sees right away it's a broken case.",
+        },
+        terms: ["bruch"],
+      },
+    ],
+    exercises: [
+      {
+        type: "classify",
+        question: {
+          de: "Musst du einen neuen Karton öffnen?",
+          hu: "Meg kell bontanod egy új kartont?",
+          en: "Do you need to open a new carton?",
+        },
+        categories: [
+          { de: "Ja, öffnen", hu: "Igen, bontós", en: "Yes, open it" },
+          { de: "Nein, zu lassen", hu: "Nem, nem bontós", en: "No, keep closed" },
+        ],
+        items: [
+          {
+            text: {
+              de: "Soll 12 Stk., VE 6, kein Anbruch am Platz",
+              hu: "Soll 12 db, VE 6, nincs bontott karton a helyen",
+              en: "Soll 12 pcs, VE 6, no broken case at the location",
+            },
+            category: 1,
+          },
+          {
+            text: {
+              de: "Soll 4 Stk., VE 6, kein Anbruch am Platz",
+              hu: "Soll 4 db, VE 6, nincs bontott karton a helyen",
+              en: "Soll 4 pcs, VE 6, no broken case at the location",
+            },
+            category: 0,
+          },
+          {
+            text: {
+              de: "Soll 3 Stk., im Anbruch liegen noch 5 Stk.",
+              hu: "Soll 3 db, a bontott kartonban még 5 db van",
+              en: "Soll 3 pcs, the broken case still has 5 pcs",
+            },
+            category: 1,
+          },
+          {
+            text: {
+              de: "Soll 9 Stk., VE 6, kein Anbruch am Platz",
+              hu: "Soll 9 db, VE 6, nincs bontott karton a helyen",
+              en: "Soll 9 pcs, VE 6, no broken case at the location",
+            },
+            category: 0,
+          },
+          {
+            text: {
+              de: "Soll 2 Krt.",
+              hu: "Soll 2 karton (Krt.)",
+              en: "Soll 2 cartons (Krt.)",
+            },
+            category: 1,
+          },
+          {
+            text: {
+              de: "Scanner zeigt „Nur ganze VE“, Soll 6 Stk., VE 6",
+              hu: "A szkenner kiírja: „Nur ganze VE”, Soll 6 db, VE 6",
+              en: "Scanner shows “Nur ganze VE”, Soll 6 pcs, VE 6",
+            },
+            category: 1,
+          },
+        ],
+        explanation: {
+          de: "Öffnen nur, wenn ein Rest übrig bleibt, der nicht aus einem vorhandenen Anbruch kommen kann. Volle Kartons, Mengen in Krt. und „Nur ganze VE“ bleiben zu.",
+          hu: "Csak akkor bonts, ha marad egy maradék, ami nem jöhet egy már bontott kartonból. Az egész kartonok, a kartonban (Krt.) megadott mennyiség és a „Nur ganze VE” zárva marad.",
+          en: "Only open when there's a remainder that can't come from an existing broken case. Full cartons, quantities in Krt. and “Nur ganze VE” stay closed.",
+        },
+      },
+      {
+        type: "choice",
+        question: {
+          de: "Soll 14 Stk., VE 6, kein Anbruch. Was nimmst du?",
+          hu: "Soll 14 db, VE 6, nincs bontott karton. Mit veszel?",
+          en: "Soll 14 pcs, VE 6, no broken case. What do you take?",
+        },
+        options: [
+          {
+            de: "3 Kartons öffnen und 14 Stück einzeln nehmen",
+            hu: "3 kartont megbontok, és 14 darabot egyenként veszek",
+            en: "Open 3 cartons and take 14 single pieces",
+          },
+          {
+            de: "2 ganze Kartons + 2 Stück aus einem geöffneten Karton",
+            hu: "2 egész kartont + 2 darabot egy megbontott kartonból",
+            en: "2 full cartons + 2 pieces from an opened carton",
+          },
+          {
+            de: "3 ganze Kartons",
+            hu: "3 egész kartont",
+            en: "3 full cartons",
+          },
+        ],
+        answer: 1,
+        explanation: {
+          de: "14 ÷ 6 = 2 Rest 2. Die 2 ganzen Kartons bleiben zu, nur für die 2 Reststücke wird ein Karton geöffnet. 3 Kartons wären 18 Stück – zu viel.",
+          hu: "14 ÷ 6 = 2, maradék 2. A 2 egész karton zárva marad, csak a 2 maradék darabhoz bontasz meg egy kartont. 3 karton 18 darab lenne – túl sok.",
+          en: "14 ÷ 6 = 2 remainder 2. The 2 full cartons stay closed; only the 2 remaining pieces need an opened carton. 3 cartons would be 18 pieces – too many.",
+        },
+      },
+      {
+        type: "choice",
+        question: {
+          de: "Der Scanner zeigt „Nur ganze VE“, Soll 4 Stk., VE 6. Was tust du?",
+          hu: "A szkenner kiírja: „Nur ganze VE”, Soll 4 db, VE 6. Mit teszel?",
+          en: "The scanner shows “Nur ganze VE”, Soll 4 pcs, VE 6. What do you do?",
+        },
+        options: [
+          {
+            de: "Karton öffnen und 4 Stück nehmen",
+            hu: "Megbontom a kartont, és kiveszek 4 darabot",
+            en: "Open the carton and take 4 pieces",
+          },
+          {
+            de: "Einen ganzen Karton (6 Stk.) nehmen",
+            hu: "Egy egész kartont viszek (6 db)",
+            en: "Take a full carton (6 pcs)",
+          },
+          {
+            de: "Nicht öffnen und den Vorgesetzten fragen",
+            hu: "Nem bontom meg, és megkérdezem a vezetőt",
+            en: "Don't open it and ask the supervisor",
+          },
+        ],
+        answer: 2,
+        explanation: {
+          de: "Bei „Nur ganze VE“ wird nie geöffnet. Mehr als bestellt darf aber auch nicht raus – das muss jemand klären.",
+          hu: "„Nur ganze VE” esetén soha nem bontunk. De a rendeltnél többet sem szabad kiadni – ezt valakinek tisztáznia kell.",
+          en: "With “Nur ganze VE” you never open. But you also can't ship more than ordered – someone has to sort it out.",
         },
       },
     ],

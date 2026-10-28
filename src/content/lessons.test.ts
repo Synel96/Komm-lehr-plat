@@ -41,7 +41,12 @@ describe("lessons", () => {
       for (const step of lesson.steps) [step.title, step.text].forEach(expectTranslated);
       for (const exercise of lesson.exercises) {
         [exercise.question, exercise.explanation].forEach(expectTranslated);
-        (exercise.type === "choice" ? exercise.options : exercise.items).forEach(expectTranslated);
+        if (exercise.type === "choice") exercise.options.forEach(expectTranslated);
+        if (exercise.type === "order") exercise.items.forEach(expectTranslated);
+        if (exercise.type === "classify") {
+          exercise.categories.forEach(expectTranslated);
+          exercise.items.forEach((item) => expectTranslated(item.text));
+        }
       }
     }
   });
@@ -55,8 +60,17 @@ describe("lessons", () => {
           expect(exercise.options.length).toBeGreaterThanOrEqual(2);
           expect(exercise.answer).toBeGreaterThanOrEqual(0);
           expect(exercise.answer).toBeLessThan(exercise.options.length);
-        } else {
+        } else if (exercise.type === "order") {
           expect(exercise.items.length).toBeGreaterThanOrEqual(2);
+        } else {
+          expect(exercise.categories.length).toBeGreaterThanOrEqual(2);
+          for (const item of exercise.items) {
+            expect(item.category).toBeGreaterThanOrEqual(0);
+            expect(item.category).toBeLessThan(exercise.categories.length);
+          }
+          // Every category is used, so the answer isn't "always the same button".
+          const used = new Set(exercise.items.map((item) => item.category));
+          expect(used.size, lesson.slug).toBe(exercise.categories.length);
         }
       }
     }
