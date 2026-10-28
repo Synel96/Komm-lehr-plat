@@ -13,12 +13,16 @@ import type { Localized } from "./types";
 
 export type GlossaryKind = "abbr" | "word";
 
-export type GlossaryCategory = "zeiterfassung";
+export type GlossaryCategory = "zeiterfassung" | "mengen";
 
 export const GLOSSARY_CATEGORIES: { id: GlossaryCategory; label: Localized }[] = [
   {
     id: "zeiterfassung",
     label: { de: "Zeiterfassung", hu: "Időnyilvántartás", en: "Time tracking" },
+  },
+  {
+    id: "mengen",
+    label: { de: "Menge & Verpackung", hu: "Mennyiség és csomagolás", en: "Quantity & packaging" },
   },
 ];
 
@@ -33,6 +37,150 @@ export type GlossaryEntry = {
 };
 
 export const GLOSSARY: GlossaryEntry[] = [
+  {
+    id: "gve",
+    term: "GVE",
+    full: "Großverpackungseinheit",
+    kind: "abbr",
+    category: "mengen",
+    explanation: {
+      de: "Die Verpackung bzw. der Karton, wie er im Regal steht. Kann ein einzelnes Produkt oder mehrere EVE enthalten. „1 GVE“ ohne Klammer ist meist ein einzelnes Stück.",
+      hu: "A csomagolás, illetve karton, ahogy a polcon áll. Lehet benne egy termék vagy több EVE. Az „1 GVE” zárójel nélkül általában egy darab.",
+      en: "The package or carton as it stands on the shelf. May hold one product or several EVE. “1 GVE” without brackets is usually a single piece.",
+    },
+    example: "1 GVE(6)",
+  },
+  {
+    id: "eve",
+    term: "EVE",
+    full: "Einzelverpackungseinheit",
+    kind: "abbr",
+    category: "mengen",
+    explanation: {
+      de: "Ein einzelnes Produkt in der GVE. Wie viele EVE in einer GVE sind, zeigt der Faktor.",
+      hu: "Egy darab termék a GVE-n belül. Hogy hány EVE van egy GVE-ben, azt a faktor mutatja.",
+      en: "A single product inside the GVE. The factor shows how many EVE are in one GVE.",
+    },
+  },
+  {
+    id: "faktor",
+    term: "Faktor",
+    kind: "word",
+    category: "mengen",
+    explanation: {
+      de: "Die Zahl in Klammern nach GVE am Scanner: so viele EVE sind in einer GVE. „1 GVE(6)“ = 6 Produkte in einem Karton.",
+      hu: "A szkenneren a GVE utáni zárójeles szám: ennyi EVE van egy GVE-ben. „1 GVE(6)” = 6 termék egy kartonban.",
+      en: "The number in brackets after GVE on the scanner: that many EVE are in one GVE. “1 GVE(6)” = 6 products in one carton.",
+    },
+    example: "1 GVE(6)",
+  },
+  {
+    id: "qty",
+    term: "Qty",
+    full: "Quantity",
+    kind: "abbr",
+    category: "mengen",
+    explanation: {
+      de: "Englisch für Menge. Auf dem Karton: so viele Stück sind drin.",
+      hu: "Angolul mennyiség. A kartonon: ennyi darab van benne.",
+      en: "Quantity. On the carton: that many pieces are inside.",
+    },
+    example: "Qty: 12",
+  },
+  {
+    id: "pcs",
+    term: "Pcs",
+    full: "Pieces",
+    kind: "abbr",
+    category: "mengen",
+    explanation: {
+      de: "Englisch für Stück. Auf dem Karton: Anzahl der Stücke.",
+      hu: "Angolul darab(ok). A kartonon: a darabszám.",
+      en: "Pieces. On the carton: the number of pieces.",
+    },
+    example: "6 Pcs",
+  },
+  {
+    id: "menge",
+    term: "Menge",
+    kind: "word",
+    category: "mengen",
+    explanation: {
+      de: "Anzahl bzw. Stückzahl – am Scanner und auf dem Karton.",
+      hu: "Mennyiség, darabszám – a szkenneren és a kartonon is.",
+      en: "Quantity / number of pieces – on the scanner and on the carton.",
+    },
+  },
+  {
+    id: "set",
+    term: "Set",
+    kind: "word",
+    category: "mengen",
+    explanation: {
+      de: "Steht „Set“ im Artikelnamen, sind mehrere Teile in der Verpackung – auch wenn am Scanner kein Faktor steht.",
+      hu: "Ha a cikk nevében „Set” szerepel, több darab van a csomagolásban – akkor is, ha a szkenneren nincs faktor.",
+      en: "If the article name contains “Set”, there are several parts in the package – even without a factor on the scanner.",
+    },
+    example: "Messerset",
+  },
+  {
+    id: "tlg",
+    term: "tlg.",
+    full: "-teilig",
+    kind: "abbr",
+    category: "mengen",
+    explanation: {
+      de: "Im Artikelnamen: aus so vielen Teilen besteht der Artikel. „5-tlg.“ = fünfteilig.",
+      hu: "A cikk nevében: ennyi részből áll a termék. „5-tlg.” = ötrészes.",
+      en: "In the article name: the item consists of that many parts. “5-tlg.” = five-piece.",
+    },
+    example: "Topfset 5-tlg.",
+  },
+  {
+    id: "er-pack",
+    term: "2er / 3er / 6er Pack",
+    kind: "word",
+    category: "mengen",
+    explanation: {
+      de: "Im Artikelnamen: so viele Stück sind zusammen verpackt. „6er Pack“ = 6 Stück.",
+      hu: "A cikk nevében: ennyi darab van együtt csomagolva. „6er Pack” = 6 darab.",
+      en: "In the article name: that many pieces are packed together. “6er Pack” = 6 pieces.",
+    },
+    example: "Gläser 6er Pack",
+  },
+  {
+    id: "display",
+    term: "Display",
+    kind: "word",
+    category: "mengen",
+    explanation: {
+      de: "Verkaufsverpackung mit mehreren Produkten (z. B. für die Kasse). Steht „Display“ im Artikelnamen, sind mehrere Stück drin.",
+      hu: "Bemutató csomagolás több termékkel (pl. a kasszához). Ha a cikk nevében „Display” szerepel, több darab van benne.",
+      en: "Sales packaging with several products (e.g. for the checkout). If “Display” is in the article name, there are several pieces inside.",
+    },
+  },
+  {
+    id: "auspack",
+    term: "ACHTUNG AUSPACK!",
+    kind: "word",
+    category: "mengen",
+    explanation: {
+      de: "Hinweis auf dem Karton (aufgedruckt oder Etikett): Der Karton muss geöffnet werden, die Produkte werden einzeln kommissioniert. Nicht jeder zu öffnende Karton hat diesen Hinweis.",
+      hu: "Felirat vagy címke a kartonon: a kartont meg kell bontani, a termékeket egyenként kell kiszedni. Nem minden bontós kartonon van ilyen jelzés.",
+      en: "Note on the carton (printed or label): the carton must be opened and the products picked individually. Not every carton that must be opened has this note.",
+    },
+  },
+  {
+    id: "komm-platz",
+    term: "Komm-Platz",
+    full: "Kommissionierplatz",
+    kind: "abbr",
+    explanation: {
+      de: "Der Lagerplatz, von dem kommissioniert wird. Vor dem Öffnen eines Kartons immer prüfen, ob du am richtigen Komm-Platz bist.",
+      hu: "Kiszedőhely: az a tárhely, ahonnan komissiózunk. Doboz bontása előtt mindig ellenőrizd, hogy a megfelelő Komm-Platzon vagy.",
+      en: "Pick location: the storage location you pick from. Before opening a carton, always check you're at the right Komm-Platz.",
+    },
+  },
   {
     id: "leistung",
     term: "Leistung",
@@ -294,6 +442,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "VE",
     full: "Verpackungseinheit",
     kind: "abbr",
+    category: "mengen",
     explanation: {
       de: "Wie viele Stück zusammen verpackt sind, z. B. ein Karton mit 6 Flaschen.",
       hu: "Csomagolási egység: hány darab van együtt becsomagolva, pl. egy karton 6 üveggel.",
@@ -305,6 +454,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     id: "anbruch",
     term: "Anbruch",
     kind: "word",
+    category: "mengen",
     explanation: {
       de: "Ein geöffneter Karton, aus dem einzelne Stücke genommen werden. Gegenteil: ganze (geschlossene) VE.",
       hu: "Bontott karton: megnyitott karton, amiből egyenként veszünk ki darabokat. Ellentéte: az egész (zárt) VE.",
@@ -313,9 +463,10 @@ export const GLOSSARY: GlossaryEntry[] = [
   },
   {
     id: "stk",
-    term: "Stk. / ST",
+    term: "Stk. / Stck / ST",
     full: "Stück",
     kind: "abbr",
+    category: "mengen",
     explanation: {
       de: "Einzelnes Teil. Mengenangabe in Stück.",
       hu: "Darab. Mennyiség darabban.",

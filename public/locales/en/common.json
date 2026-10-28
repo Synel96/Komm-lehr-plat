@@ -45,7 +45,9 @@
     "count_one": "{{count}} entry",
     "count_other": "{{count}} entries",
     "noResults": "Nothing found. Try another word.",
-    "example": "Example"
+    "example": "Example",
+    "abbrTerm": "Abbreviation",
+    "abbrFull": "Full form & meaning"
   },
   "error": {
     "notFoundTitle": "Page not found",

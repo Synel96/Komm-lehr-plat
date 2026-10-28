@@ -78,44 +78,85 @@ export default function Page() {
           : t("glossary.noResults")}
       </p>
 
-      <ul className="mt-4 grid gap-3">
-        {results.map((entry) => (
-          <li
-            key={entry.id}
-            id={entry.id}
-            className="bg-card text-card-foreground scroll-mt-6 rounded-xl border p-5 target:ring-2 target:ring-amber-400"
-          >
-            <div lang="de" className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <span className="text-lg font-bold">{entry.term}</span>
-              {entry.full && <span className="text-muted-foreground italic">{entry.full}</span>}
-              {entry.category && (
-                <span
-                  lang={lang}
-                  className="rounded-full bg-amber-400/20 px-2 py-0.5 text-xs font-medium text-amber-800 dark:text-amber-300"
+      {filter === "abbr" && results.length > 0 && (
+        // Abbreviation list: every abbreviation written out in full.
+        <div className="mt-4 overflow-hidden rounded-xl border">
+          <table className="w-full text-left text-sm">
+            <thead className="bg-muted">
+              <tr>
+                <th scope="col" className="px-4 py-2 font-semibold">
+                  {t("glossary.abbrTerm")}
+                </th>
+                <th scope="col" className="px-4 py-2 font-semibold">
+                  {t("glossary.abbrFull")}
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y">
+              {results.map((entry) => (
+                <tr
+                  key={entry.id}
+                  id={entry.id}
+                  className="bg-card scroll-mt-6 align-top target:ring-2 target:ring-amber-400"
                 >
-                  {
-                    GLOSSARY_CATEGORIES.find((category) => category.id === entry.category)?.label[
-                      lang
-                    ]
-                  }
-                </span>
+                  <th scope="row" lang="de" className="px-4 py-3 font-bold whitespace-nowrap">
+                    {entry.term}
+                  </th>
+                  <td className="px-4 py-3">
+                    <span lang="de" className="font-medium">
+                      {entry.full}
+                    </span>
+                    <span className="text-muted-foreground mt-1 block">
+                      {entry.explanation[lang]}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      {filter !== "abbr" && (
+        <ul className="mt-4 grid gap-3">
+          {results.map((entry) => (
+            <li
+              key={entry.id}
+              id={entry.id}
+              className="bg-card text-card-foreground scroll-mt-6 rounded-xl border p-5 target:ring-2 target:ring-amber-400"
+            >
+              <div lang="de" className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <span className="text-lg font-bold">{entry.term}</span>
+                {entry.full && <span className="text-muted-foreground italic">{entry.full}</span>}
+                {entry.category && (
+                  <span
+                    lang={lang}
+                    className="rounded-full bg-amber-400/20 px-2 py-0.5 text-xs font-medium text-amber-800 dark:text-amber-300"
+                  >
+                    {
+                      GLOSSARY_CATEGORIES.find((category) => category.id === entry.category)?.label[
+                        lang
+                      ]
+                    }
+                  </span>
+                )}
+              </div>
+              <p className="mt-2">{entry.explanation[lang]}</p>
+              {entry.example && (
+                <p className="text-muted-foreground mt-2 text-sm">
+                  {t("glossary.example")}:{" "}
+                  <code
+                    lang="de"
+                    className="bg-muted text-foreground rounded px-1.5 py-0.5 font-mono"
+                  >
+                    {entry.example}
+                  </code>
+                </p>
               )}
-            </div>
-            <p className="mt-2">{entry.explanation[lang]}</p>
-            {entry.example && (
-              <p className="text-muted-foreground mt-2 text-sm">
-                {t("glossary.example")}:{" "}
-                <code
-                  lang="de"
-                  className="bg-muted text-foreground rounded px-1.5 py-0.5 font-mono"
-                >
-                  {entry.example}
-                </code>
-              </p>
-            )}
-          </li>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

@@ -45,7 +45,9 @@
     "count_one": "{{count}} Eintrag",
     "count_other": "{{count}} Einträge",
     "noResults": "Nichts gefunden. Versuche ein anderes Wort.",
-    "example": "Beispiel"
+    "example": "Beispiel",
+    "abbrTerm": "Abkürzung",
+    "abbrFull": "Ausgeschrieben & Bedeutung"
   },
   "error": {
     "notFoundTitle": "Seite nicht gefunden",

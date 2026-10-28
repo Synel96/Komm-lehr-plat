@@ -45,7 +45,9 @@
     "count_one": "{{count}} találat",
     "count_other": "{{count}} találat",
     "noResults": "Nincs találat. Próbálj egy másik szót.",
-    "example": "Példa"
+    "example": "Példa",
+    "abbrTerm": "Rövidítés",
+    "abbrFull": "Teljes alak és jelentés"
   },
   "error": {
     "notFoundTitle": "Az oldal nem található",

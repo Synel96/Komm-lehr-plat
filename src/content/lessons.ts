@@ -775,198 +775,273 @@ export const LESSONS: Lesson[] = [
   {
     slug: "anbruch",
     area: "kommissionierung",
-    minutes: 6,
+    minutes: 9,
     title: {
-      de: "Karton öffnen oder nicht? Anbruch & ganze VE",
-      hu: "Bontós vagy nem bontós? Bontott és egész karton",
-      en: "Open the carton or not? Broken & full cases",
+      de: "Karton öffnen oder nicht? GVE, EVE & Faktor",
+      hu: "Bontós vagy nem bontós? GVE, EVE és faktor",
+      en: "Open the carton or not? GVE, EVE & factor",
     },
     summary: {
-      de: "Wann du einen Karton anbrichst – und wann er zu bleiben muss.",
-      hu: "Mikor kell megbontani egy kartont – és mikor kell zárva maradnia.",
-      en: "When to break open a carton – and when it must stay closed.",
+      de: "Was 1 GVE und 1 GVE(6) bedeuten, wo die Stückzahl steht und was du vor dem Öffnen prüfst.",
+      hu: "Mit jelent az 1 GVE és az 1 GVE(6), hol látod a darabszámot, és mit ellenőrizz bontás előtt.",
+      en: "What 1 GVE and 1 GVE(6) mean, where the quantity is printed and what to check before opening.",
     },
     steps: [
       {
-        title: {
-          de: "Ganze VE und Anbruch",
-          hu: "Egész karton és bontott karton",
-          en: "Full case and broken case",
-        },
+        title: { de: "GVE und EVE", hu: "GVE és EVE", en: "GVE and EVE" },
         text: {
-          de: "Viele Artikel liegen in Kartons mit fester Stückzahl – der Verpackungseinheit (VE), z. B. 6 Stück pro Karton. Ein geschlossener Karton ist eine ganze VE. Ein geöffneter Karton, aus dem einzelne Stücke genommen werden, heißt Anbruch.",
-          hu: "Sok cikk fix darabszámú kartonban van – ez a csomagolási egység (VE), pl. kartonként 6 darab. A zárt karton egy egész VE (nem bontós). A kinyitott karton, amiből egyenként veszünk ki darabokat, az Anbruch (bontott, „bontós” karton).",
-          en: "Many items come in cartons with a fixed quantity – the packaging unit (VE), e.g. 6 pieces per carton. A closed carton is a full case. An opened carton you take single pieces from is called Anbruch (broken case).",
+          de: "Wir arbeiten mit GVE. Eine GVE (Großverpackungseinheit) ist der Karton bzw. die Verpackung, wie sie im Regal steht. In einer GVE können mehrere EVE (Einzelverpackungseinheiten) sein – also einzelne Produkte. Ein geöffneter Karton, aus dem einzelne Stücke genommen werden, heißt Anbruch.",
+          hu: "Mi GVE-vel dolgozunk. A GVE (Großverpackungseinheit) a karton, illetve csomagolás, ahogy a polcon áll. Egy GVE-ben több EVE (Einzelverpackungseinheit), vagyis több darab termék is lehet. A megbontott kartont, amiből egyenként veszünk ki, Anbruch-nak (bontott kartonnak) hívjuk.",
+          en: "We work with GVE. A GVE (Großverpackungseinheit, large packaging unit) is the carton or package as it stands on the shelf. A GVE can contain several EVE (Einzelverpackungseinheiten, single units) – i.e. single products. An opened carton you take single pieces from is called Anbruch.",
         },
-        terms: ["ve", "anbruch"],
+        terms: ["gve", "eve", "anbruch"],
       },
       {
         title: {
-          de: "Erst rechnen, dann öffnen",
-          hu: "Előbb számolj, aztán bonts",
-          en: "Calculate first, then open",
+          de: "„1 GVE“ – meist ein einzelnes Stück",
+          hu: "„1 GVE” – általában egy darab",
+          en: "“1 GVE” – usually a single piece",
         },
         text: {
-          de: "Teile die Soll-Menge durch die VE. Ganze Kartons nimmst du geschlossen. Nur der Rest kommt aus einem geöffneten Karton. Beispiel: Soll 14 Stk., VE 6 → 2 ganze Kartons (12) + 2 Stück aus dem Anbruch.",
-          hu: "Oszd el az előírt mennyiséget a VE-vel. Az egész kartonokat bontatlanul viszed. Csak a maradék jön megbontott kartonból. Példa: Soll 14 db, VE 6 → 2 egész karton (12) + 2 darab bontott kartonból.",
-          en: "Divide the target quantity by the VE. Take full cartons closed. Only the remainder comes from an opened carton. Example: Soll 14 pcs, VE 6 → 2 full cartons (12) + 2 pieces from the broken case.",
+          de: "Zeigt der Scanner beim Kommissionieren z. B. „1 GVE“ ohne Klammer, ist das Produkt meist ein einzelnes Stück – z. B. ein Staubsauger, ein Küchengerät oder ein Spielzeug. Du nimmst die ganze Verpackung, nichts wird geöffnet.",
+          hu: "Ha a szkenner komissiózáskor pl. „1 GVE”-t ír zárójel nélkül, az általában azt jelenti, hogy a termék egy darab – pl. porszívó, konyhai eszköz vagy játék. Az egész csomagot viszed, nem bontasz semmit.",
+          en: "If the scanner shows e.g. “1 GVE” without brackets while picking, the product is usually a single piece – e.g. a vacuum cleaner, a kitchen appliance or a toy. You take the whole package; nothing is opened.",
         },
-        terms: ["soll-ist", "stk"],
+        terms: ["gve"],
       },
       {
-        title: { de: "Anbruch zuerst", hu: "Először a bontottból", en: "Broken case first" },
-        text: {
-          de: "Steht am Platz schon ein geöffneter Karton, nimm die Einzelstücke zuerst daraus. Öffne keinen neuen Karton, solange im Anbruch noch genug ist – sonst stehen bald überall halbvolle Kartons.",
-          hu: "Ha a helyen már van megbontott karton, a darabokat először abból vedd ki. Ne bonts meg új kartont, amíg a bontottban van elég – különben hamar mindenhol félig üres kartonok lesznek.",
-          en: "If there's already an opened carton at the location, take single pieces from it first. Don't open a new carton while the broken one still has enough – otherwise half-empty cartons pile up everywhere.",
+        title: {
+          de: "„1 GVE(6)“ – der Faktor",
+          hu: "„1 GVE(6)” – a faktor",
+          en: "“1 GVE(6)” – the factor",
         },
+        text: {
+          de: "Steht nach GVE eine Zahl in Klammern, heißt das Faktor. Er zeigt, wie viele EVE in einer GVE sind. „1 GVE(6)“ bedeutet: In einem Karton sind 6 Produkte. Brauchst du weniger Stück, als im Karton sind, musst du den Karton öffnen (Anbruch).",
+          hu: "Ha a GVE után zárójelben egy szám áll, azt faktornak hívjuk. Azt mutatja, hány EVE van egy GVE-ben. Az „1 GVE(6)” azt jelenti: egy kartonban 6 termék van. Ha kevesebb darab kell, mint amennyi a kartonban van, meg kell bontanod a kartont (Anbruch).",
+          en: "A number in brackets after GVE is called the factor. It shows how many EVE are in one GVE. “1 GVE(6)” means: one carton holds 6 products. If you need fewer pieces than the carton holds, you have to open it (Anbruch).",
+        },
+        terms: ["faktor", "eve"],
       },
       {
-        title: { de: "Nicht anbrechen!", hu: "Nem bontós!", en: "Do not break!" },
-        text: {
-          de: "Manche Artikel dürfen nur als ganze VE raus, z. B. wenn der Scanner „Nur ganze VE“ zeigt, bei Originalverschluss oder Siegel, oder bei Gefahrgut. Diese Kartons nie öffnen. Passt die Soll-Menge nicht zur VE, frag deinen Vorgesetzten.",
-          hu: "Bizonyos cikkek csak egész VE-ként mehetnek ki, pl. ha a szkenner azt írja: „Nur ganze VE”, ha gyári zárás vagy plomba van rajta, vagy veszélyes árunál. Ezeket a kartonokat soha ne bontsd meg. Ha az előírt mennyiség nem jön ki egész kartonokban, kérdezd a vezetőt.",
-          en: "Some items may only leave as full cases, e.g. when the scanner shows “Nur ganze VE”, with an original seal, or with dangerous goods. Never open these cartons. If the target quantity doesn't fit the VE, ask your supervisor.",
+        title: {
+          de: "Hinweis „ACHTUNG AUSPACK!“",
+          hu: "„ACHTUNG AUSPACK!” felirat",
+          en: "Label “ACHTUNG AUSPACK!”",
         },
+        text: {
+          de: "Manchmal steht auf dem Karton „ACHTUNG AUSPACK!“ oder es klebt ein solches Etikett drauf. Das heißt: Dieser Karton muss geöffnet werden – die Produkte werden einzeln (als EVE) kommissioniert. Aber Achtung: Nicht jeder Karton, den man öffnen muss, hat diesen Hinweis. Verlass dich deshalb nicht nur darauf, sondern prüfe auch Faktor und Stückzahl.",
+          hu: "Néha a dobozra rá van írva vagy ragasztva: „ACHTUNG AUSPACK!”. Ez azt jelenti: ezt a kartont meg kell bontani – a termékeket egyenként (EVE-ként) kell kiszedni. De figyelj: nem minden bontós kartonon van ilyen jelzés. Ezért ne csak erre hagyatkozz, a faktort és a darabszámot is ellenőrizd.",
+          en: "Sometimes a carton has “ACHTUNG AUSPACK!” written or stuck on it. It means: this carton must be opened – the products are picked individually (as EVE). But note: not every carton that has to be opened carries this label. So don't rely on it alone – also check the factor and the quantity.",
+        },
+        terms: ["auspack", "anbruch", "faktor"],
       },
       {
-        title: { de: "Sauber anbrechen", hu: "Rendes bontás", en: "Opening cleanly" },
-        text: {
-          de: "Öffne den Karton oben vorsichtig, ohne mit dem Messer tief hineinzuschneiden. Lass die restliche Ware ordentlich im Karton und stell ihn mit der offenen Seite nach vorn zurück – so sieht der Nächste sofort, dass es ein Anbruch ist.",
-          hu: "A kartont felül óvatosan nyisd ki, ne vágj mélyen bele a késsel. A maradék árut hagyd rendesen a kartonban, és a nyitott oldalával előre tedd vissza – így a következő ember rögtön látja, hogy ez bontott karton.",
-          en: "Open the carton carefully at the top without cutting deep with the knife. Leave the remaining goods neatly in the carton and put it back with the open side facing forward – so the next person sees right away it's a broken case.",
+        title: {
+          de: "Stückzahl auf dem Karton prüfen",
+          hu: "Ellenőrizd a darabszámot a kartonon",
+          en: "Check the quantity on the carton",
         },
-        terms: ["bruch"],
+        text: {
+          de: "Auf den Kartons steht meistens, wie viele Stück drin sind – so kannst du dich leicht selbst kontrollieren. Achte auf: Qty / Quantity, Stck / Stück, Pcs / Pieces oder Menge.",
+          hu: "A dobozokon általában rá van írva, hány darab van benne – így könnyen ellenőrizheted magad. Ezeket a jelöléseket keresd: Qty / Quantity, Stck / Stück, Pcs / Pieces vagy Menge.",
+          en: "Cartons usually show how many pieces are inside – an easy way to check yourself. Look for: Qty / Quantity, Stck / Stück, Pcs / Pieces or Menge.",
+        },
+        terms: ["qty", "stk", "pcs", "menge"],
+      },
+      {
+        title: {
+          de: "Ausnahmen: kein Faktor, trotzdem mehrere Stück",
+          hu: "Kivételek: nincs faktor, mégis több darab",
+          en: "Exceptions: no factor, but several pieces",
+        },
+        text: {
+          de: "Manchmal steht nach der Menge kein Faktor, und trotzdem sind mehrere Produkte in der Verpackung. Dann prüfst du den Artikelnamen und suchst nach: Set, tlg. (-teilig), 2er / 3er / 6er Pack oder Display.",
+          hu: "Előfordul, hogy a mennyiség után nincs faktor, mégis több termék van a csomagolásban. Ilyenkor ellenőrizd az artikel (cikk) nevét, és ezeket keresd benne: Set, tlg. (-teilig, „részes”), 2er / 3er / 6er Pack vagy Display.",
+          en: "Sometimes there's no factor after the quantity, yet there are several products in the package. Then check the article name and look for: Set, tlg. (-teilig, “-piece”), 2er / 3er / 6er Pack or Display.",
+        },
+        terms: ["set", "tlg", "er-pack", "display"],
+      },
+      {
+        title: {
+          de: "Bevor du einen Karton öffnest",
+          hu: "Mielőtt megbontasz egy dobozt",
+          en: "Before you open a carton",
+        },
+        text: {
+          de: "Vergewissere dich, dass du am richtigen Komm-Platz bist. Manchmal wurde der Barcode eines Artikels geändert oder es sind mehrere Barcodes drauf – dann prüfe immer alle Barcodes. Geht keiner, vergleiche die Stückzahl auf dem Karton mit dem, was du brauchst, und prüfe auch den Artikelnamen.",
+          hu: "Győződj meg róla, hogy a megfelelő Komm-Platzon (kiszedőhelyen) vagy. Néha egy áru vonalkódját átdolgozták, vagy több barcode is van rajta – ilyenkor mindig ellenőrizd az összes barcode-ot. Ha egyik sem megy, ellenőrizd, hogy a kartonon lévő darabszám egyezik-e azzal, amire szükséged van, és a termék nevét is ellenőrizd.",
+          en: "Make sure you're at the right Komm-Platz (pick location). Sometimes an item's barcode was changed or there are several barcodes on it – then always try all of them. If none works, compare the quantity on the carton with what you need and check the article name too.",
+        },
+        terms: ["komm-platz", "ean"],
       },
     ],
     exercises: [
       {
-        type: "classify",
+        type: "choice",
         question: {
-          de: "Musst du einen neuen Karton öffnen?",
-          hu: "Meg kell bontanod egy új kartont?",
-          en: "Do you need to open a new carton?",
+          de: "Der Scanner zeigt „1 GVE(6)“. Wie viele Produkte sind in einem Karton?",
+          hu: "A szkenner ezt írja: „1 GVE(6)”. Hány termék van egy kartonban?",
+          en: "The scanner shows “1 GVE(6)”. How many products are in one carton?",
         },
-        categories: [
-          { de: "Ja, öffnen", hu: "Igen, bontós", en: "Yes, open it" },
-          { de: "Nein, zu lassen", hu: "Nem, nem bontós", en: "No, keep closed" },
+        options: [
+          { de: "1", hu: "1", en: "1" },
+          { de: "6", hu: "6", en: "6" },
+          { de: "7", hu: "7", en: "7" },
         ],
-        items: [
-          {
-            text: {
-              de: "Soll 12 Stk., VE 6, kein Anbruch am Platz",
-              hu: "Soll 12 db, VE 6, nincs bontott karton a helyen",
-              en: "Soll 12 pcs, VE 6, no broken case at the location",
-            },
-            category: 1,
-          },
-          {
-            text: {
-              de: "Soll 4 Stk., VE 6, kein Anbruch am Platz",
-              hu: "Soll 4 db, VE 6, nincs bontott karton a helyen",
-              en: "Soll 4 pcs, VE 6, no broken case at the location",
-            },
-            category: 0,
-          },
-          {
-            text: {
-              de: "Soll 3 Stk., im Anbruch liegen noch 5 Stk.",
-              hu: "Soll 3 db, a bontott kartonban még 5 db van",
-              en: "Soll 3 pcs, the broken case still has 5 pcs",
-            },
-            category: 1,
-          },
-          {
-            text: {
-              de: "Soll 9 Stk., VE 6, kein Anbruch am Platz",
-              hu: "Soll 9 db, VE 6, nincs bontott karton a helyen",
-              en: "Soll 9 pcs, VE 6, no broken case at the location",
-            },
-            category: 0,
-          },
-          {
-            text: {
-              de: "Soll 2 Krt.",
-              hu: "Soll 2 karton (Krt.)",
-              en: "Soll 2 cartons (Krt.)",
-            },
-            category: 1,
-          },
-          {
-            text: {
-              de: "Scanner zeigt „Nur ganze VE“, Soll 6 Stk., VE 6",
-              hu: "A szkenner kiírja: „Nur ganze VE”, Soll 6 db, VE 6",
-              en: "Scanner shows “Nur ganze VE”, Soll 6 pcs, VE 6",
-            },
-            category: 1,
-          },
-        ],
+        answer: 1,
         explanation: {
-          de: "Öffnen nur, wenn ein Rest übrig bleibt, der nicht aus einem vorhandenen Anbruch kommen kann. Volle Kartons, Mengen in Krt. und „Nur ganze VE“ bleiben zu.",
-          hu: "Csak akkor bonts, ha marad egy maradék, ami nem jöhet egy már bontott kartonból. Az egész kartonok, a kartonban (Krt.) megadott mennyiség és a „Nur ganze VE” zárva marad.",
-          en: "Only open when there's a remainder that can't come from an existing broken case. Full cartons, quantities in Krt. and “Nur ganze VE” stay closed.",
+          de: "Die Zahl in Klammern ist der Faktor: 6 EVE pro GVE.",
+          hu: "A zárójeles szám a faktor: GVE-nként 6 EVE.",
+          en: "The number in brackets is the factor: 6 EVE per GVE.",
         },
       },
       {
         type: "choice",
         question: {
-          de: "Soll 14 Stk., VE 6, kein Anbruch. Was nimmst du?",
-          hu: "Soll 14 db, VE 6, nincs bontott karton. Mit veszel?",
-          en: "Soll 14 pcs, VE 6, no broken case. What do you take?",
+          de: "Auf dem Karton klebt „ACHTUNG AUSPACK!“. Was bedeutet das?",
+          hu: "A kartonon „ACHTUNG AUSPACK!” címke van. Mit jelent?",
+          en: "The carton has an “ACHTUNG AUSPACK!” label. What does it mean?",
         },
         options: [
           {
-            de: "3 Kartons öffnen und 14 Stück einzeln nehmen",
-            hu: "3 kartont megbontok, és 14 darabot egyenként veszek",
-            en: "Open 3 cartons and take 14 single pieces",
+            de: "Den Karton nicht öffnen.",
+            hu: "A kartont nem szabad megbontani.",
+            en: "Don't open the carton.",
           },
           {
-            de: "2 ganze Kartons + 2 Stück aus einem geöffneten Karton",
-            hu: "2 egész kartont + 2 darabot egy megbontott kartonból",
-            en: "2 full cartons + 2 pieces from an opened carton",
+            de: "Den Karton öffnen und die Produkte einzeln kommissionieren.",
+            hu: "A kartont meg kell bontani, és a termékeket egyenként kell kiszedni.",
+            en: "Open the carton and pick the products individually.",
           },
           {
-            de: "3 ganze Kartons",
-            hu: "3 egész kartont",
-            en: "3 full cartons",
+            de: "Der Karton ist beschädigt.",
+            hu: "A karton sérült.",
+            en: "The carton is damaged.",
           },
         ],
         answer: 1,
         explanation: {
-          de: "14 ÷ 6 = 2 Rest 2. Die 2 ganzen Kartons bleiben zu, nur für die 2 Reststücke wird ein Karton geöffnet. 3 Kartons wären 18 Stück – zu viel.",
-          hu: "14 ÷ 6 = 2, maradék 2. A 2 egész karton zárva marad, csak a 2 maradék darabhoz bontasz meg egy kartont. 3 karton 18 darab lenne – túl sok.",
-          en: "14 ÷ 6 = 2 remainder 2. The 2 full cartons stay closed; only the 2 remaining pieces need an opened carton. 3 cartons would be 18 pieces – too many.",
+          de: "„Auspacken“ = auspacken, öffnen. Aber: Nicht jeder Karton, der geöffnet werden muss, hat diesen Hinweis.",
+          hu: "„Auspacken” = kicsomagolni, megbontani. De: nem minden bontós kartonon van ilyen jelzés.",
+          en: "“Auspacken” = unpack, open. But: not every carton that must be opened has this label.",
+        },
+      },
+      {
+        type: "classify",
+        question: {
+          de: "Einzelnes Stück oder mehrere in der Verpackung?",
+          hu: "Egy darab vagy több darab van a csomagolásban?",
+          en: "A single piece or several in the package?",
+        },
+        categories: [
+          { de: "Ein Stück", hu: "Egy darab", en: "One piece" },
+          { de: "Mehrere Stück", hu: "Több darab", en: "Several pieces" },
+        ],
+        items: [
+          {
+            text: {
+              de: "1 GVE – Staubsauger",
+              hu: "1 GVE – porszívó",
+              en: "1 GVE – vacuum cleaner",
+            },
+            category: 0,
+          },
+          { text: { de: "1 GVE(4)", hu: "1 GVE(4)", en: "1 GVE(4)" }, category: 1 },
+          {
+            text: {
+              de: "1 GVE – „Topfset 5-tlg.“",
+              hu: "1 GVE – „Topfset 5-tlg.” (5 részes edénykészlet)",
+              en: "1 GVE – “Topfset 5-tlg.” (5-piece pot set)",
+            },
+            category: 1,
+          },
+          {
+            text: {
+              de: "1 GVE – Wasserkocher",
+              hu: "1 GVE – vízforraló",
+              en: "1 GVE – kettle",
+            },
+            category: 0,
+          },
+          {
+            text: {
+              de: "1 GVE – „Gläser 6er Pack“",
+              hu: "1 GVE – „Gläser 6er Pack” (6 darabos pohárcsomag)",
+              en: "1 GVE – “Gläser 6er Pack” (pack of 6 glasses)",
+            },
+            category: 1,
+          },
+        ],
+        explanation: {
+          de: "Ohne Faktor ist es meist ein Stück – außer der Artikelname sagt etwas anderes (Set, tlg., 6er Pack, Display).",
+          hu: "Faktor nélkül általában egy darab – kivéve, ha a cikk neve mást mond (Set, tlg., 6er Pack, Display).",
+          en: "Without a factor it's usually one piece – unless the article name says otherwise (Set, tlg., 6er Pack, Display).",
         },
       },
       {
         type: "choice",
         question: {
-          de: "Der Scanner zeigt „Nur ganze VE“, Soll 4 Stk., VE 6. Was tust du?",
-          hu: "A szkenner kiírja: „Nur ganze VE”, Soll 4 db, VE 6. Mit teszel?",
-          en: "The scanner shows “Nur ganze VE”, Soll 4 pcs, VE 6. What do you do?",
+          de: "Auf dem Karton steht „Qty: 12“. Was heißt das?",
+          hu: "A kartonon ez áll: „Qty: 12”. Mit jelent?",
+          en: "The carton says “Qty: 12”. What does it mean?",
         },
         options: [
           {
-            de: "Karton öffnen und 4 Stück nehmen",
-            hu: "Megbontom a kartont, és kiveszek 4 darabot",
-            en: "Open the carton and take 4 pieces",
+            de: "Im Karton sind 12 Stück.",
+            hu: "A kartonban 12 darab van.",
+            en: "There are 12 pieces in the carton.",
           },
           {
-            de: "Einen ganzen Karton (6 Stk.) nehmen",
-            hu: "Egy egész kartont viszek (6 db)",
-            en: "Take a full carton (6 pcs)",
+            de: "Der Karton wiegt 12 kg.",
+            hu: "A karton 12 kg.",
+            en: "The carton weighs 12 kg.",
           },
           {
-            de: "Nicht öffnen und den Vorgesetzten fragen",
-            hu: "Nem bontom meg, és megkérdezem a vezetőt",
-            en: "Don't open it and ask the supervisor",
+            de: "Es ist Lagerplatz 12.",
+            hu: "Ez a 12-es tárhely.",
+            en: "It's location 12.",
           },
         ],
-        answer: 2,
+        answer: 0,
         explanation: {
-          de: "Bei „Nur ganze VE“ wird nie geöffnet. Mehr als bestellt darf aber auch nicht raus – das muss jemand klären.",
-          hu: "„Nur ganze VE” esetén soha nem bontunk. De a rendeltnél többet sem szabad kiadni – ezt valakinek tisztáznia kell.",
-          en: "With “Nur ganze VE” you never open. But you also can't ship more than ordered – someone has to sort it out.",
+          de: "Qty (Quantity), Stck (Stück), Pcs (Pieces) und Menge zeigen die Stückzahl.",
+          hu: "A Qty (Quantity), Stck (Stück), Pcs (Pieces) és Menge a darabszámot jelöli.",
+          en: "Qty (Quantity), Stck (Stück), Pcs (Pieces) and Menge show the number of pieces.",
+        },
+      },
+      {
+        type: "order",
+        question: {
+          de: "Der Barcode lässt sich nicht scannen. In welcher Reihenfolge prüfst du, bevor du öffnest?",
+          hu: "A vonalkód nem olvasható be. Milyen sorrendben ellenőrzöl, mielőtt bontasz?",
+          en: "The barcode won't scan. In which order do you check before opening?",
+        },
+        items: [
+          {
+            de: "Richtiger Komm-Platz?",
+            hu: "Jó Komm-Platzon vagyok?",
+            en: "Right Komm-Platz?",
+          },
+          {
+            de: "Alle Barcodes auf dem Karton probieren",
+            hu: "Az összes barcode kipróbálása a kartonon",
+            en: "Try all barcodes on the carton",
+          },
+          {
+            de: "Stückzahl auf dem Karton vergleichen",
+            hu: "A kartonon lévő darabszám összevetése",
+            en: "Compare the quantity on the carton",
+          },
+          {
+            de: "Artikelnamen prüfen",
+            hu: "A termék nevének ellenőrzése",
+            en: "Check the article name",
+          },
+        ],
+        explanation: {
+          de: "Erst den Platz sicherstellen, dann alle Barcodes probieren. Geht keiner, helfen Stückzahl und Artikelname weiter.",
+          hu: "Előbb a hely legyen biztos, aztán próbáld ki az összes barcode-ot. Ha egyik sem megy, a darabszám és a termék neve segít.",
+          en: "First make sure of the location, then try all barcodes. If none works, the quantity and article name help.",
         },
       },
     ],
