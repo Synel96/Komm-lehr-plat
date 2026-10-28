@@ -53,11 +53,11 @@ describe("glossary search", () => {
     expect(byAbbr[0]?.id).toBe("mhd");
 
     const byFullForm = filterGlossary(GLOSSARY, {
-      query: "versandeinheit",
+      query: "mindesthaltbarkeitsdatum",
       lang: "de",
       category: "all",
     });
-    expect(byFullForm[0]?.id).toBe("nve");
+    expect(byFullForm[0]?.id).toBe("mhd");
   });
 
   it("searches explanations in the current language, after term matches", () => {

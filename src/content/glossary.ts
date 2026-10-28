@@ -397,31 +397,6 @@ export const GLOSSARY: GlossaryEntry[] = [
     },
   },
   {
-    id: "nve",
-    term: "NVE",
-    full: "Nummer der Versandeinheit",
-    kind: "abbr",
-    category: "etiketten",
-    explanation: {
-      de: "18-stellige Nummer auf dem Versandetikett, die jede Versandeinheit (z. B. Palette) eindeutig kennzeichnet. International: SSCC.",
-      hu: "18 jegyű szám a szállítási címkén, amely minden szállítási egységet (pl. raklapot) egyedileg azonosít. Nemzetközileg: SSCC.",
-      en: "18-digit number on the shipping label that uniquely identifies each shipping unit (e.g. a pallet). International name: SSCC.",
-    },
-    example: "NVE 3 40123450 00000001 7",
-  },
-  {
-    id: "sscc",
-    term: "SSCC",
-    full: "Serial Shipping Container Code",
-    kind: "abbr",
-    category: "etiketten",
-    explanation: {
-      de: "Internationaler Name für die NVE.",
-      hu: "Az NVE nemzetközi neve.",
-      en: "International name for the NVE.",
-    },
-  },
-  {
     id: "ean",
     term: "EAN / GTIN",
     full: "European Article Number / Global Trade Item Number",
