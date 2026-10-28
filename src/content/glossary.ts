@@ -210,7 +210,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     id: "zerbrechlich",
     term: "Zerbrechlich",
     kind: "word",
-    category: "qualitaet",
+    category: "mengen",
     explanation: {
       de: "Hinweis auf dem Karton: Die Ware ist zerbrechlich. Vorsichtig nehmen, nicht werfen und nichts Schweres darauf stellen.",
       hu: "Törékeny. Figyelmeztetés a kartonon: az áru törékeny. Óvatosan fogd meg, ne dobd, és ne tegyél rá nehezet.",
@@ -222,7 +222,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     id: "glas",
     term: "Glas",
     kind: "word",
-    category: "qualitaet",
+    category: "mengen",
     explanation: {
       de: "Warnhinweis auf dem Karton: Im Karton ist Glas. Wie zerbrechliche Ware behandeln – vorsichtig nehmen und nicht werfen.",
       hu: "Üveg. Figyelmeztetés a kartonon: a dobozban üveg van. Úgy kezeld, mint a törékeny árut – óvatosan, ne dobd.",
@@ -234,7 +234,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     id: "vorsicht-glas",
     term: "Vorsicht Glas!",
     kind: "word",
-    category: "qualitaet",
+    category: "mengen",
     explanation: {
       de: "Warnhinweis auf dem Karton: Achtung, im Karton ist Glas. Vorsichtig nehmen, nicht werfen, nichts Schweres darauf stellen.",
       hu: "„Vigyázat, üveg!” Figyelmeztetés a kartonon: a dobozban üveg van. Óvatosan fogd meg, ne dobd, és ne tegyél rá nehezet.",
@@ -245,7 +245,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     id: "vorsicht",
     term: "Vorsicht",
     kind: "word",
-    category: "qualitaet",
+    category: "mengen",
     explanation: {
       de: "Achtung, aufpassen. Steht auf Warnhinweisen, z. B. „Vorsicht Glas!“ oder „Vorsicht zerbrechlich!“.",
       hu: "Vigyázat, figyelj. Figyelmeztető feliratokon szerepel, pl. „Vorsicht Glas!” (Vigyázat, üveg!) vagy „Vorsicht zerbrechlich!” (Vigyázat, törékeny!).",
