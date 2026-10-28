@@ -47,7 +47,8 @@
     "noResults": "Nincs találat. Próbálj egy másik szót.",
     "example": "Példa",
     "abbrTerm": "Rövidítés",
-    "abbrFull": "Teljes alak és jelentés"
+    "abbrFull": "Teljes alak és jelentés",
+    "backToLesson": "Vissza a leckéhez: {{title}}"
   },
   "error": {
     "notFoundTitle": "Az oldal nem található",
@@ -95,6 +96,8 @@
     "chooseChapterCta": "Fejezetek",
     "backToAreas": "Összes témakör",
     "backToChapters": "{{area}}: összes fejezet",
-    "allChapters": "Összes fejezet"
+    "allChapters": "Összes fejezet",
+    "resumed": "Ott folytatod, ahol abbahagytad.",
+    "startOver": "Elölről kezdem"
   }
 }

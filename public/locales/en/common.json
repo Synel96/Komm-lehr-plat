@@ -47,7 +47,8 @@
     "noResults": "Nothing found. Try another word.",
     "example": "Example",
     "abbrTerm": "Abbreviation",
-    "abbrFull": "Full form & meaning"
+    "abbrFull": "Full form & meaning",
+    "backToLesson": "Back to the lesson: {{title}}"
   },
   "error": {
     "notFoundTitle": "Page not found",
@@ -95,6 +96,8 @@
     "chooseChapterCta": "View chapters",
     "backToAreas": "All topics",
     "backToChapters": "{{area}}: all chapters",
-    "allChapters": "All chapters"
+    "allChapters": "All chapters",
+    "resumed": "You're continuing where you left off.",
+    "startOver": "Start over"
   }
 }

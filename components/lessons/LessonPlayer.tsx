@@ -1,11 +1,18 @@
-import { ArrowLeft, ArrowRight, BookOpen, RotateCcw, Trophy } from "lucide-react";
-import { useRef, useState } from "react";
+import { ArrowLeft, ArrowRight, BookOpen, History, RotateCcw, Trophy } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { GLOSSARY } from "@/src/content/glossary";
 import { lessonPath, type Lesson } from "@/src/content/lessons";
 import type { LessonResult } from "@/src/hooks/use-lesson-progress";
 import { useLang } from "@/src/hooks/use-lang";
+import {
+  clearPosition,
+  isValidPosition,
+  readPosition,
+  saveLessonReturn,
+  savePosition,
+} from "@/src/lesson-position";
 import { ChoiceExercise } from "./ChoiceExercise";
 import { ClassifyExercise } from "./ClassifyExercise";
 import { OrderExercise } from "./OrderExercise";
@@ -29,9 +36,48 @@ export function LessonPlayer({ lesson, nextLesson, onFinished }: Props) {
   const [answers, setAnswers] = useState<boolean[]>([]);
   // Bumped on "try again" so the exercise components remount with fresh state.
   const [attempt, setAttempt] = useState(0);
+  // True when the lesson was picked up from a stored position (shows a notice).
+  const [resumed, setResumed] = useState(false);
+  const skipNextSave = useRef(true);
 
   const totalSteps = lesson.steps.length;
   const totalExercises = lesson.exercises.length;
+
+  // Pick up where the learner left off (e.g. after looking up a word in the
+  // glossary). Done after mount: the prerendered HTML always shows step 1.
+  useEffect(() => {
+    const stored = readPosition(lesson.slug);
+    if (!stored || !isValidPosition(stored, totalSteps, totalExercises)) return;
+    if (stored.phase === "steps" && stored.stepIndex === 0) return;
+    /* eslint-disable react-hooks/set-state-in-effect -- localStorage is only readable after mount */
+    setPhase(stored.phase);
+    setStepIndex(stored.stepIndex);
+    setExerciseIndex(stored.exerciseIndex);
+    setAnswers(stored.answers);
+    setResumed(true);
+    /* eslint-enable react-hooks/set-state-in-effect */
+  }, [lesson.slug, totalSteps, totalExercises]);
+
+  // Remember the current position on every move; forget it once finished.
+  useEffect(() => {
+    // The first run would store the initial state before the restore above
+    // has been applied, so skip it.
+    if (skipNextSave.current) {
+      skipNextSave.current = false;
+      return;
+    }
+    if (phase === "result") {
+      clearPosition(lesson.slug);
+      return;
+    }
+    savePosition(lesson.slug, {
+      phase,
+      stepIndex,
+      exerciseIndex,
+      // An answered-but-not-continued exercise is asked again after resuming.
+      answers: answers.slice(0, exerciseIndex),
+    });
+  }, [lesson.slug, phase, stepIndex, exerciseIndex, answers]);
   const done =
     phase === "steps"
       ? stepIndex
@@ -46,11 +92,13 @@ export function LessonPlayer({ lesson, nextLesson, onFinished }: Props) {
   };
 
   const goToStep = (index: number) => {
+    setResumed(false);
     setStepIndex(index);
     scrollToTop();
   };
 
   const startExercises = () => {
+    setResumed(false);
     setPhase("exercises");
     setExerciseIndex(0);
     setAnswers([]);
@@ -58,6 +106,7 @@ export function LessonPlayer({ lesson, nextLesson, onFinished }: Props) {
   };
 
   const nextExercise = () => {
+    setResumed(false);
     if (exerciseIndex + 1 < totalExercises) {
       setExerciseIndex(exerciseIndex + 1);
     } else {
@@ -73,6 +122,7 @@ export function LessonPlayer({ lesson, nextLesson, onFinished }: Props) {
   };
 
   const restart = () => {
+    setResumed(false);
     setAttempt(attempt + 1);
     setPhase("steps");
     setStepIndex(0);
@@ -101,6 +151,21 @@ export function LessonPlayer({ lesson, nextLesson, onFinished }: Props) {
         />
       </div>
 
+      {resumed && (
+        <div
+          role="status"
+          className="mt-4 flex flex-wrap items-center justify-between gap-2 rounded-lg border border-amber-400/50 bg-amber-400/10 px-4 py-2 text-sm"
+        >
+          <span className="inline-flex items-center gap-2">
+            <History className="size-4 shrink-0" aria-hidden="true" />
+            {t("lessons.resumed")}
+          </span>
+          <Button variant="ghost" size="sm" onClick={restart}>
+            {t("lessons.startOver")}
+          </Button>
+        </div>
+      )}
+
       <div className="bg-card text-card-foreground mt-6 rounded-xl border p-6 sm:p-8">
         {phase === "steps" && (
           <>
@@ -124,6 +189,12 @@ export function LessonPlayer({ lesson, nextLesson, onFinished }: Props) {
                       <li key={id}>
                         <a
                           href={href(`/abkuerzungen#${id}`)}
+                          onClick={() =>
+                            saveLessonReturn({
+                              href: window.location.pathname,
+                              title: lesson.title[lang],
+                            })
+                          }
                           lang="de"
                           className="hover:bg-muted inline-block rounded-full border px-3 py-1 text-sm"
                         >

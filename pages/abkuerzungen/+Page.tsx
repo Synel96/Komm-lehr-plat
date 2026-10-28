@@ -1,9 +1,10 @@
-import { Search } from "lucide-react";
-import { useMemo, useState } from "react";
+import { ArrowLeft, Search } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { GLOSSARY, GLOSSARY_CATEGORIES } from "@/src/content/glossary";
 import { filterGlossary, sortGlossary, type GlossaryFilter } from "@/src/content/search";
 import { useLang } from "@/src/hooks/use-lang";
+import { clearLessonReturn, readLessonReturn, type LessonReturn } from "@/src/lesson-position";
 import { cn } from "@/lib/utils";
 
 const SORTED_GLOSSARY = sortGlossary(GLOSSARY);
@@ -13,6 +14,13 @@ export default function Page() {
   const { lang } = useLang();
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<GlossaryFilter>("all");
+  // Set when a word was opened from a lesson: offers a way back to it.
+  const [lessonReturn, setLessonReturn] = useState<LessonReturn | null>(null);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- sessionStorage is only readable after mount
+    setLessonReturn(readLessonReturn());
+  }, []);
 
   const results = useMemo(
     () => filterGlossary(SORTED_GLOSSARY, { query, lang, filter }),
@@ -27,7 +35,7 @@ export default function Page() {
   ];
 
   return (
-    <div className="mx-auto w-full max-w-4xl px-6 py-12">
+    <div className={cn("mx-auto w-full max-w-4xl px-6 py-12", lessonReturn && "pb-28")}>
       <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">{t("glossary.title")}</h1>
       <p className="text-muted-foreground mt-3 max-w-2xl text-lg">{t("glossary.intro")}</p>
 
@@ -156,6 +164,22 @@ export default function Page() {
             </li>
           ))}
         </ul>
+      )}
+
+      {lessonReturn && (
+        // Pinned to the bottom: the page usually opens scrolled to the looked-up word.
+        <div className="pointer-events-none fixed inset-x-0 bottom-4 z-30 flex justify-center px-4">
+          <a
+            href={lessonReturn.href}
+            onClick={clearLessonReturn}
+            className="pointer-events-auto inline-flex max-w-full items-center gap-2 rounded-full bg-amber-400 px-5 py-3 text-sm font-semibold text-black shadow-lg hover:bg-amber-300"
+          >
+            <ArrowLeft className="size-4 shrink-0" aria-hidden="true" />
+            <span className="truncate">
+              {t("glossary.backToLesson", { title: lessonReturn.title })}
+            </span>
+          </a>
+        </div>
       )}
     </div>
   );
