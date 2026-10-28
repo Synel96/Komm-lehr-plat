@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { GLOSSARY } from "@/src/content/glossary";
-import type { Lesson } from "@/src/content/lessons";
+import { lessonPath, type Lesson } from "@/src/content/lessons";
 import type { LessonResult } from "@/src/hooks/use-lesson-progress";
 import { useLang } from "@/src/hooks/use-lang";
 import { ChoiceExercise } from "./ChoiceExercise";
@@ -228,14 +228,14 @@ export function LessonPlayer({ lesson, nextLesson, onFinished }: Props) {
               </Button>
               {nextLesson ? (
                 <Button asChild>
-                  <a href={href(`/lektionen/${nextLesson.slug}`)}>
+                  <a href={href(lessonPath(nextLesson))}>
                     {t("lessons.nextLesson")}
                     <ArrowRight aria-hidden="true" />
                   </a>
                 </Button>
               ) : (
                 <Button asChild>
-                  <a href={href("/lektionen")}>{t("lessons.backToOverview")}</a>
+                  <a href={href(`/lektionen/${lesson.area}`)}>{t("lessons.allChapters")}</a>
                 </Button>
               )}
             </div>

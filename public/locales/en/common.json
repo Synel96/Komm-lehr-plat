@@ -56,8 +56,7 @@
   },
   "lessons": {
     "title": "Lessons",
-    "intro": "Short, interactive lessons by topic. Read through the steps, then test yourself with small exercises.",
-    "overallProgress": "{{done}} of {{total}} lessons completed (on this device)",
+    "intro": "Choose a topic and then a chapter. Each chapter is a short, interactive lesson with exercises.",
     "minutes_one": "{{count}} min",
     "minutes_other": "{{count}} min",
     "exerciseCount_one": "{{count}} exercise",
@@ -86,6 +85,14 @@
     "retry": "Repeat exercises",
     "restart": "Restart lesson",
     "nextLesson": "Next lesson",
-    "backToOverview": "All lessons"
+    "chapterCount_one": "{{count}} chapter",
+    "chapterCount_other": "{{count}} chapters",
+    "chapterNo": "Chapter {{n}}",
+    "areaProgress": "{{done}} of {{total}} done",
+    "chooseChapter": "Choose a chapter.",
+    "chooseChapterCta": "View chapters",
+    "backToAreas": "All topics",
+    "backToChapters": "{{area}}: all chapters",
+    "allChapters": "All chapters"
   }
 }

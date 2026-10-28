@@ -56,8 +56,7 @@
   },
   "lessons": {
     "title": "Leckék",
-    "intro": "Rövid, interaktív leckék témakörönként. Olvasd végig a lépéseket, aztán teszteld magad kis feladatokkal.",
-    "overallProgress": "{{done}} / {{total}} lecke kész (ezen az eszközön)",
+    "intro": "Válassz egy témakört, azon belül pedig egy fejezetet. Minden fejezet egy rövid, interaktív lecke feladatokkal.",
     "minutes_one": "{{count}} perc",
     "minutes_other": "{{count}} perc",
     "exerciseCount_one": "{{count}} feladat",
@@ -86,6 +85,14 @@
     "retry": "Feladatok újra",
     "restart": "Lecke elölről",
     "nextLesson": "Következő lecke",
-    "backToOverview": "Összes lecke"
+    "chapterCount_one": "{{count}} fejezet",
+    "chapterCount_other": "{{count}} fejezet",
+    "chapterNo": "{{n}}. fejezet",
+    "areaProgress": "{{done}} / {{total}} kész",
+    "chooseChapter": "Válassz egy fejezetet.",
+    "chooseChapterCta": "Fejezetek",
+    "backToAreas": "Összes témakör",
+    "backToChapters": "{{area}}: összes fejezet",
+    "allChapters": "Összes fejezet"
   }
 }

@@ -4,7 +4,7 @@ import en from "../../public/locales/en/common.json";
 import hu from "../../public/locales/hu/common.json";
 import { SUPPORTED_LANGS } from "../i18n-config";
 import { GLOSSARY } from "./glossary";
-import { LESSONS, TOPICS } from "./lessons";
+import { AREAS, LESSONS } from "./lessons";
 import type { Localized } from "./types";
 
 function expectTranslated(text: Localized) {
@@ -28,14 +28,14 @@ describe("lessons", () => {
     for (const slug of slugs) expect(slug).toMatch(/^[a-z0-9-]+$/);
   });
 
-  it("puts every lesson in a known topic, and every topic has a lesson", () => {
-    const topicIds = TOPICS.map((topic) => topic.id);
-    for (const lesson of LESSONS) expect(topicIds).toContain(lesson.topic);
-    for (const id of topicIds) expect(LESSONS.some((lesson) => lesson.topic === id)).toBe(true);
+  it("puts every lesson in a known area, and every area has a chapter", () => {
+    const areaIds = AREAS.map((area) => area.id);
+    for (const lesson of LESSONS) expect(areaIds).toContain(lesson.area);
+    for (const id of areaIds) expect(LESSONS.some((lesson) => lesson.area === id)).toBe(true);
   });
 
   it("has every text translated", () => {
-    for (const topic of TOPICS) [topic.title, topic.description].forEach(expectTranslated);
+    for (const area of AREAS) [area.title, area.description].forEach(expectTranslated);
     for (const lesson of LESSONS) {
       [lesson.title, lesson.summary].forEach(expectTranslated);
       for (const step of lesson.steps) [step.title, step.text].forEach(expectTranslated);

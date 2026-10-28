@@ -1,4 +1,6 @@
-// Lektionen: interaktive Lerneinheiten, nach Themen gruppiert.
+// Lektionen: interaktive Lerneinheiten. Jede Lektion ist ein Kapitel in
+// einem großen Themenbereich (AREAS); die Reihenfolge in LESSONS ist die
+// Kapitel-Reihenfolge innerhalb des Bereichs.
 //
 // Eine Lektion besteht aus Schritten (werden einzeln durchgeblättert) und
 // Übungen am Ende:
@@ -9,19 +11,16 @@
 //             Index in `categories`, ab 0)
 //
 // `terms` verweist auf Einträge im Wörterbuch (ids aus glossary.ts).
-// Neue Lektion: unten an LESSONS anhängen, `slug` wird Teil der URL.
+// Neue Lektion: an LESSONS anhängen (Bereich in `area`), `slug` wird Teil der
+// URL: /lektionen/<area>/<slug>.
 
 import type { Localized } from "./types";
 
-export type TopicId =
-  | "scanner"
-  | "zeiterfassung"
-  | "kommissionierung"
-  | "etiketten"
-  | "sonderfaelle";
+/** Großer Themenbereich; die Lektionen darin sind seine Kapitel. */
+export type AreaId = "scanner" | "kommissionierung";
 
-export type Topic = {
-  id: TopicId;
+export type Area = {
+  id: AreaId;
   title: Localized;
   description: Localized;
 };
@@ -59,7 +58,7 @@ export type Exercise = ChoiceExercise | OrderExercise | ClassifyExercise;
 
 export type Lesson = {
   slug: string;
-  topic: TopicId;
+  area: AreaId;
   title: Localized;
   summary: Localized;
   minutes: number;
@@ -67,54 +66,23 @@ export type Lesson = {
   exercises: Exercise[];
 };
 
-export const TOPICS: Topic[] = [
+export const AREAS: Area[] = [
   {
     id: "scanner",
-    title: { de: "Der Scanner", hu: "A szkenner", en: "The scanner" },
+    title: { de: "Scanner", hu: "Szkenner", en: "Scanner" },
     description: {
-      de: "Anmelden, Tasten und richtig scannen.",
-      hu: "Bejelentkezés, gombok és helyes beolvasás.",
-      en: "Logging in, keys and scanning correctly.",
-    },
-  },
-  {
-    id: "zeiterfassung",
-    title: { de: "Zeiterfassung", hu: "Időnyilvántartás", en: "Time tracking" },
-    description: {
-      de: "Kommen, Pause, Nebenzeit, Gehen – und warum das für deine Leistung zählt.",
-      hu: "Kommen, Pause, Nebenzeit, Gehen – és miért számít ez a Leistungodnál.",
-      en: "Kommen, Pause, Nebenzeit, Gehen – and why it matters for your Leistung.",
+      de: "Anmelden, Zeit buchen, scannen und Etiketten lesen.",
+      hu: "Bejelentkezés, időcsekkolás, beolvasás és címkék olvasása.",
+      en: "Logging in, booking time, scanning and reading labels.",
     },
   },
   {
     id: "kommissionierung",
-    title: { de: "Kommissionieren", hu: "Komissiózás", en: "Order picking" },
+    title: { de: "Kommissionierung", hu: "Komissiózás", en: "Order picking" },
     description: {
-      de: "Vom Auftrag bis zur fertigen Palette.",
-      hu: "A megbízástól a kész raklapig.",
-      en: "From the order to the finished pallet.",
-    },
-  },
-  {
-    id: "etiketten",
-    title: { de: "Etiketten & Nummern", hu: "Címkék és számok", en: "Labels & numbers" },
-    description: {
-      de: "Lagerplätze, Barcodes und Etiketten lesen.",
-      hu: "Tárhelyek, vonalkódok és címkék olvasása.",
-      en: "Reading locations, barcodes and labels.",
-    },
-  },
-  {
-    id: "sonderfaelle",
-    title: {
-      de: "Fehler & Sonderfälle",
-      hu: "Hibák és különleges esetek",
-      en: "Errors & special cases",
-    },
-    description: {
-      de: "Was tun, wenn etwas nicht passt?",
-      hu: "Mit tegyél, ha valami nem stimmel?",
-      en: "What to do when something doesn't fit?",
+      de: "Vom Pickauftrag bis zu Fehlmenge und Anbruch.",
+      hu: "A kiszedési megbízástól a hiányig és a bontott kartonig.",
+      en: "From the pick order to shortages and broken cases.",
     },
   },
 ];
@@ -122,7 +90,7 @@ export const TOPICS: Topic[] = [
 export const LESSONS: Lesson[] = [
   {
     slug: "scanner-grundlagen",
-    topic: "scanner",
+    area: "scanner",
     minutes: 5,
     title: {
       de: "Scanner-Grundlagen",
@@ -260,7 +228,7 @@ export const LESSONS: Lesson[] = [
   },
   {
     slug: "zeiterfassung",
-    topic: "zeiterfassung",
+    area: "scanner",
     minutes: 7,
     title: {
       de: "Zeit buchen am Scanner",
@@ -454,8 +422,120 @@ export const LESSONS: Lesson[] = [
     ],
   },
   {
+    slug: "etiketten-lesen",
+    area: "scanner",
+    minutes: 6,
+    title: {
+      de: "Etiketten und Nummern lesen",
+      hu: "Címkék és számok olvasása",
+      en: "Reading labels and numbers",
+    },
+    summary: {
+      de: "Lagerplatz-Nummer, EAN, NVE, MHD und Charge erkennen.",
+      hu: "Tárhelyszám, EAN, NVE, MHD és sarzs felismerése.",
+      en: "Recognising location numbers, EAN, NVE, best-before date and batch.",
+    },
+    steps: [
+      {
+        title: { de: "Die Lagerplatz-Nummer", hu: "A tárhelyszám", en: "The location number" },
+        text: {
+          de: "12-04-02-B bedeutet meist: Gang 12, Regal 04, Ebene 02 (von unten gezählt), Fach B. So findest du jeden Platz, ohne zu suchen.",
+          hu: "A 12-04-02-B általában ezt jelenti: 12-es sor, 04-es állvány, 02-es szint (alulról számolva), B rekesz. Így bármelyik helyet keresgélés nélkül megtalálod.",
+          en: "12-04-02-B usually means: aisle 12, rack 04, level 02 (counted from the bottom), bin B. This way you find every location without searching.",
+        },
+        terms: ["lp"],
+      },
+      {
+        title: { de: "EAN auf dem Produkt", hu: "EAN a terméken", en: "EAN on the product" },
+        text: {
+          de: "Der Strichcode auf dem Artikel selbst ist meist die EAN (13 Ziffern). Damit erkennt der Scanner, welcher Artikel es ist.",
+          hu: "Magán a terméken lévő vonalkód általában az EAN (13 számjegy). Ebből ismeri fel a szkenner, melyik cikkről van szó.",
+          en: "The barcode on the item itself is usually the EAN (13 digits). It tells the scanner which item it is.",
+        },
+        terms: ["ean", "art-nr"],
+      },
+      {
+        title: { de: "NVE auf der Palette", hu: "NVE a raklapon", en: "NVE on the pallet" },
+        text: {
+          de: "Das große Versandetikett auf Paletten trägt die NVE (18 Ziffern). Sie gilt für die ganze Palette, nicht für einen einzelnen Artikel.",
+          hu: "A raklapokon lévő nagy szállítási címkén van az NVE (18 számjegy). Az egész raklapra vonatkozik, nem egy-egy cikkre.",
+          en: "The large shipping label on pallets carries the NVE (18 digits). It identifies the whole pallet, not a single item.",
+        },
+        terms: ["nve", "sscc"],
+      },
+      {
+        title: { de: "MHD und Charge", hu: "MHD és sarzs", en: "Best-before date and batch" },
+        text: {
+          de: "Das MHD steht oft als „MHD“, „mind. haltbar bis“ oder als Datum neben einem Sanduhr-Symbol. Die Charge erkennst du an „Ch.-B.“, „LOT“ oder „Ch.-Nr.“.",
+          hu: "Az MHD gyakran „MHD”, „mind. haltbar bis” felirattal vagy homokóra-jel melletti dátumként szerepel. A sarzsot a „Ch.-B.”, „LOT” vagy „Ch.-Nr.” jelölésről ismered fel.",
+          en: "The best-before date often appears as “MHD”, “mind. haltbar bis” or a date next to an hourglass symbol. The batch is marked “Ch.-B.”, “LOT” or “Ch.-Nr.”.",
+        },
+        terms: ["mhd", "charge"],
+      },
+    ],
+    exercises: [
+      {
+        type: "choice",
+        question: {
+          de: "Lagerplatz 07-15-03-A: In welchem Gang ist er?",
+          hu: "07-15-03-A tárhely: melyik sorban van?",
+          en: "Location 07-15-03-A: which aisle is it in?",
+        },
+        options: [
+          { de: "Gang 07", hu: "07-es sor", en: "Aisle 07" },
+          { de: "Gang 15", hu: "15-ös sor", en: "Aisle 15" },
+          { de: "Gang 03", hu: "03-as sor", en: "Aisle 03" },
+        ],
+        answer: 0,
+        explanation: {
+          de: "Die erste Zahl ist der Gang: 07. Dann Regal 15, Ebene 03, Fach A.",
+          hu: "Az első szám a sor: 07. Utána 15-ös állvány, 03-as szint, A rekesz.",
+          en: "The first number is the aisle: 07. Then rack 15, level 03, bin A.",
+        },
+      },
+      {
+        type: "choice",
+        question: {
+          de: "Welche Nummer kennzeichnet eine ganze Versand-Palette?",
+          hu: "Melyik szám azonosít egy teljes szállítási raklapot?",
+          en: "Which number identifies a whole shipping pallet?",
+        },
+        options: [
+          { de: "EAN", hu: "EAN", en: "EAN" },
+          { de: "NVE / SSCC", hu: "NVE / SSCC", en: "NVE / SSCC" },
+          { de: "Charge", hu: "Sarzs (Charge)", en: "Batch" },
+        ],
+        answer: 1,
+        explanation: {
+          de: "Die NVE (international SSCC) gilt für die Versandeinheit. Die EAN gehört zum Artikel, die Charge zur Produktion.",
+          hu: "Az NVE (nemzetközileg SSCC) a szállítási egységre vonatkozik. Az EAN a cikkhez, a sarzs a gyártáshoz tartozik.",
+          en: "The NVE (SSCC) identifies the shipping unit. The EAN belongs to the item, the batch to production.",
+        },
+      },
+      {
+        type: "choice",
+        question: {
+          de: "Auf einem Karton steht „LOT 24A117“. Was ist das?",
+          hu: "Egy kartonon ez áll: „LOT 24A117”. Mi ez?",
+          en: "A carton says “LOT 24A117”. What is it?",
+        },
+        options: [
+          { de: "Die Charge", hu: "A sarzs (Charge)", en: "The batch" },
+          { de: "Das MHD", hu: "Az MHD", en: "The best-before date" },
+          { de: "Der Lagerplatz", hu: "A tárhely", en: "The location" },
+        ],
+        answer: 0,
+        explanation: {
+          de: "LOT ist die internationale Bezeichnung für Charge.",
+          hu: "A LOT a sarzs (Charge) nemzetközi jelölése.",
+          en: "LOT is the international term for batch.",
+        },
+      },
+    ],
+  },
+  {
     slug: "pickauftrag",
-    topic: "kommissionierung",
+    area: "kommissionierung",
     minutes: 7,
     title: {
       de: "Ein Pickauftrag Schritt für Schritt",
@@ -605,7 +685,7 @@ export const LESSONS: Lesson[] = [
   },
   {
     slug: "fifo-fefo",
-    topic: "kommissionierung",
+    area: "kommissionierung",
     minutes: 4,
     title: {
       de: "Welche Ware zuerst? FIFO & FEFO",
@@ -694,7 +774,7 @@ export const LESSONS: Lesson[] = [
   },
   {
     slug: "anbruch",
-    topic: "kommissionierung",
+    area: "kommissionierung",
     minutes: 6,
     title: {
       de: "Karton öffnen oder nicht? Anbruch & ganze VE",
@@ -892,120 +972,8 @@ export const LESSONS: Lesson[] = [
     ],
   },
   {
-    slug: "etiketten-lesen",
-    topic: "etiketten",
-    minutes: 6,
-    title: {
-      de: "Etiketten und Nummern lesen",
-      hu: "Címkék és számok olvasása",
-      en: "Reading labels and numbers",
-    },
-    summary: {
-      de: "Lagerplatz-Nummer, EAN, NVE, MHD und Charge erkennen.",
-      hu: "Tárhelyszám, EAN, NVE, MHD és sarzs felismerése.",
-      en: "Recognising location numbers, EAN, NVE, best-before date and batch.",
-    },
-    steps: [
-      {
-        title: { de: "Die Lagerplatz-Nummer", hu: "A tárhelyszám", en: "The location number" },
-        text: {
-          de: "12-04-02-B bedeutet meist: Gang 12, Regal 04, Ebene 02 (von unten gezählt), Fach B. So findest du jeden Platz, ohne zu suchen.",
-          hu: "A 12-04-02-B általában ezt jelenti: 12-es sor, 04-es állvány, 02-es szint (alulról számolva), B rekesz. Így bármelyik helyet keresgélés nélkül megtalálod.",
-          en: "12-04-02-B usually means: aisle 12, rack 04, level 02 (counted from the bottom), bin B. This way you find every location without searching.",
-        },
-        terms: ["lp"],
-      },
-      {
-        title: { de: "EAN auf dem Produkt", hu: "EAN a terméken", en: "EAN on the product" },
-        text: {
-          de: "Der Strichcode auf dem Artikel selbst ist meist die EAN (13 Ziffern). Damit erkennt der Scanner, welcher Artikel es ist.",
-          hu: "Magán a terméken lévő vonalkód általában az EAN (13 számjegy). Ebből ismeri fel a szkenner, melyik cikkről van szó.",
-          en: "The barcode on the item itself is usually the EAN (13 digits). It tells the scanner which item it is.",
-        },
-        terms: ["ean", "art-nr"],
-      },
-      {
-        title: { de: "NVE auf der Palette", hu: "NVE a raklapon", en: "NVE on the pallet" },
-        text: {
-          de: "Das große Versandetikett auf Paletten trägt die NVE (18 Ziffern). Sie gilt für die ganze Palette, nicht für einen einzelnen Artikel.",
-          hu: "A raklapokon lévő nagy szállítási címkén van az NVE (18 számjegy). Az egész raklapra vonatkozik, nem egy-egy cikkre.",
-          en: "The large shipping label on pallets carries the NVE (18 digits). It identifies the whole pallet, not a single item.",
-        },
-        terms: ["nve", "sscc"],
-      },
-      {
-        title: { de: "MHD und Charge", hu: "MHD és sarzs", en: "Best-before date and batch" },
-        text: {
-          de: "Das MHD steht oft als „MHD“, „mind. haltbar bis“ oder als Datum neben einem Sanduhr-Symbol. Die Charge erkennst du an „Ch.-B.“, „LOT“ oder „Ch.-Nr.“.",
-          hu: "Az MHD gyakran „MHD”, „mind. haltbar bis” felirattal vagy homokóra-jel melletti dátumként szerepel. A sarzsot a „Ch.-B.”, „LOT” vagy „Ch.-Nr.” jelölésről ismered fel.",
-          en: "The best-before date often appears as “MHD”, “mind. haltbar bis” or a date next to an hourglass symbol. The batch is marked “Ch.-B.”, “LOT” or “Ch.-Nr.”.",
-        },
-        terms: ["mhd", "charge"],
-      },
-    ],
-    exercises: [
-      {
-        type: "choice",
-        question: {
-          de: "Lagerplatz 07-15-03-A: In welchem Gang ist er?",
-          hu: "07-15-03-A tárhely: melyik sorban van?",
-          en: "Location 07-15-03-A: which aisle is it in?",
-        },
-        options: [
-          { de: "Gang 07", hu: "07-es sor", en: "Aisle 07" },
-          { de: "Gang 15", hu: "15-ös sor", en: "Aisle 15" },
-          { de: "Gang 03", hu: "03-as sor", en: "Aisle 03" },
-        ],
-        answer: 0,
-        explanation: {
-          de: "Die erste Zahl ist der Gang: 07. Dann Regal 15, Ebene 03, Fach A.",
-          hu: "Az első szám a sor: 07. Utána 15-ös állvány, 03-as szint, A rekesz.",
-          en: "The first number is the aisle: 07. Then rack 15, level 03, bin A.",
-        },
-      },
-      {
-        type: "choice",
-        question: {
-          de: "Welche Nummer kennzeichnet eine ganze Versand-Palette?",
-          hu: "Melyik szám azonosít egy teljes szállítási raklapot?",
-          en: "Which number identifies a whole shipping pallet?",
-        },
-        options: [
-          { de: "EAN", hu: "EAN", en: "EAN" },
-          { de: "NVE / SSCC", hu: "NVE / SSCC", en: "NVE / SSCC" },
-          { de: "Charge", hu: "Sarzs (Charge)", en: "Batch" },
-        ],
-        answer: 1,
-        explanation: {
-          de: "Die NVE (international SSCC) gilt für die Versandeinheit. Die EAN gehört zum Artikel, die Charge zur Produktion.",
-          hu: "Az NVE (nemzetközileg SSCC) a szállítási egységre vonatkozik. Az EAN a cikkhez, a sarzs a gyártáshoz tartozik.",
-          en: "The NVE (SSCC) identifies the shipping unit. The EAN belongs to the item, the batch to production.",
-        },
-      },
-      {
-        type: "choice",
-        question: {
-          de: "Auf einem Karton steht „LOT 24A117“. Was ist das?",
-          hu: "Egy kartonon ez áll: „LOT 24A117”. Mi ez?",
-          en: "A carton says “LOT 24A117”. What is it?",
-        },
-        options: [
-          { de: "Die Charge", hu: "A sarzs (Charge)", en: "The batch" },
-          { de: "Das MHD", hu: "Az MHD", en: "The best-before date" },
-          { de: "Der Lagerplatz", hu: "A tárhely", en: "The location" },
-        ],
-        answer: 0,
-        explanation: {
-          de: "LOT ist die internationale Bezeichnung für Charge.",
-          hu: "A LOT a sarzs (Charge) nemzetközi jelölése.",
-          en: "LOT is the international term for batch.",
-        },
-      },
-    ],
-  },
-  {
     slug: "fehlmenge-schaden",
-    topic: "sonderfaelle",
+    area: "kommissionierung",
     minutes: 6,
     title: {
       de: "Fehlmenge, Schaden, gesperrter Platz",
@@ -1135,10 +1103,20 @@ export const LESSONS: Lesson[] = [
   },
 ];
 
-export function getLesson(slug: string) {
-  return LESSONS.find((lesson) => lesson.slug === slug);
+export function getArea(id: string) {
+  return AREAS.find((area) => area.id === id);
 }
 
-export function lessonsByTopic(topic: TopicId) {
-  return LESSONS.filter((lesson) => lesson.topic === topic);
+/** The chapters of an area, in order. */
+export function lessonsInArea(area: AreaId) {
+  return LESSONS.filter((lesson) => lesson.area === area);
+}
+
+/** A lesson by its URL params, only if it really belongs to that area. */
+export function getLesson(area: string, slug: string) {
+  return LESSONS.find((lesson) => lesson.area === area && lesson.slug === slug);
+}
+
+export function lessonPath(lesson: Lesson) {
+  return `/lektionen/${lesson.area}/${lesson.slug}`;
 }

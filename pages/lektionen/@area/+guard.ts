@@ -1,10 +1,10 @@
 import { render } from "vike/abort";
 import type { PageContext } from "vike/types";
-import { getLesson } from "../../../src/content/lessons";
+import { getArea } from "../../../src/content/lessons";
 
-// Unknown lesson slug → the regular 404 page.
+// Unknown area → the regular 404 page.
 export function guard(pageContext: PageContext) {
-  if (!getLesson(pageContext.routeParams.slug)) {
+  if (!getArea(pageContext.routeParams.area)) {
     throw render(404);
   }
 }

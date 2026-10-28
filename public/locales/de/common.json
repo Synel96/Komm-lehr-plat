@@ -56,8 +56,7 @@
   },
   "lessons": {
     "title": "Lektionen",
-    "intro": "Kurze, interaktive Lektionen nach Themen. Lies die Schritte durch und teste dich danach mit kleinen Übungen.",
-    "overallProgress": "{{done}} von {{total}} Lektionen abgeschlossen (auf diesem Gerät)",
+    "intro": "Wähle einen Themenbereich und darin ein Kapitel. Jedes Kapitel ist eine kurze, interaktive Lektion mit Übungen.",
     "minutes_one": "{{count}} Min.",
     "minutes_other": "{{count}} Min.",
     "exerciseCount_one": "{{count}} Übung",
@@ -86,6 +85,14 @@
     "retry": "Übungen wiederholen",
     "restart": "Lektion von vorn",
     "nextLesson": "Nächste Lektion",
-    "backToOverview": "Alle Lektionen"
+    "chapterCount_one": "{{count}} Kapitel",
+    "chapterCount_other": "{{count}} Kapitel",
+    "chapterNo": "Kapitel {{n}}",
+    "areaProgress": "{{done}} von {{total}} erledigt",
+    "chooseChapter": "Wähle ein Kapitel.",
+    "chooseChapterCta": "Kapitel ansehen",
+    "backToAreas": "Alle Themenbereiche",
+    "backToChapters": "{{area}}: alle Kapitel",
+    "allChapters": "Alle Kapitel"
   }
 }

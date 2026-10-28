@@ -2,7 +2,7 @@ import { ArrowLeft, Clock } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import { LessonPlayer } from "@/components/lessons/LessonPlayer";
-import { LESSONS, TOPICS } from "@/src/content/lessons";
+import { getArea, lessonsInArea } from "@/src/content/lessons";
 import { useLang } from "@/src/hooks/use-lang";
 import { useLessonProgress } from "@/src/hooks/use-lesson-progress";
 
@@ -12,24 +12,25 @@ export default function Page() {
   const { routeParams } = usePageContext();
   const { saveResult } = useLessonProgress();
 
-  // +guard.ts has already turned unknown slugs into a 404.
-  const index = LESSONS.findIndex((lesson) => lesson.slug === routeParams.slug);
-  const lesson = LESSONS[index];
-  const topic = TOPICS.find((item) => item.id === lesson.topic);
+  // +guard.ts has already turned unknown area/slug combinations into a 404.
+  const area = getArea(routeParams.area)!;
+  const chapters = lessonsInArea(area.id);
+  const index = chapters.findIndex((lesson) => lesson.slug === routeParams.slug);
+  const lesson = chapters[index];
 
   return (
     <div className="mx-auto w-full max-w-3xl px-6 py-12">
       <a
-        href={href("/lektionen")}
+        href={href(`/lektionen/${area.id}`)}
         className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm"
       >
         <ArrowLeft className="size-4" aria-hidden="true" />
-        {t("lessons.backToOverview")}
+        {t("lessons.backToChapters", { area: area.title[lang] })}
       </a>
 
-      {topic && (
-        <p className="text-muted-foreground mt-6 text-sm font-medium">{topic.title[lang]}</p>
-      )}
+      <p className="text-muted-foreground mt-6 text-sm font-medium">
+        {area.title[lang]} · {t("lessons.chapterNo", { n: index + 1 })}
+      </p>
       <h1 className="mt-1 text-3xl font-semibold tracking-tight sm:text-4xl">
         {lesson.title[lang]}
       </h1>
@@ -43,7 +44,7 @@ export default function Page() {
         <LessonPlayer
           key={lesson.slug}
           lesson={lesson}
-          nextLesson={LESSONS[index + 1]}
+          nextLesson={chapters[index + 1]}
           onFinished={(result) => saveResult(lesson.slug, result)}
         />
       </div>
