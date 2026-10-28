@@ -38,17 +38,19 @@
     "intro": "Search for an abbreviation or word – in German or in English.",
     "searchLabel": "Search",
     "searchPlaceholder": "e.g. MHD, pallet, Fehlmenge …",
-    "filterLabel": "Show",
     "filterAll": "All",
     "filterAbbr": "Abbreviations",
-    "filterWord": "Terms",
     "count_one": "{{count}} entry",
     "count_other": "{{count}} entries",
     "noResults": "Nothing found. Try another word.",
     "example": "Example",
     "abbrTerm": "Abbreviation",
     "abbrFull": "Full form & meaning",
-    "backToLesson": "Back to the lesson: {{title}}"
+    "backToLesson": "Back to the lesson: {{title}}",
+    "viewLabel": "View",
+    "viewGrouped": "By topic",
+    "viewFlat": "All (A–Z)",
+    "categoryLabel": "Category"
   },
   "error": {
     "notFoundTitle": "Page not found",

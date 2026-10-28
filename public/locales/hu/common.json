@@ -38,17 +38,19 @@
     "intro": "Keress rá egy rövidítésre vagy szóra – németül vagy magyarul.",
     "searchLabel": "Keresés",
     "searchPlaceholder": "pl. MHD, raklap, Fehlmenge …",
-    "filterLabel": "Megjelenítés",
     "filterAll": "Mind",
     "filterAbbr": "Rövidítések",
-    "filterWord": "Szavak",
     "count_one": "{{count}} találat",
     "count_other": "{{count}} találat",
     "noResults": "Nincs találat. Próbálj egy másik szót.",
     "example": "Példa",
     "abbrTerm": "Rövidítés",
     "abbrFull": "Teljes alak és jelentés",
-    "backToLesson": "Vissza a leckéhez: {{title}}"
+    "backToLesson": "Vissza a leckéhez: {{title}}",
+    "viewLabel": "Nézet",
+    "viewGrouped": "Csoportosítva",
+    "viewFlat": "Ömlesztve (A–Z)",
+    "categoryLabel": "Kategória"
   },
   "error": {
     "notFoundTitle": "Az oldal nem található",

@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { SUPPORTED_LANGS } from "../i18n-config";
 import { GLOSSARY, GLOSSARY_CATEGORIES } from "./glossary";
 import { SCANNER_FIELDS, SCANNER_KEYS, SCANNER_MESSAGES } from "./scanner";
-import { filterGlossary, normalize, sortGlossary } from "./search";
+import { filterGlossary, groupByCategory, normalize, sortGlossary } from "./search";
 
 describe("content", () => {
   it("has unique glossary ids", () => {
@@ -49,30 +49,30 @@ describe("glossary search", () => {
   });
 
   it("finds entries by abbreviation and full form", () => {
-    const byAbbr = filterGlossary(GLOSSARY, { query: "mhd", lang: "de", filter: "all" });
+    const byAbbr = filterGlossary(GLOSSARY, { query: "mhd", lang: "de", category: "all" });
     expect(byAbbr[0]?.id).toBe("mhd");
 
     const byFullForm = filterGlossary(GLOSSARY, {
       query: "versandeinheit",
       lang: "de",
-      filter: "all",
+      category: "all",
     });
     expect(byFullForm[0]?.id).toBe("nve");
   });
 
   it("searches explanations in the current language, after term matches", () => {
-    const results = filterGlossary(GLOSSARY, { query: "raklap", lang: "hu", filter: "all" });
+    const results = filterGlossary(GLOSSARY, { query: "raklap", lang: "hu", category: "all" });
     expect(results.map((entry) => entry.id)).toContain("le");
   });
 
   it("filters by kind", () => {
-    const words = filterGlossary(GLOSSARY, { query: "", lang: "de", filter: "word" });
+    const words = filterGlossary(GLOSSARY, { query: "", lang: "de", kind: "word" });
     expect(words.length).toBeGreaterThan(0);
     expect(words.every((entry) => entry.kind === "word")).toBe(true);
   });
 
   it("filters by category", () => {
-    const time = filterGlossary(GLOSSARY, { query: "", lang: "de", filter: "zeiterfassung" });
+    const time = filterGlossary(GLOSSARY, { query: "", lang: "de", category: "zeiterfassung" });
     expect(time.map((entry) => entry.id)).toEqual(
       expect.arrayContaining([
         "zeiterfassung",
@@ -85,6 +85,28 @@ describe("glossary search", () => {
       ])
     );
     expect(time.every((entry) => entry.category === "zeiterfassung")).toBe(true);
+  });
+
+  it("combines category and kind filters", () => {
+    const abbrs = filterGlossary(GLOSSARY, {
+      query: "",
+      lang: "de",
+      category: "mengen",
+      kind: "abbr",
+    });
+    expect(abbrs.map((entry) => entry.id)).toContain("gve");
+    expect(abbrs.every((entry) => entry.category === "mengen" && entry.kind === "abbr")).toBe(true);
+  });
+
+  it("groups entries in category order and skips empty groups", () => {
+    const groups = groupByCategory(GLOSSARY);
+    expect(groups.map((group) => group.category.id)).toEqual(GLOSSARY_CATEGORIES.map((c) => c.id));
+    expect(groups.reduce((sum, group) => sum + group.entries.length, 0)).toBe(GLOSSARY.length);
+
+    const onlyTime = groupByCategory(
+      GLOSSARY.filter((entry) => entry.category === "zeiterfassung")
+    );
+    expect(onlyTime.map((group) => group.category.id)).toEqual(["zeiterfassung"]);
   });
 
   it("sorts alphabetically in German", () => {

@@ -1,19 +1,103 @@
 import { ArrowLeft, Search } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { GLOSSARY, GLOSSARY_CATEGORIES } from "@/src/content/glossary";
-import { filterGlossary, sortGlossary, type GlossaryFilter } from "@/src/content/search";
+import {
+  GLOSSARY,
+  GLOSSARY_CATEGORIES,
+  type GlossaryCategory,
+  type GlossaryEntry,
+} from "@/src/content/glossary";
+import { filterGlossary, groupByCategory, sortGlossary } from "@/src/content/search";
+import type { SupportedLang } from "@/src/i18n-config";
 import { useLang } from "@/src/hooks/use-lang";
 import { clearLessonReturn, readLessonReturn, type LessonReturn } from "@/src/lesson-position";
 import { cn } from "@/lib/utils";
 
 const SORTED_GLOSSARY = sortGlossary(GLOSSARY);
 
+type View = "grouped" | "flat" | "abbr";
+
+function categoryLabel(id: GlossaryCategory, lang: SupportedLang) {
+  return GLOSSARY_CATEGORIES.find((category) => category.id === id)?.label[lang];
+}
+
+function ToggleButton({
+  active,
+  onClick,
+  chip = false,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  /** Bordered pill style, for the category filter. */
+  chip?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      aria-pressed={active}
+      onClick={onClick}
+      className={cn(
+        "px-3 py-1.5 text-sm font-medium transition-colors",
+        chip ? "rounded-full border" : "rounded-md",
+        active
+          ? "bg-primary text-primary-foreground border-primary"
+          : "text-muted-foreground hover:text-foreground"
+      )}
+    >
+      {children}
+    </button>
+  );
+}
+
+function EntryCard({
+  entry,
+  lang,
+  showCategory,
+  exampleLabel,
+}: {
+  entry: GlossaryEntry;
+  lang: SupportedLang;
+  showCategory: boolean;
+  exampleLabel: string;
+}) {
+  return (
+    <li
+      id={entry.id}
+      className="bg-card text-card-foreground scroll-mt-6 rounded-xl border p-5 target:ring-2 target:ring-amber-400"
+    >
+      <div lang="de" className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <span className="text-lg font-bold">{entry.term}</span>
+        {entry.full && <span className="text-muted-foreground italic">{entry.full}</span>}
+        {showCategory && (
+          <span
+            lang={lang}
+            className="rounded-full bg-amber-400/20 px-2 py-0.5 text-xs font-medium text-amber-800 dark:text-amber-300"
+          >
+            {categoryLabel(entry.category, lang)}
+          </span>
+        )}
+      </div>
+      <p className="mt-2">{entry.explanation[lang]}</p>
+      {entry.example && (
+        <p className="text-muted-foreground mt-2 text-sm">
+          {exampleLabel}:{" "}
+          <code lang="de" className="bg-muted text-foreground rounded px-1.5 py-0.5 font-mono">
+            {entry.example}
+          </code>
+        </p>
+      )}
+    </li>
+  );
+}
+
 export default function Page() {
   const { t } = useTranslation();
   const { lang } = useLang();
   const [query, setQuery] = useState("");
-  const [filter, setFilter] = useState<GlossaryFilter>("all");
+  const [view, setView] = useState<View>("grouped");
+  const [category, setCategory] = useState<GlossaryCategory | "all">("all");
   // Set when a word was opened from a lesson: offers a way back to it.
   const [lessonReturn, setLessonReturn] = useState<LessonReturn | null>(null);
 
@@ -23,24 +107,30 @@ export default function Page() {
   }, []);
 
   const results = useMemo(
-    () => filterGlossary(SORTED_GLOSSARY, { query, lang, filter }),
-    [query, lang, filter]
+    () =>
+      filterGlossary(SORTED_GLOSSARY, {
+        query,
+        lang,
+        category,
+        kind: view === "abbr" ? "abbr" : "all",
+      }),
+    [query, lang, category, view]
   );
 
-  const filters: { value: GlossaryFilter; label: string }[] = [
-    { value: "all", label: t("glossary.filterAll") },
+  const views: { value: View; label: string }[] = [
+    { value: "grouped", label: t("glossary.viewGrouped") },
+    { value: "flat", label: t("glossary.viewFlat") },
     { value: "abbr", label: t("glossary.filterAbbr") },
-    { value: "word", label: t("glossary.filterWord") },
-    ...GLOSSARY_CATEGORIES.map((category) => ({ value: category.id, label: category.label[lang] })),
   ];
+  const exampleLabel = t("glossary.example");
 
   return (
     <div className={cn("mx-auto w-full max-w-4xl px-6 py-12", lessonReturn && "pb-28")}>
       <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">{t("glossary.title")}</h1>
       <p className="text-muted-foreground mt-3 max-w-2xl text-lg">{t("glossary.intro")}</p>
 
-      <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-        <label className="relative flex-1">
+      <div className="bg-card mt-8 space-y-4 rounded-xl border p-4">
+        <label className="relative block">
           <span className="sr-only">{t("glossary.searchLabel")}</span>
           <Search
             className="text-muted-foreground pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2"
@@ -56,27 +146,50 @@ export default function Page() {
           />
         </label>
 
-        <div
-          role="group"
-          aria-label={t("glossary.filterLabel")}
-          className="inline-flex shrink-0 flex-wrap rounded-lg border p-1"
-        >
-          {filters.map((option) => (
-            <button
-              key={option.value}
-              type="button"
-              aria-pressed={filter === option.value}
-              onClick={() => setFilter(option.value)}
-              className={cn(
-                "rounded-md px-3 py-1.5 text-sm font-medium transition-colors",
-                filter === option.value
-                  ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:text-foreground"
-              )}
-            >
-              {option.label}
-            </button>
-          ))}
+        <div>
+          <p className="text-muted-foreground mb-1.5 text-xs font-medium tracking-wide uppercase">
+            {t("glossary.viewLabel")}
+          </p>
+          <div
+            role="group"
+            aria-label={t("glossary.viewLabel")}
+            className="inline-flex flex-wrap rounded-lg border p-1"
+          >
+            {views.map((option) => (
+              <ToggleButton
+                key={option.value}
+                active={view === option.value}
+                onClick={() => setView(option.value)}
+              >
+                {option.label}
+              </ToggleButton>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <p className="text-muted-foreground mb-1.5 text-xs font-medium tracking-wide uppercase">
+            {t("glossary.categoryLabel")}
+          </p>
+          <div
+            role="group"
+            aria-label={t("glossary.categoryLabel")}
+            className="flex flex-wrap gap-1.5"
+          >
+            <ToggleButton chip active={category === "all"} onClick={() => setCategory("all")}>
+              {t("glossary.filterAll")}
+            </ToggleButton>
+            {GLOSSARY_CATEGORIES.map((option) => (
+              <ToggleButton
+                key={option.id}
+                chip
+                active={category === option.id}
+                onClick={() => setCategory(option.id)}
+              >
+                {option.label[lang]}
+              </ToggleButton>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -86,7 +199,51 @@ export default function Page() {
           : t("glossary.noResults")}
       </p>
 
-      {filter === "abbr" && results.length > 0 && (
+      {view === "grouped" &&
+        groupByCategory(results).map((group) => (
+          <section
+            key={group.category.id}
+            aria-labelledby={`group-${group.category.id}`}
+            className="mt-8 first-of-type:mt-4"
+          >
+            <h2
+              id={`group-${group.category.id}`}
+              className="flex items-baseline gap-2 border-b pb-2 text-xl font-semibold"
+            >
+              {group.category.label[lang]}
+              <span className="text-muted-foreground text-sm font-normal">
+                {group.entries.length}
+              </span>
+            </h2>
+            <ul className="mt-3 grid gap-3">
+              {group.entries.map((entry) => (
+                <EntryCard
+                  key={entry.id}
+                  entry={entry}
+                  lang={lang}
+                  showCategory={false}
+                  exampleLabel={exampleLabel}
+                />
+              ))}
+            </ul>
+          </section>
+        ))}
+
+      {view === "flat" && (
+        <ul className="mt-4 grid gap-3">
+          {results.map((entry) => (
+            <EntryCard
+              key={entry.id}
+              entry={entry}
+              lang={lang}
+              showCategory
+              exampleLabel={exampleLabel}
+            />
+          ))}
+        </ul>
+      )}
+
+      {view === "abbr" && results.length > 0 && (
         // Abbreviation list: every abbreviation written out in full.
         <div className="mt-4 overflow-hidden rounded-xl border">
           <table className="w-full text-left text-sm">
@@ -123,47 +280,6 @@ export default function Page() {
             </tbody>
           </table>
         </div>
-      )}
-
-      {filter !== "abbr" && (
-        <ul className="mt-4 grid gap-3">
-          {results.map((entry) => (
-            <li
-              key={entry.id}
-              id={entry.id}
-              className="bg-card text-card-foreground scroll-mt-6 rounded-xl border p-5 target:ring-2 target:ring-amber-400"
-            >
-              <div lang="de" className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <span className="text-lg font-bold">{entry.term}</span>
-                {entry.full && <span className="text-muted-foreground italic">{entry.full}</span>}
-                {entry.category && (
-                  <span
-                    lang={lang}
-                    className="rounded-full bg-amber-400/20 px-2 py-0.5 text-xs font-medium text-amber-800 dark:text-amber-300"
-                  >
-                    {
-                      GLOSSARY_CATEGORIES.find((category) => category.id === entry.category)?.label[
-                        lang
-                      ]
-                    }
-                  </span>
-                )}
-              </div>
-              <p className="mt-2">{entry.explanation[lang]}</p>
-              {entry.example && (
-                <p className="text-muted-foreground mt-2 text-sm">
-                  {t("glossary.example")}:{" "}
-                  <code
-                    lang="de"
-                    className="bg-muted text-foreground rounded px-1.5 py-0.5 font-mono"
-                  >
-                    {entry.example}
-                  </code>
-                </p>
-              )}
-            </li>
-          ))}
-        </ul>
       )}
 
       {lessonReturn && (

@@ -6,23 +6,59 @@
 // - full:        ausgeschriebene Form (nur bei Abkürzungen)
 // - explanation: kurze Erklärung in jeder Sprache
 // - example:     optional, ein typisches Beispiel (bleibt auf Deutsch)
-// - category:    optional, Themengruppe mit eigenem Filter (siehe
+// - category:    Themengruppe, unter der der Eintrag angezeigt wird (siehe
 //                GLOSSARY_CATEGORIES), z. B. "zeiterfassung"
 
 import type { Localized } from "./types";
 
 export type GlossaryKind = "abbr" | "word";
 
-export type GlossaryCategory = "zeiterfassung" | "mengen";
+export type GlossaryCategory =
+  | "scanner"
+  | "zeiterfassung"
+  | "auftrag"
+  | "mengen"
+  | "etiketten"
+  | "lager"
+  | "qualitaet";
 
+/** The glossary's groups, in the order they are shown. */
 export const GLOSSARY_CATEGORIES: { id: GlossaryCategory; label: Localized }[] = [
+  {
+    id: "scanner",
+    label: { de: "Scanner & System", hu: "Szkenner és rendszer", en: "Scanner & system" },
+  },
   {
     id: "zeiterfassung",
     label: { de: "Zeiterfassung", hu: "Időnyilvántartás", en: "Time tracking" },
   },
   {
+    id: "auftrag",
+    label: {
+      de: "Auftrag & Kommissionierung",
+      hu: "Megbízás és komissiózás",
+      en: "Orders & picking",
+    },
+  },
+  {
     id: "mengen",
     label: { de: "Menge & Verpackung", hu: "Mennyiség és csomagolás", en: "Quantity & packaging" },
+  },
+  {
+    id: "etiketten",
+    label: { de: "Etiketten & Nummern", hu: "Címkék és számok", en: "Labels & numbers" },
+  },
+  {
+    id: "lager",
+    label: { de: "Lager & Transport", hu: "Raktár és szállítás", en: "Warehouse & transport" },
+  },
+  {
+    id: "qualitaet",
+    label: {
+      de: "Qualität & Sonderfälle",
+      hu: "Minőség és különleges esetek",
+      en: "Quality & special cases",
+    },
   },
 ];
 
@@ -31,7 +67,7 @@ export type GlossaryEntry = {
   term: string;
   full?: string;
   kind: GlossaryKind;
-  category?: GlossaryCategory;
+  category: GlossaryCategory;
   explanation: Localized;
   example?: string;
 };
@@ -175,6 +211,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "Komm-Platz",
     full: "Kommissionierplatz",
     kind: "abbr",
+    category: "auftrag",
     explanation: {
       de: "Der Lagerplatz, von dem kommissioniert wird. Vor dem Öffnen eines Kartons immer prüfen, ob du am richtigen Komm-Platz bist.",
       hu: "Kiszedőhely: az a tárhely, ahonnan komissiózunk. Doboz bontása előtt mindig ellenőrizd, hogy a megfelelő Komm-Platzon vagy.",
@@ -307,6 +344,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "MDE",
     full: "Mobile Datenerfassung",
     kind: "abbr",
+    category: "scanner",
     explanation: {
       de: "Das Handgerät mit Scanner, mit dem Aufträge bearbeitet und Barcodes gescannt werden.",
       hu: "A kézi szkenneres készülék, amivel a megbízásokat feldolgozzuk és a vonalkódokat beolvassuk.",
@@ -318,6 +356,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "LE",
     full: "Ladeeinheit",
     kind: "abbr",
+    category: "lager",
     explanation: {
       de: "Eine Einheit, die als Ganzes bewegt wird, z. B. eine Palette oder ein Behälter. Hat meist ein eigenes Etikett.",
       hu: "Egy egységként mozgatott rakomány, pl. egy raklap vagy egy láda. Általában saját címkéje van.",
@@ -329,6 +368,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "NVE",
     full: "Nummer der Versandeinheit",
     kind: "abbr",
+    category: "etiketten",
     explanation: {
       de: "18-stellige Nummer auf dem Versandetikett, die jede Versandeinheit (z. B. Palette) eindeutig kennzeichnet. International: SSCC.",
       hu: "18 jegyű szám a szállítási címkén, amely minden szállítási egységet (pl. raklapot) egyedileg azonosít. Nemzetközileg: SSCC.",
@@ -341,6 +381,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "SSCC",
     full: "Serial Shipping Container Code",
     kind: "abbr",
+    category: "etiketten",
     explanation: {
       de: "Internationaler Name für die NVE.",
       hu: "Az NVE nemzetközi neve.",
@@ -352,6 +393,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "EAN / GTIN",
     full: "European Article Number / Global Trade Item Number",
     kind: "abbr",
+    category: "etiketten",
     explanation: {
       de: "Die Artikelnummer unter dem Strichcode auf dem Produkt (meist 13 Stellen).",
       hu: "A termék vonalkódja alatti cikkszám (általában 13 jegyű).",
@@ -363,6 +405,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "Art.-Nr.",
     full: "Artikelnummer",
     kind: "abbr",
+    category: "etiketten",
     explanation: {
       de: "Interne Nummer eines Artikels im Lager. Nicht immer gleich wie die EAN.",
       hu: "Egy cikk belső száma a raktárban. Nem mindig egyezik az EAN-nel.",
@@ -374,6 +417,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "MHD",
     full: "Mindesthaltbarkeitsdatum",
     kind: "abbr",
+    category: "etiketten",
     explanation: {
       de: "Datum, bis zu dem die Ware mindestens haltbar ist. Wird oft beim Picken abgefragt.",
       hu: "Minőségmegőrzési idő: a dátum, ameddig az áru legalább eltartható. Kiszedéskor gyakran rákérdez a szkenner.",
@@ -386,6 +430,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "Ch.-Nr. / Charge",
     full: "Chargennummer",
     kind: "abbr",
+    category: "etiketten",
     explanation: {
       de: "Nummer einer Produktionsserie. Wichtig für Rückverfolgung und Rückrufe.",
       hu: "Gyártási tétel száma. Fontos a visszakövethetőséghez és a visszahívásokhoz.",
@@ -397,6 +442,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "WE",
     full: "Wareneingang",
     kind: "abbr",
+    category: "lager",
     explanation: {
       de: "Bereich bzw. Vorgang, in dem angelieferte Ware angenommen und geprüft wird.",
       hu: "Áruátvétel: az a terület vagy folyamat, ahol a beérkező árut átveszik és ellenőrzik.",
@@ -408,6 +454,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "WA",
     full: "Warenausgang",
     kind: "abbr",
+    category: "lager",
     explanation: {
       de: "Bereich bzw. Vorgang, in dem fertige Aufträge verladen und versendet werden.",
       hu: "Árukiadás: az a terület vagy folyamat, ahol a kész megbízásokat felrakodják és kiszállítják.",
@@ -419,6 +466,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "LVS / WMS",
     full: "Lagerverwaltungssystem / Warehouse Management System",
     kind: "abbr",
+    category: "scanner",
     explanation: {
       de: "Die Software, die alle Lagerplätze, Bestände und Aufträge verwaltet. Der Scanner ist damit verbunden.",
       hu: "A raktárkezelő szoftver, amely az összes tárhelyet, készletet és megbízást kezeli. A szkenner ehhez kapcsolódik.",
@@ -430,6 +478,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "LP / Lagerplatz",
     full: "Lagerplatz",
     kind: "abbr",
+    category: "lager",
     explanation: {
       de: "Fester Ort im Lager, an dem Ware liegt. Die Nummer zeigt meist Gang – Regal – Ebene – Fach.",
       hu: "Tárhely: a raktár egy konkrét helye, ahol az áru van. A száma általában sor – állvány – szint – rekesz.",
@@ -478,6 +527,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "Krt. / KT",
     full: "Karton",
     kind: "abbr",
+    category: "mengen",
     explanation: {
       de: "Mengenangabe in Kartons.",
       hu: "Mennyiség kartonban.",
@@ -489,6 +539,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "Pal. / EPAL",
     full: "Palette / Europalette",
     kind: "abbr",
+    category: "lager",
     explanation: {
       de: "Palette. Die Europalette (EPAL) ist 120 × 80 cm groß und tauschbar.",
       hu: "Raklap. Az EUR-raklap (EPAL) 120 × 80 cm-es és cserélhető.",
@@ -500,6 +551,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "KLT",
     full: "Kleinladungsträger",
     kind: "abbr",
+    category: "lager",
     explanation: {
       de: "Kleiner, genormter Kunststoffbehälter für Teile.",
       hu: "Kis méretű, szabványos műanyag tárolóláda alkatrészekhez.",
@@ -511,6 +563,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "GLT",
     full: "Großladungsträger",
     kind: "abbr",
+    category: "lager",
     explanation: {
       de: "Großer Behälter oder Gitterbox, meist im Palettenformat.",
       hu: "Nagy méretű láda vagy rácsos konténer, általában raklap méretű.",
@@ -522,6 +575,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "Pos.",
     full: "Position",
     kind: "abbr",
+    category: "auftrag",
     explanation: {
       de: "Eine Zeile im Auftrag: ein Artikel mit einer Menge. „Pos. 3/12“ heißt: dritte von zwölf Positionen.",
       hu: "Egy sor a megbízásban: egy cikk egy mennyiséggel. A „Pos. 3/12” jelentése: a tizenkét tételből a harmadik.",
@@ -534,6 +588,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "LS",
     full: "Lieferschein",
     kind: "abbr",
+    category: "etiketten",
     explanation: {
       de: "Begleitpapier zur Lieferung mit allen gelieferten Artikeln und Mengen.",
       hu: "Szállítólevél: a szállítmányt kísérő papír a szállított cikkekkel és mennyiségekkel.",
@@ -545,6 +600,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "FIFO",
     full: "First In – First Out",
     kind: "abbr",
+    category: "auftrag",
     explanation: {
       de: "Was zuerst eingelagert wurde, wird zuerst ausgelagert.",
       hu: "Ami először került be a raktárba, az megy ki először.",
@@ -556,6 +612,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "FEFO",
     full: "First Expired – First Out",
     kind: "abbr",
+    category: "auftrag",
     explanation: {
       de: "Die Ware mit dem frühesten MHD wird zuerst ausgelagert.",
       hu: "A legkorábban lejáró (legkorábbi MHD-jú) áru megy ki először.",
@@ -567,6 +624,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "MA",
     full: "Mitarbeiter / Mitarbeiterin",
     kind: "abbr",
+    category: "scanner",
     explanation: {
       de: "Mitarbeiter. Oft mit Nummer, z. B. bei der Anmeldung am Scanner.",
       hu: "Munkatárs. Gyakran számmal, pl. a szkenneres bejelentkezésnél.",
@@ -578,6 +636,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "FFZ / Stapler",
     full: "Flurförderzeug / Gabelstapler",
     kind: "abbr",
+    category: "lager",
     explanation: {
       de: "Fahrzeuge im Lager, z. B. Gabelstapler oder Elektro-Hubwagen. Nur mit Berechtigung fahren!",
       hu: "Raktári járművek, pl. targonca vagy elektromos békakocsi. Csak jogosultsággal szabad vezetni!",
@@ -589,6 +648,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "QS",
     full: "Qualitätssicherung",
     kind: "abbr",
+    category: "qualitaet",
     explanation: {
       de: "Abteilung bzw. Prüfung, die die Qualität der Ware kontrolliert. Ware „in QS“ ist gesperrt.",
       hu: "Minőségbiztosítás. A „QS-ben” lévő áru zárolt, nem használható.",
@@ -599,6 +659,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     id: "kommissionieren",
     term: "Kommissionieren",
     kind: "word",
+    category: "auftrag",
     explanation: {
       de: "Artikel nach einem Auftrag aus dem Lager zusammenstellen („picken“).",
       hu: "Komissiózás: cikkek összeszedése a raktárból egy megbízás alapján („pickelés”).",
@@ -609,6 +670,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     id: "auftrag",
     term: "Auftrag",
     kind: "word",
+    category: "auftrag",
     explanation: {
       de: "Eine Bestellung bzw. Arbeitsaufgabe, die bearbeitet werden muss.",
       hu: "Megbízás / rendelés: egy elvégzendő munkafeladat.",
@@ -619,6 +681,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     id: "soll-ist",
     term: "Soll / Ist",
     kind: "word",
+    category: "auftrag",
     explanation: {
       de: "Soll = Menge, die genommen werden muss. Ist = Menge, die tatsächlich genommen wurde.",
       hu: "Soll = az előírt mennyiség, amit ki kell venni. Ist = a ténylegesen kivett mennyiség.",
@@ -629,6 +692,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     id: "fehlmenge",
     term: "Fehlmenge",
     kind: "word",
+    category: "auftrag",
     explanation: {
       de: "Es ist weniger Ware am Platz als verlangt. Muss am Scanner gemeldet werden.",
       hu: "Hiány: kevesebb áru van a helyen, mint amennyi kell. A szkenneren jelenteni kell.",
@@ -639,6 +703,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     id: "nachschub",
     term: "Nachschub",
     kind: "word",
+    category: "auftrag",
     explanation: {
       de: "Auffüllen eines Pickplatzes aus dem Reservelager.",
       hu: "Utántöltés: egy kiszedőhely feltöltése a tartalékraktárból.",
@@ -649,6 +714,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     id: "einlagern",
     term: "Einlagern / Auslagern",
     kind: "word",
+    category: "lager",
     explanation: {
       de: "Einlagern = Ware auf einen Lagerplatz bringen. Auslagern = Ware vom Lagerplatz holen.",
       hu: "Einlagern = árut betárolni egy tárhelyre. Auslagern = árut kitárolni a tárhelyről.",
@@ -659,6 +725,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     id: "umlagern",
     term: "Umlagern / Umbuchen",
     kind: "word",
+    category: "lager",
     explanation: {
       de: "Ware von einem Lagerplatz auf einen anderen bringen und im System umbuchen.",
       hu: "Átrakás / átkönyvelés: árut egyik tárhelyről a másikra tenni és a rendszerben is átvezetni.",
@@ -669,6 +736,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     id: "inventur",
     term: "Inventur",
     kind: "word",
+    category: "lager",
     explanation: {
       de: "Zählen des Bestands. Die gezählte Menge wird mit dem System verglichen.",
       hu: "Leltár: a készlet megszámolása és összevetése a rendszerrel.",
@@ -679,6 +747,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     id: "bestand",
     term: "Bestand",
     kind: "word",
+    category: "lager",
     explanation: {
       de: "Menge eines Artikels, die laut System im Lager bzw. auf einem Platz ist.",
       hu: "Készlet: egy cikk mennyisége a rendszer szerint a raktárban vagy egy tárhelyen.",
@@ -689,6 +758,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     id: "gesperrt",
     term: "Gesperrt",
     kind: "word",
+    category: "lager",
     explanation: {
       de: "Ware oder Platz darf nicht benutzt werden (z. B. Schaden, QS, Inventur).",
       hu: "Zárolt: az árut vagy a helyet nem szabad használni (pl. sérülés, minőségellenőrzés, leltár miatt).",
@@ -699,6 +769,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     id: "quittieren",
     term: "Quittieren",
     kind: "word",
+    category: "scanner",
     explanation: {
       de: "Bestätigen, dass ein Schritt erledigt ist – meist mit der Enter-Taste.",
       hu: "Nyugtázni: megerősíteni, hogy egy lépés kész – általában az Enter gombbal.",
@@ -709,6 +780,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     id: "retoure",
     term: "Retoure",
     kind: "word",
+    category: "qualitaet",
     explanation: {
       de: "Ware, die vom Kunden zurückgeschickt wurde.",
       hu: "Visszáru: a vevő által visszaküldött áru.",
@@ -719,6 +791,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     id: "bruch",
     term: "Bruch / Beschädigt",
     kind: "word",
+    category: "qualitaet",
     explanation: {
       de: "Kaputte oder beschädigte Ware. Nicht verschicken, sondern melden.",
       hu: "Törött / sérült áru. Nem szabad kiküldeni, jelenteni kell.",
@@ -729,6 +802,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     id: "verladen",
     term: "Verladen",
     kind: "word",
+    category: "lager",
     explanation: {
       de: "Ware in den LKW laden.",
       hu: "Felrakodás: az áru berakása a kamionba.",
@@ -739,6 +813,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     id: "rampe",
     term: "Rampe / Tor",
     kind: "word",
+    category: "lager",
     explanation: {
       de: "Laderampe bzw. Tor, an dem der LKW be- oder entladen wird.",
       hu: "Rámpa / kapu, ahol a kamiont be- vagy kirakodják.",
