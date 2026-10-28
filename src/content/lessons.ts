@@ -83,9 +83,9 @@ export const AREAS: Area[] = [
     id: "kommissionierung",
     title: { de: "Kommissionierung", hu: "Komissiózás", en: "Order picking" },
     description: {
-      de: "GVE, EVE und Faktor – wann ein Karton geöffnet wird.",
-      hu: "GVE, EVE és faktor – mikor kell megbontani a kartont.",
-      en: "GVE, EVE and factor – when a carton has to be opened.",
+      de: "Den Lagerplatz lesen und GVE, EVE, Faktor – wann ein Karton geöffnet wird.",
+      hu: "A tárhelyszám olvasása, valamint GVE, EVE, faktor – mikor kell megbontani a kartont.",
+      en: "Reading the location, plus GVE, EVE, factor – when a carton has to be opened.",
     },
   },
 ];
@@ -427,53 +427,18 @@ export const ALL_LESSONS: Lesson[] = [
   {
     slug: "etiketten-lesen",
     area: "scanner",
-    minutes: 8,
+    minutes: 4,
     title: {
       de: "Etiketten und Nummern lesen",
       hu: "Címkék és számok olvasása",
       en: "Reading labels and numbers",
     },
     summary: {
-      de: "Lagerplatz-Nummer, EAN, NVE, MHD und Charge erkennen.",
-      hu: "Tárhelyszám, EAN, NVE, MHD és sarzs felismerése.",
-      en: "Recognising location numbers, EAN, NVE, best-before date and batch.",
+      de: "EAN, NVE, MHD und Charge erkennen.",
+      hu: "EAN, NVE, MHD és sarzs felismerése.",
+      en: "Recognising EAN, NVE, best-before date and batch.",
     },
     steps: [
-      {
-        title: { de: "Die Lagerplatz-Nummer", hu: "A tárhelyszám", en: "The location number" },
-        text: {
-          de: "Ein Lagerplatz sieht bei uns so aus: 502 62 30. Die erste Zahl ist der Gang (502), die zweite die Fachnummer (62), die dritte das Fach (30). Jede Fachnummer hat drei Fächer: 10, 20 und 30.",
-          hu: "Nálunk egy tárhely így néz ki: 502 62 30. Az első szám a sor (Gang, 502), a második a fakkszám (62), a harmadik a fakk (30). Egy fakkszámon belül három fakk van: 10, 20 és 30.",
-          en: "A location looks like this here: 502 62 30. The first number is the aisle (502), the second the compartment number (62), the third the compartment (30). Each compartment number has three compartments: 10, 20 and 30.",
-        },
-        terms: ["lp", "komm-platz"],
-      },
-      {
-        title: {
-          de: "Linke oder rechte Seite?",
-          hu: "Bal vagy jobb oldal?",
-          en: "Left or right side?",
-        },
-        text: {
-          de: "An der Fachnummer siehst du sofort die Seite im Gang: Ungerade Fachnummern (01, 17, 63 …) sind auf der linken Seite, gerade (02, 18, 62 …) auf der rechten Seite. 502 62 30 ist also rechts.",
-          hu: "A fakkszámból rögtön látod, a sor melyik oldalán van: a páratlan fakkszámok (01, 17, 63 …) bal kéz felől, a párosak (02, 18, 62 …) jobb kéz felől vannak. Az 502 62 30 tehát jobb oldalt van.",
-          en: "The compartment number tells you the side of the aisle: odd numbers (01, 17, 63 …) are on the left, even ones (02, 18, 62 …) on the right. So 502 62 30 is on the right.",
-        },
-        terms: ["lp"],
-      },
-      {
-        title: {
-          de: "Kleinfächer mit Ebenen",
-          hu: "Emeletes kisfakkok",
-          en: "Small compartments with levels",
-        },
-        text: {
-          de: "In manchen Gängen gibt es Kleinfächer auf mehreren Ebenen. Dort zeigt die letzte Zahl die Ebene: 502 62 10 ist die unterste Ebene (Boden), 11 die Ebene darüber, 12 die nächste und 13 meistens die oberste.",
-          hu: "Vannak sorok, ahol emeletes kisfakkok vannak. Ott az utolsó szám a szintet mutatja: az 502 62 10 az alsó szint (földszint), a 11 a földszint feletti, a 12 afölötti, a 13 pedig általában a legfelső.",
-          en: "Some aisles have small compartments on several levels. There the last number shows the level: 502 62 10 is the bottom level (floor), 11 the level above, 12 the next and 13 usually the top.",
-        },
-        terms: ["lp"],
-      },
       {
         title: { de: "EAN auf dem Produkt", hu: "EAN a terméken", en: "EAN on the product" },
         text: {
@@ -503,79 +468,6 @@ export const ALL_LESSONS: Lesson[] = [
       },
     ],
     exercises: [
-      {
-        type: "choice",
-        question: {
-          de: "Lagerplatz 503 17 20: In welchem Gang ist er?",
-          hu: "503 17 20 tárhely: melyik sorban van?",
-          en: "Location 503 17 20: which aisle is it in?",
-        },
-        options: [
-          { de: "Gang 503", hu: "503-as sor", en: "Aisle 503" },
-          { de: "Gang 17", hu: "17-es sor", en: "Aisle 17" },
-          { de: "Gang 20", hu: "20-as sor", en: "Aisle 20" },
-        ],
-        answer: 0,
-        explanation: {
-          de: "Die erste Zahl ist der Gang: 503. Dann Fachnummer 17 und Fach 20.",
-          hu: "Az első szám a sor: 503. Utána a 17-es fakkszám és a 20-as fakk.",
-          en: "The first number is the aisle: 503. Then compartment number 17 and compartment 20.",
-        },
-      },
-      {
-        type: "classify",
-        question: {
-          de: "Auf welcher Seite im Gang ist der Lagerplatz?",
-          hu: "A sor melyik oldalán van a tárhely?",
-          en: "Which side of the aisle is the location on?",
-        },
-        categories: [
-          { de: "Links", hu: "Bal kéz felől", en: "Left" },
-          { de: "Rechts", hu: "Jobb kéz felől", en: "Right" },
-        ],
-        items: [
-          { text: { de: "502 62 30", hu: "502 62 30", en: "502 62 30" }, category: 1 },
-          { text: { de: "502 01 10", hu: "502 01 10", en: "502 01 10" }, category: 0 },
-          { text: { de: "503 17 20", hu: "503 17 20", en: "503 17 20" }, category: 0 },
-          { text: { de: "504 44 30", hu: "504 44 30", en: "504 44 30" }, category: 1 },
-        ],
-        explanation: {
-          de: "Es zählt die mittlere Zahl, die Fachnummer: ungerade = links, gerade = rechts.",
-          hu: "A középső szám, a fakkszám számít: páratlan = bal kéz, páros = jobb kéz felől.",
-          en: "What counts is the middle number, the compartment number: odd = left, even = right.",
-        },
-      },
-      {
-        type: "choice",
-        question: {
-          de: "Gang mit Kleinfächern: Wo findest du 502 62 12?",
-          hu: "Kisfakkos sor: hol találod az 502 62 12-t?",
-          en: "Aisle with small compartments: where is 502 62 12?",
-        },
-        options: [
-          {
-            de: "Unten auf dem Boden",
-            hu: "Lent, a földszinten",
-            en: "At the bottom, on the floor",
-          },
-          {
-            de: "Zwei Ebenen über dem Boden",
-            hu: "Két szinttel a földszint felett",
-            en: "Two levels above the floor",
-          },
-          {
-            de: "Ganz oben",
-            hu: "Legfelül",
-            en: "At the very top",
-          },
-        ],
-        answer: 1,
-        explanation: {
-          de: "10 = Boden, 11 = eine Ebene darüber, 12 = zwei Ebenen darüber, 13 = meist ganz oben.",
-          hu: "10 = földszint, 11 = egy szinttel feljebb, 12 = két szinttel feljebb, 13 = általában a legfelső.",
-          en: "10 = floor, 11 = one level up, 12 = two levels up, 13 = usually the top.",
-        },
-      },
       {
         type: "choice",
         question: {
@@ -853,6 +745,133 @@ export const ALL_LESSONS: Lesson[] = [
           de: "First In – First Out.",
           hu: "First In – First Out: ami először be, az először ki.",
           en: "First In – First Out.",
+        },
+      },
+    ],
+  },
+  {
+    slug: "lagerplatz",
+    area: "kommissionierung",
+    minutes: 5,
+    title: {
+      de: "Den Lagerplatz lesen: Gang, Fachnummer, Fach",
+      hu: "Hogyan olvasd a tárhelyszámot?",
+      en: "Reading the location: aisle, number, compartment",
+    },
+    summary: {
+      de: "Was 502 62 30 bedeutet, auf welcher Seite der Platz ist und wie Kleinfächer gezählt werden.",
+      hu: "Mit jelent az 502 62 30, a sor melyik oldalán van a hely, és hogyan számozzák a kisfakkokat.",
+      en: "What 502 62 30 means, which side the location is on and how small compartments are numbered.",
+    },
+    steps: [
+      {
+        title: { de: "Die Lagerplatz-Nummer", hu: "A tárhelyszám", en: "The location number" },
+        text: {
+          de: "Ein Lagerplatz sieht bei uns so aus: 502 62 30. Die erste Zahl ist der Gang (502), die zweite die Fachnummer (62), die dritte das Fach (30). Jede Fachnummer hat drei Fächer: 10, 20 und 30.",
+          hu: "Nálunk egy tárhely így néz ki: 502 62 30. Az első szám a sor (Gang, 502), a második a fakkszám (62), a harmadik a fakk (30). Egy fakkszámon belül három fakk van: 10, 20 és 30.",
+          en: "A location looks like this here: 502 62 30. The first number is the aisle (502), the second the compartment number (62), the third the compartment (30). Each compartment number has three compartments: 10, 20 and 30.",
+        },
+        terms: ["lp", "komm-platz"],
+      },
+      {
+        title: {
+          de: "Linke oder rechte Seite?",
+          hu: "Bal vagy jobb oldal?",
+          en: "Left or right side?",
+        },
+        text: {
+          de: "An der Fachnummer siehst du sofort die Seite im Gang: Ungerade Fachnummern (01, 17, 63 …) sind auf der linken Seite, gerade (02, 18, 62 …) auf der rechten Seite. 502 62 30 ist also rechts.",
+          hu: "A fakkszámból rögtön látod, a sor melyik oldalán van: a páratlan fakkszámok (01, 17, 63 …) bal kéz felől, a párosak (02, 18, 62 …) jobb kéz felől vannak. Az 502 62 30 tehát jobb oldalt van.",
+          en: "The compartment number tells you the side of the aisle: odd numbers (01, 17, 63 …) are on the left, even ones (02, 18, 62 …) on the right. So 502 62 30 is on the right.",
+        },
+        terms: ["lp"],
+      },
+      {
+        title: {
+          de: "Kleinfächer mit Ebenen",
+          hu: "Emeletes kisfakkok",
+          en: "Small compartments with levels",
+        },
+        text: {
+          de: "In manchen Gängen gibt es Kleinfächer auf mehreren Ebenen. Dort zeigt die letzte Zahl die Ebene: 502 62 10 ist die unterste Ebene (Boden), 11 die Ebene darüber, 12 die nächste und 13 meistens die oberste.",
+          hu: "Vannak sorok, ahol emeletes kisfakkok vannak. Ott az utolsó szám a szintet mutatja: az 502 62 10 az alsó szint (földszint), a 11 a földszint feletti, a 12 afölötti, a 13 pedig általában a legfelső.",
+          en: "Some aisles have small compartments on several levels. There the last number shows the level: 502 62 10 is the bottom level (floor), 11 the level above, 12 the next and 13 usually the top.",
+        },
+        terms: ["lp"],
+      },
+    ],
+    exercises: [
+      {
+        type: "choice",
+        question: {
+          de: "Lagerplatz 503 17 20: In welchem Gang ist er?",
+          hu: "503 17 20 tárhely: melyik sorban van?",
+          en: "Location 503 17 20: which aisle is it in?",
+        },
+        options: [
+          { de: "Gang 503", hu: "503-as sor", en: "Aisle 503" },
+          { de: "Gang 17", hu: "17-es sor", en: "Aisle 17" },
+          { de: "Gang 20", hu: "20-as sor", en: "Aisle 20" },
+        ],
+        answer: 0,
+        explanation: {
+          de: "Die erste Zahl ist der Gang: 503. Dann Fachnummer 17 und Fach 20.",
+          hu: "Az első szám a sor: 503. Utána a 17-es fakkszám és a 20-as fakk.",
+          en: "The first number is the aisle: 503. Then compartment number 17 and compartment 20.",
+        },
+      },
+      {
+        type: "classify",
+        question: {
+          de: "Auf welcher Seite im Gang ist der Lagerplatz?",
+          hu: "A sor melyik oldalán van a tárhely?",
+          en: "Which side of the aisle is the location on?",
+        },
+        categories: [
+          { de: "Links", hu: "Bal kéz felől", en: "Left" },
+          { de: "Rechts", hu: "Jobb kéz felől", en: "Right" },
+        ],
+        items: [
+          { text: { de: "502 62 30", hu: "502 62 30", en: "502 62 30" }, category: 1 },
+          { text: { de: "502 01 10", hu: "502 01 10", en: "502 01 10" }, category: 0 },
+          { text: { de: "503 17 20", hu: "503 17 20", en: "503 17 20" }, category: 0 },
+          { text: { de: "504 44 30", hu: "504 44 30", en: "504 44 30" }, category: 1 },
+        ],
+        explanation: {
+          de: "Es zählt die mittlere Zahl, die Fachnummer: ungerade = links, gerade = rechts.",
+          hu: "A középső szám, a fakkszám számít: páratlan = bal kéz, páros = jobb kéz felől.",
+          en: "What counts is the middle number, the compartment number: odd = left, even = right.",
+        },
+      },
+      {
+        type: "choice",
+        question: {
+          de: "Gang mit Kleinfächern: Wo findest du 502 62 12?",
+          hu: "Kisfakkos sor: hol találod az 502 62 12-t?",
+          en: "Aisle with small compartments: where is 502 62 12?",
+        },
+        options: [
+          {
+            de: "Unten auf dem Boden",
+            hu: "Lent, a földszinten",
+            en: "At the bottom, on the floor",
+          },
+          {
+            de: "Zwei Ebenen über dem Boden",
+            hu: "Két szinttel a földszint felett",
+            en: "Two levels above the floor",
+          },
+          {
+            de: "Ganz oben",
+            hu: "Legfelül",
+            en: "At the very top",
+          },
+        ],
+        answer: 1,
+        explanation: {
+          de: "10 = Boden, 11 = eine Ebene darüber, 12 = zwei Ebenen darüber, 13 = meist ganz oben.",
+          hu: "10 = földszint, 11 = egy szinttel feljebb, 12 = két szinttel feljebb, 13 = általában a legfelső.",
+          en: "10 = floor, 11 = one level up, 12 = two levels up, 13 = usually the top.",
         },
       },
     ],
