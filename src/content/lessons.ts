@@ -825,11 +825,11 @@ export const ALL_LESSONS: Lesson[] = [
           en: "“1 GVE(6)” – the factor",
         },
         text: {
-          de: "Steht nach GVE eine Zahl in Klammern, heißt das Faktor. Er zeigt, wie viele EVE in einer GVE sind. „1 GVE(6)“ bedeutet: In einem Karton sind 6 Produkte.",
-          hu: "Ha a GVE után zárójelben egy szám áll, azt faktornak hívjuk. Azt mutatja, hány EVE van egy GVE-ben. Az „1 GVE(6)” azt jelenti: egy kartonban 6 termék van.",
-          en: "A number in brackets after GVE is called the factor. It shows how many EVE are in one GVE. “1 GVE(6)” means: one carton holds 6 products.",
+          de: "Steht nach GVE eine Zahl in Klammern, heißt das Faktor. Er zeigt, wie viele EVE in einer GVE sind. „1 GVE(6)“ bedeutet: In einem Karton sind 6 Produkte. Manchmal steckt so eine GVE zusätzlich noch in einem Überkarton oder Exportkarton.",
+          hu: "Ha a GVE után zárójelben egy szám áll, azt faktornak hívjuk. Azt mutatja, hány EVE van egy GVE-ben. Az „1 GVE(6)” azt jelenti: egy kartonban 6 termék van. Néha egy ilyen GVE még egy Überkartonban vagy Exportkartonban is benne van.",
+          en: "A number in brackets after GVE is called the factor. It shows how many EVE are in one GVE. “1 GVE(6)” means: one carton holds 6 products. Sometimes such a GVE is additionally packed in an Überkarton or Exportkarton.",
         },
-        terms: ["faktor", "eve"],
+        terms: ["faktor", "eve", "ueberkarton"],
       },
       {
         title: {
