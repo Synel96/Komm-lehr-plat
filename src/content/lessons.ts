@@ -286,11 +286,11 @@ export const ALL_LESSONS: Lesson[] = [
       {
         title: { de: "Pause buchen", hu: "Szünet csekkolása", en: "Booking a break" },
         text: {
-          de: "Am Anfang und am Ende jeder Pause buchst du in der Zeiterfassung „Pause“. Die Pausenzeit ist keine Arbeitszeit und zählt nicht in deine Leistung.",
-          hu: "Minden szünet elején és végén a Zeiterfassung menüben csekkolod a „Pause”-t. A szünet nem munkaidő, és nem számít bele a Leistungodba.",
-          en: "At the start and end of every break you book “Pause” in Zeiterfassung. Break time is not working time and doesn't count towards your Leistung.",
+          de: "Wenn du in die Pause gehst, buchst du in der Zeiterfassung „Pause“. Kommst du aus der Pause zurück, drückst du „Kommt Pause“.",
+          hu: "Amikor szünetre mész, a Zeiterfassung menüben becsekkolod a „Pause”-t. Amikor visszajössz a szünetről, a „Kommt Pause” gombot kell megnyomnod.",
+          en: "When you go on a break, you book “Pause” in Zeiterfassung. When you come back from the break, you press “Kommt Pause”.",
         },
-        terms: ["pause"],
+        terms: ["pause", "kommt-pause"],
       },
       {
         title: {
@@ -352,7 +352,12 @@ export const ALL_LESSONS: Lesson[] = [
             en: "Open the “Zeiterfassung” menu",
           },
           { de: "Kommen", hu: "Kommen (munkakezdés)", en: "Kommen (clock in)" },
-          { de: "Pause", hu: "Pause (szünet)", en: "Pause (break)" },
+          { de: "Pause", hu: "Pause (szünet kezdete)", en: "Pause (start of break)" },
+          {
+            de: "Kommt Pause",
+            hu: "Kommt Pause (vissza a szünetről)",
+            en: "Kommt Pause (back from break)",
+          },
           { de: "Gehen", hu: "Gehen (munka vége)", en: "Gehen (clock out)" },
           {
             de: "Am Scanner abmelden",
@@ -361,9 +366,9 @@ export const ALL_LESSONS: Lesson[] = [
           },
         ],
         explanation: {
-          de: "Zuerst am Scanner einloggen, dann Zeiterfassung → Kommen. Am Ende Zeiterfassung → Gehen und erst danach abmelden – ohne Login kann der Scanner nichts buchen.",
-          hu: "Először bejelentkezés a szkennerre, aztán Zeiterfassung → Kommen. A végén Zeiterfassung → Gehen, és csak utána kijelentkezés – bejelentkezés nélkül a szkenner nem tud rögzíteni.",
-          en: "First log in on the scanner, then Zeiterfassung → Kommen. At the end Zeiterfassung → Gehen and only then log out – without a login the scanner can't book anything.",
+          de: "Zuerst am Scanner einloggen, dann Zeiterfassung → Kommen. Nach der Pause „Kommt Pause“. Am Ende Zeiterfassung → Gehen und erst danach abmelden – ohne Login kann der Scanner nichts buchen.",
+          hu: "Először bejelentkezés a szkennerre, aztán Zeiterfassung → Kommen. Szünet után „Kommt Pause”. A végén Zeiterfassung → Gehen, és csak utána kijelentkezés – bejelentkezés nélkül a szkenner nem tud rögzíteni.",
+          en: "First log in on the scanner, then Zeiterfassung → Kommen. After the break “Kommt Pause”. At the end Zeiterfassung → Gehen and only then log out – without a login the scanner can't book anything.",
         },
       },
       {
@@ -412,9 +417,9 @@ export const ALL_LESSONS: Lesson[] = [
           },
         ],
         explanation: {
-          de: "Pause = du arbeitest nicht. Nebenzeit = du arbeitest, aber kommissionierst gerade nicht (Reinigung, Besprechung …) – im eingeloggten Zustand extra buchen.",
-          hu: "Pause = nem dolgozol. Nebenzeit = dolgozol, csak épp nincs komissiózás (Reinigung, Besprechung stb.) – bejelentkezve külön kell csekkolni.",
-          en: "Pause = you're not working. Nebenzeit = you are working but not picking (Reinigung, Besprechung …) – book it separately while logged in.",
+          de: "Pause = du machst Pause (zurück mit „Kommt Pause“). Nebenzeit = du arbeitest, aber kommissionierst gerade nicht (Reinigung, Besprechung …) – im eingeloggten Zustand extra buchen.",
+          hu: "Pause = szünetet tartasz (visszatéréskor „Kommt Pause”). Nebenzeit = dolgozol, csak épp nincs komissiózás (Reinigung, Besprechung stb.) – bejelentkezve külön kell csekkolni.",
+          en: "Pause = you take a break (back with “Kommt Pause”). Nebenzeit = you are working but not picking (Reinigung, Besprechung …) – book it separately while logged in.",
         },
       },
       {
