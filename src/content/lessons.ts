@@ -385,9 +385,9 @@ export const ALL_LESSONS: Lesson[] = [
         },
         options: [
           {
-            de: "Gleich weiter kommissionieren.",
-            hu: "Rögtön folytatom a komissiózást.",
-            en: "Carry on picking straight away.",
+            de: "Wieder einloggen und gleich weiter kommissionieren.",
+            hu: "Újra bejelentkezem, és rögtön folytatom a komissiózást.",
+            en: "Log in again and carry on picking straight away.",
           },
           {
             de: "Wieder einloggen, dann Zeiterfassung → Komm Pause.",
@@ -402,9 +402,9 @@ export const ALL_LESSONS: Lesson[] = [
         ],
         answer: 1,
         explanation: {
-          de: "Nach der Pause loggst du dich wieder ein und buchst „Komm Pause“. „Kommen“ buchst du nur einmal, am Schichtbeginn.",
-          hu: "Szünet után újra bejelentkezel, és a „Komm Pause”-t csekkolod. A „Kommen”-t csak egyszer, a műszak elején csekkolod.",
-          en: "After the break you log in again and book “Komm Pause”. You book “Kommen” only once, at the start of the shift.",
+          de: "Nach der Pause loggst du dich wieder ein und buchst „Komm Pause“ – erst dann geht es weiter. Ohne „Komm Pause“ läuft deine Pause im System weiter. „Kommen“ buchst du nur einmal, am Schichtbeginn.",
+          hu: "Szünet után újra bejelentkezel, és a „Komm Pause”-t csekkolod – csak utána folytatod a munkát. „Komm Pause” nélkül a rendszerben tovább megy a szüneted. A „Kommen”-t csak egyszer, a műszak elején csekkolod.",
+          en: "After the break you log in again and book “Komm Pause” – only then do you carry on. Without “Komm Pause” your break keeps running in the system. You book “Kommen” only once, at the start of the shift.",
         },
       },
       {
