@@ -34,14 +34,36 @@ export type GlossaryEntry = {
 
 export const GLOSSARY: GlossaryEntry[] = [
   {
+    id: "reinigung",
+    term: "Reinigung",
+    kind: "word",
+    category: "zeiterfassung",
+    explanation: {
+      de: "Reinigen bzw. Aufräumen des Arbeitsbereichs. Wird als Nebenzeit gebucht.",
+      hu: "Takarítás, a munkaterület rendbetétele. Nebenzeit-ként kell csekkolni.",
+      en: "Cleaning or tidying up the work area. Booked as Nebenzeit.",
+    },
+  },
+  {
+    id: "besprechung",
+    term: "Besprechung",
+    kind: "word",
+    category: "zeiterfassung",
+    explanation: {
+      de: "Meeting bzw. Teambesprechung, z. B. zu Schichtbeginn. Wird als Nebenzeit gebucht.",
+      hu: "Megbeszélés, csapateligazítás, pl. a műszak elején. Nebenzeit-ként kell csekkolni.",
+      en: "Meeting or team briefing, e.g. at the start of the shift. Booked as Nebenzeit.",
+    },
+  },
+  {
     id: "zeiterfassung",
     term: "Zeiterfassung",
     kind: "word",
     category: "zeiterfassung",
     explanation: {
-      de: "Das Buchen deiner Arbeitszeit: Kommen, Pause, Nebenzeit und Gehen – am Scanner oder am Zeiterfassungs-Terminal. Danach wird deine Arbeitszeit berechnet.",
-      hu: "Időnyilvántartás: a munkaidőd rögzítése – Kommen, Pause, Nebenzeit és Gehen – a szkenneren vagy a beléptető terminálon. Ebből számolják a munkaidődet.",
-      en: "Recording your working time: Kommen, Pause, Nebenzeit and Gehen – on the scanner or the time clock terminal. Your working hours are calculated from it.",
+      de: "Menüpunkt am Scanner, in dem du deine Arbeitszeit buchst: Kommen, Pause, Nebenzeit und Gehen. Erreichbar nach dem Einloggen. Daraus wird deine Arbeitszeit berechnet.",
+      hu: "Időnyilvántartás: menüpont a szkenneren, ahol a munkaidődet rögzíted: Kommen, Pause, Nebenzeit és Gehen. Bejelentkezés után érhető el. Ebből számolják a munkaidődet.",
+      en: "Menu item on the scanner where you book your working time: Kommen, Pause, Nebenzeit and Gehen. Available after logging in. Your working hours are calculated from it.",
     },
   },
   {
@@ -50,9 +72,9 @@ export const GLOSSARY: GlossaryEntry[] = [
     kind: "word",
     category: "zeiterfassung",
     explanation: {
-      de: "Sich mit Mitarbeiternummer und Passwort am Scanner anmelden. Erst danach kannst du Aufträge bearbeiten – und alles läuft auf deinen Namen.",
-      hu: "Bejelentkezés a szkennerre a dolgozói számmal és jelszóval. Csak ezután tudsz megbízásokon dolgozni – és minden a te nevedre fut.",
-      en: "Logging in on the scanner with your employee number and password. Only then can you work on orders – and everything is booked under your name.",
+      de: "Sich mit Mitarbeiternummer und Passwort am Scanner anmelden – der erste Schritt der Schicht. Danach in der Zeiterfassung „Kommen“ buchen. Alles läuft auf deinen Namen.",
+      hu: "Bejelentkezés a szkennerre a dolgozói számmal és jelszóval – a műszak első lépése. Utána a Zeiterfassung menüben „Kommen”. Minden a te nevedre fut.",
+      en: "Logging in on the scanner with your employee number and password – the first step of the shift. Then book “Kommen” in Zeiterfassung. Everything is booked under your name.",
     },
   },
   {
@@ -61,9 +83,9 @@ export const GLOSSARY: GlossaryEntry[] = [
     kind: "word",
     category: "zeiterfassung",
     explanation: {
-      de: "Sich vom Scanner abmelden, z. B. am Schichtende oder bevor du das Gerät abgibst. Sonst bucht der Nächste unter deinem Namen.",
-      hu: "Kijelentkezés a szkennerről, pl. műszak végén vagy mielőtt leadod a készüléket. Különben a következő ember a te nevedre könyvel.",
-      en: "Logging out of the scanner, e.g. at the end of the shift or before handing the device over. Otherwise the next person books under your name.",
+      de: "Sich vom Scanner abmelden – am Schichtende erst nach „Gehen“, und immer bevor du das Gerät abgibst. Sonst bucht der Nächste unter deinem Namen.",
+      hu: "Kijelentkezés a szkennerről – műszak végén csak a „Gehen” után, és mindig, mielőtt leadod a készüléket. Különben a következő ember a te nevedre könyvel.",
+      en: "Logging out of the scanner – at the end of the shift only after “Gehen”, and always before handing the device over. Otherwise the next person books under your name.",
     },
   },
   {
@@ -72,9 +94,9 @@ export const GLOSSARY: GlossaryEntry[] = [
     kind: "word",
     category: "zeiterfassung",
     explanation: {
-      de: "Arbeitsbeginn buchen („einstempeln“). Ab jetzt zählt deine Arbeitszeit.",
-      hu: "A munkakezdés rögzítése („becsekkolás”). Innentől számít a munkaidőd.",
-      en: "Booking the start of work (“clocking in”). Your working time counts from now on.",
+      de: "Arbeitsbeginn buchen („einstempeln“): nach dem Einloggen im Menü Zeiterfassung. Ab jetzt zählt deine Arbeitszeit.",
+      hu: "A munkakezdés rögzítése („becsekkolás”): bejelentkezés után a Zeiterfassung menüben. Innentől számít a munkaidőd.",
+      en: "Booking the start of work (“clocking in”): after logging in, in the Zeiterfassung menu. Your working time counts from now on.",
     },
   },
   {
@@ -83,9 +105,9 @@ export const GLOSSARY: GlossaryEntry[] = [
     kind: "word",
     category: "zeiterfassung",
     explanation: {
-      de: "Arbeitsende buchen („ausstempeln“). Ab jetzt zählt keine Arbeitszeit mehr.",
-      hu: "A munka végének rögzítése („kicsekkolás”). Innentől már nem számít munkaidő.",
-      en: "Booking the end of work (“clocking out”). No more working time counts from now on.",
+      de: "Arbeitsende buchen („ausstempeln“) im Menü Zeiterfassung – danach am Scanner abmelden. Ab jetzt zählt keine Arbeitszeit mehr.",
+      hu: "A munka végének rögzítése („kicsekkolás”) a Zeiterfassung menüben – utána kijelentkezés a szkennerről. Innentől már nem számít munkaidő.",
+      en: "Booking the end of work (“clocking out”) in the Zeiterfassung menu – then log out of the scanner. No more working time counts from now on.",
     },
   },
   {
@@ -105,9 +127,9 @@ export const GLOSSARY: GlossaryEntry[] = [
     kind: "word",
     category: "zeiterfassung",
     explanation: {
-      de: "Zeit für Arbeiten neben dem Kommissionieren, z. B. Aufräumen, Leergut wegbringen, Schulung oder Warten auf Ware. Wird extra gebucht, damit sie nicht als langsames Picken zählt.",
-      hu: "Mellékidő: a komissiózáson kívüli munkák ideje, pl. rendrakás, üres göngyöleg elvitele, oktatás vagy várakozás árura. Külön kell rögzíteni, hogy ne számítson lassú kiszedésnek.",
-      en: "Time for work besides picking, e.g. tidying up, taking away empties, training or waiting for goods. Booked separately so it doesn't count as slow picking.",
+      de: "Zeit, in der du arbeitest, aber gerade nicht kommissionierst – z. B. Reinigung, Besprechung, Schulung oder Leergut wegbringen. Im eingeloggten Zustand in der Zeiterfassung buchen, damit sie nicht als langsames Picken zählt.",
+      hu: "Mellékidő: amikor dolgozol, de épp nincs komissiózás – pl. Reinigung (takarítás), Besprechung (megbeszélés), oktatás vagy üres göngyöleg elvitele. Bejelentkezett állapotban a Zeiterfassung menüben kell csekkolni, hogy ne számítson lassú kiszedésnek.",
+      en: "Time when you're working but not picking – e.g. Reinigung (cleaning), Besprechung (meeting), training or taking away empties. Book it in Zeiterfassung while logged in, so it doesn't count as slow picking.",
     },
   },
   {
