@@ -1,30 +1,29 @@
 import { Search } from "lucide-react";
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { GLOSSARY, type GlossaryKind } from "@/src/content/glossary";
-import { filterGlossary, sortGlossary } from "@/src/content/search";
+import { GLOSSARY, GLOSSARY_CATEGORIES } from "@/src/content/glossary";
+import { filterGlossary, sortGlossary, type GlossaryFilter } from "@/src/content/search";
 import { useLang } from "@/src/hooks/use-lang";
 import { cn } from "@/lib/utils";
 
 const SORTED_GLOSSARY = sortGlossary(GLOSSARY);
 
-type KindFilter = GlossaryKind | "all";
-
 export default function Page() {
   const { t } = useTranslation();
   const { lang } = useLang();
   const [query, setQuery] = useState("");
-  const [kind, setKind] = useState<KindFilter>("all");
+  const [filter, setFilter] = useState<GlossaryFilter>("all");
 
   const results = useMemo(
-    () => filterGlossary(SORTED_GLOSSARY, { query, lang, kind }),
-    [query, lang, kind]
+    () => filterGlossary(SORTED_GLOSSARY, { query, lang, filter }),
+    [query, lang, filter]
   );
 
-  const filters: { value: KindFilter; label: string }[] = [
+  const filters: { value: GlossaryFilter; label: string }[] = [
     { value: "all", label: t("glossary.filterAll") },
     { value: "abbr", label: t("glossary.filterAbbr") },
     { value: "word", label: t("glossary.filterWord") },
+    ...GLOSSARY_CATEGORIES.map((category) => ({ value: category.id, label: category.label[lang] })),
   ];
 
   return (
@@ -52,22 +51,22 @@ export default function Page() {
         <div
           role="group"
           aria-label={t("glossary.filterLabel")}
-          className="inline-flex shrink-0 rounded-lg border p-1"
+          className="inline-flex shrink-0 flex-wrap rounded-lg border p-1"
         >
-          {filters.map((filter) => (
+          {filters.map((option) => (
             <button
-              key={filter.value}
+              key={option.value}
               type="button"
-              aria-pressed={kind === filter.value}
-              onClick={() => setKind(filter.value)}
+              aria-pressed={filter === option.value}
+              onClick={() => setFilter(option.value)}
               className={cn(
                 "rounded-md px-3 py-1.5 text-sm font-medium transition-colors",
-                kind === filter.value
+                filter === option.value
                   ? "bg-primary text-primary-foreground"
                   : "text-muted-foreground hover:text-foreground"
               )}
             >
-              {filter.label}
+              {option.label}
             </button>
           ))}
         </div>
@@ -89,6 +88,18 @@ export default function Page() {
             <div lang="de" className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
               <span className="text-lg font-bold">{entry.term}</span>
               {entry.full && <span className="text-muted-foreground italic">{entry.full}</span>}
+              {entry.category && (
+                <span
+                  lang={lang}
+                  className="rounded-full bg-amber-400/20 px-2 py-0.5 text-xs font-medium text-amber-800 dark:text-amber-300"
+                >
+                  {
+                    GLOSSARY_CATEGORIES.find((category) => category.id === entry.category)?.label[
+                      lang
+                    ]
+                  }
+                </span>
+              )}
             </div>
             <p className="mt-2">{entry.explanation[lang]}</p>
             {entry.example && (

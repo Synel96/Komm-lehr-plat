@@ -109,16 +109,16 @@ export const LESSONS: Lesson[] = [
   {
     slug: "scanner-grundlagen",
     topic: "scanner",
-    minutes: 5,
+    minutes: 8,
     title: {
       de: "Scanner-Grundlagen",
       hu: "Szkenner alapok",
       en: "Scanner basics",
     },
     summary: {
-      de: "Anmelden, die wichtigsten Tasten und wie man sicher scannt.",
-      hu: "Bejelentkezés, a legfontosabb gombok és a biztos beolvasás.",
-      en: "Logging in, the most important keys and scanning reliably.",
+      de: "Anmelden, die wichtigsten Tasten, sicher scannen und Zeit buchen.",
+      hu: "Bejelentkezés, a legfontosabb gombok, biztos beolvasás és időrögzítés.",
+      en: "Logging in, the most important keys, scanning reliably and booking time.",
     },
     steps: [
       {
@@ -128,7 +128,7 @@ export const LESSONS: Lesson[] = [
           hu: "Műszak elején a dolgozói számoddal (MA-Nr.) és a jelszavaddal jelentkezel be a szkenneren. Mindig a saját adataiddal lépj be – minden könyvelés a te nevedre fut.",
           en: "At the start of your shift you log in with your employee number (MA-Nr.) and password. Always use your own login – every booking is recorded under your name.",
         },
-        terms: ["ma", "mde"],
+        terms: ["einloggen", "ma", "mde"],
       },
       {
         title: {
@@ -163,6 +163,19 @@ export const LESSONS: Lesson[] = [
           en: "Many cartons carry several barcodes. The scanner tells you what it expects (e.g. “Lagerplatz scannen” or “Artikel scannen”). Read the display before you scan.",
         },
         terms: ["ean", "lp"],
+      },
+      {
+        title: {
+          de: "Zeit buchen: Kommen, Pause, Nebenzeit, Gehen",
+          hu: "Időrögzítés: Kommen, Pause, Nebenzeit, Gehen",
+          en: "Booking time: Kommen, Pause, Nebenzeit, Gehen",
+        },
+        text: {
+          de: "Deine Arbeitszeit wird über die Zeiterfassung gebucht. „Kommen“ zu Schichtbeginn, „Pause“ am Anfang und Ende jeder Pause, „Nebenzeit“ für Arbeiten neben dem Picken (z. B. Aufräumen, Schulung) und „Gehen“ zum Feierabend. Vor dem Gehen meldest du dich am Scanner ab.",
+          hu: "A munkaidődet az időnyilvántartásban (Zeiterfassung) rögzíted. „Kommen” a műszak elején, „Pause” minden szünet elején és végén, „Nebenzeit” a kiszedésen kívüli munkákhoz (pl. rendrakás, oktatás), és „Gehen” a munka végén. Mielőtt elmész, jelentkezz ki a szkennerről.",
+          en: "Your working time is recorded in the time tracking (Zeiterfassung). “Kommen” at the start of the shift, “Pause” at the start and end of every break, “Nebenzeit” for work besides picking (e.g. tidying, training) and “Gehen” when you finish. Log out of the scanner before you leave.",
+        },
+        terms: ["zeiterfassung", "kommen", "pause", "nebenzeit", "gehen", "abmelden"],
       },
     ],
     exercises: [
@@ -240,6 +253,85 @@ export const LESSONS: Lesson[] = [
           de: "10–30 cm Abstand und ein anderer Winkel lösen die meisten Leseprobleme (z. B. spiegelnde Folie).",
           hu: "10–30 cm távolság és más szög a legtöbb olvasási problémát megoldja (pl. tükröző fólia).",
           en: "10–30 cm distance and a different angle fix most reading problems (e.g. reflecting foil).",
+        },
+      },
+      {
+        type: "order",
+        question: {
+          de: "Ein Arbeitstag: Bring die Buchungen in die richtige Reihenfolge.",
+          hu: "Egy munkanap: állítsd a rögzítéseket helyes sorrendbe.",
+          en: "A working day: put the bookings in the right order.",
+        },
+        items: [
+          { de: "Kommen", hu: "Kommen (munkakezdés)", en: "Kommen (clock in)" },
+          {
+            de: "Am Scanner einloggen",
+            hu: "Bejelentkezés a szkennerre",
+            en: "Log in on the scanner",
+          },
+          { de: "Pause", hu: "Pause (szünet)", en: "Pause (break)" },
+          {
+            de: "Am Scanner abmelden",
+            hu: "Kijelentkezés a szkennerről",
+            en: "Log out of the scanner",
+          },
+          { de: "Gehen", hu: "Gehen (munka vége)", en: "Gehen (clock out)" },
+        ],
+        explanation: {
+          de: "Erst Kommen buchen, dann am Scanner einloggen. Am Ende umgekehrt: erst abmelden, dann Gehen.",
+          hu: "Előbb a Kommen, aztán bejelentkezés a szkennerre. A végén fordítva: előbb kijelentkezés, aztán Gehen.",
+          en: "First book Kommen, then log in on the scanner. At the end the other way round: log out first, then Gehen.",
+        },
+      },
+      {
+        type: "classify",
+        question: {
+          de: "Was buchst du?",
+          hu: "Mit rögzítesz?",
+          en: "What do you book?",
+        },
+        categories: [
+          { de: "Pause", hu: "Pause", en: "Pause" },
+          { de: "Nebenzeit", hu: "Nebenzeit", en: "Nebenzeit" },
+        ],
+        items: [
+          {
+            text: {
+              de: "Du machst 30 Minuten Mittagspause.",
+              hu: "30 perc ebédszünetet tartasz.",
+              en: "You take a 30-minute lunch break.",
+            },
+            category: 0,
+          },
+          {
+            text: {
+              de: "Du räumst auf Anweisung den Gang auf.",
+              hu: "Utasításra rendet raksz a sorban.",
+              en: "You tidy up the aisle as instructed.",
+            },
+            category: 1,
+          },
+          {
+            text: {
+              de: "Du bist 20 Minuten in einer Schulung.",
+              hu: "20 percig oktatáson vagy.",
+              en: "You're in a training session for 20 minutes.",
+            },
+            category: 1,
+          },
+          {
+            text: {
+              de: "Du machst eine kurze Raucher- oder Kaffeepause.",
+              hu: "Rövid cigi- vagy kávészünetet tartasz.",
+              en: "You take a short smoke or coffee break.",
+            },
+            category: 0,
+          },
+        ],
+        explanation: {
+          de: "Pause = du arbeitest nicht. Nebenzeit = du arbeitest, aber nicht am Picken – darum extra buchen.",
+          hu: "Pause = nem dolgozol. Nebenzeit = dolgozol, csak nem kiszedéssel – ezért külön kell rögzíteni.",
+          en: "Pause = you're not working. Nebenzeit = you are working, just not picking – that's why it's booked separately.",
         },
       },
     ],

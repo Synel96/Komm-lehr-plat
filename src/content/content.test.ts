@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { SUPPORTED_LANGS } from "../i18n-config";
-import { GLOSSARY } from "./glossary";
+import { GLOSSARY, GLOSSARY_CATEGORIES } from "./glossary";
 import { SCANNER_FIELDS, SCANNER_KEYS, SCANNER_MESSAGES } from "./scanner";
 import { filterGlossary, normalize, sortGlossary } from "./search";
 
@@ -24,6 +24,16 @@ describe("content", () => {
     }
   });
 
+  it("only uses known glossary categories, each with a translated label", () => {
+    const ids = GLOSSARY_CATEGORIES.map((category) => category.id);
+    for (const category of GLOSSARY_CATEGORIES) {
+      for (const lang of SUPPORTED_LANGS) expect(category.label[lang]?.trim()).toBeTruthy();
+    }
+    for (const entry of GLOSSARY) {
+      if (entry.category) expect(ids, entry.id).toContain(entry.category);
+    }
+  });
+
   it("numbers the sample scanner screen markers 1..n", () => {
     expect(SCANNER_FIELDS.map((field) => field.marker)).toEqual(
       SCANNER_FIELDS.map((_, index) => index + 1)
@@ -39,26 +49,42 @@ describe("glossary search", () => {
   });
 
   it("finds entries by abbreviation and full form", () => {
-    const byAbbr = filterGlossary(GLOSSARY, { query: "mhd", lang: "de", kind: "all" });
+    const byAbbr = filterGlossary(GLOSSARY, { query: "mhd", lang: "de", filter: "all" });
     expect(byAbbr[0]?.id).toBe("mhd");
 
     const byFullForm = filterGlossary(GLOSSARY, {
       query: "versandeinheit",
       lang: "de",
-      kind: "all",
+      filter: "all",
     });
     expect(byFullForm[0]?.id).toBe("nve");
   });
 
   it("searches explanations in the current language, after term matches", () => {
-    const results = filterGlossary(GLOSSARY, { query: "raklap", lang: "hu", kind: "all" });
+    const results = filterGlossary(GLOSSARY, { query: "raklap", lang: "hu", filter: "all" });
     expect(results.map((entry) => entry.id)).toContain("le");
   });
 
   it("filters by kind", () => {
-    const words = filterGlossary(GLOSSARY, { query: "", lang: "de", kind: "word" });
+    const words = filterGlossary(GLOSSARY, { query: "", lang: "de", filter: "word" });
     expect(words.length).toBeGreaterThan(0);
     expect(words.every((entry) => entry.kind === "word")).toBe(true);
+  });
+
+  it("filters by category", () => {
+    const time = filterGlossary(GLOSSARY, { query: "", lang: "de", filter: "zeiterfassung" });
+    expect(time.map((entry) => entry.id)).toEqual(
+      expect.arrayContaining([
+        "zeiterfassung",
+        "einloggen",
+        "abmelden",
+        "kommen",
+        "gehen",
+        "pause",
+        "nebenzeit",
+      ])
+    );
+    expect(time.every((entry) => entry.category === "zeiterfassung")).toBe(true);
   });
 
   it("sorts alphabetically in German", () => {

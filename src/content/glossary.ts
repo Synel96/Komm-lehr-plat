@@ -6,21 +6,110 @@
 // - full:        ausgeschriebene Form (nur bei Abkürzungen)
 // - explanation: kurze Erklärung in jeder Sprache
 // - example:     optional, ein typisches Beispiel (bleibt auf Deutsch)
+// - category:    optional, Themengruppe mit eigenem Filter (siehe
+//                GLOSSARY_CATEGORIES), z. B. "zeiterfassung"
 
 import type { Localized } from "./types";
 
 export type GlossaryKind = "abbr" | "word";
+
+export type GlossaryCategory = "zeiterfassung";
+
+export const GLOSSARY_CATEGORIES: { id: GlossaryCategory; label: Localized }[] = [
+  {
+    id: "zeiterfassung",
+    label: { de: "Zeiterfassung", hu: "Időnyilvántartás", en: "Time tracking" },
+  },
+];
 
 export type GlossaryEntry = {
   id: string;
   term: string;
   full?: string;
   kind: GlossaryKind;
+  category?: GlossaryCategory;
   explanation: Localized;
   example?: string;
 };
 
 export const GLOSSARY: GlossaryEntry[] = [
+  {
+    id: "zeiterfassung",
+    term: "Zeiterfassung",
+    kind: "word",
+    category: "zeiterfassung",
+    explanation: {
+      de: "Das Buchen deiner Arbeitszeit: Kommen, Pause, Nebenzeit und Gehen – am Scanner oder am Zeiterfassungs-Terminal. Danach wird deine Arbeitszeit berechnet.",
+      hu: "Időnyilvántartás: a munkaidőd rögzítése – Kommen, Pause, Nebenzeit és Gehen – a szkenneren vagy a beléptető terminálon. Ebből számolják a munkaidődet.",
+      en: "Recording your working time: Kommen, Pause, Nebenzeit and Gehen – on the scanner or the time clock terminal. Your working hours are calculated from it.",
+    },
+  },
+  {
+    id: "einloggen",
+    term: "Einloggen / Anmelden",
+    kind: "word",
+    category: "zeiterfassung",
+    explanation: {
+      de: "Sich mit Mitarbeiternummer und Passwort am Scanner anmelden. Erst danach kannst du Aufträge bearbeiten – und alles läuft auf deinen Namen.",
+      hu: "Bejelentkezés a szkennerre a dolgozói számmal és jelszóval. Csak ezután tudsz megbízásokon dolgozni – és minden a te nevedre fut.",
+      en: "Logging in on the scanner with your employee number and password. Only then can you work on orders – and everything is booked under your name.",
+    },
+  },
+  {
+    id: "abmelden",
+    term: "Abmelden / Ausloggen",
+    kind: "word",
+    category: "zeiterfassung",
+    explanation: {
+      de: "Sich vom Scanner abmelden, z. B. am Schichtende oder bevor du das Gerät abgibst. Sonst bucht der Nächste unter deinem Namen.",
+      hu: "Kijelentkezés a szkennerről, pl. műszak végén vagy mielőtt leadod a készüléket. Különben a következő ember a te nevedre könyvel.",
+      en: "Logging out of the scanner, e.g. at the end of the shift or before handing the device over. Otherwise the next person books under your name.",
+    },
+  },
+  {
+    id: "kommen",
+    term: "Kommen",
+    kind: "word",
+    category: "zeiterfassung",
+    explanation: {
+      de: "Arbeitsbeginn buchen („einstempeln“). Ab jetzt zählt deine Arbeitszeit.",
+      hu: "A munkakezdés rögzítése („becsekkolás”). Innentől számít a munkaidőd.",
+      en: "Booking the start of work (“clocking in”). Your working time counts from now on.",
+    },
+  },
+  {
+    id: "gehen",
+    term: "Gehen",
+    kind: "word",
+    category: "zeiterfassung",
+    explanation: {
+      de: "Arbeitsende buchen („ausstempeln“). Ab jetzt zählt keine Arbeitszeit mehr.",
+      hu: "A munka végének rögzítése („kicsekkolás”). Innentől már nem számít munkaidő.",
+      en: "Booking the end of work (“clocking out”). No more working time counts from now on.",
+    },
+  },
+  {
+    id: "pause",
+    term: "Pause",
+    kind: "word",
+    category: "zeiterfassung",
+    explanation: {
+      de: "Beginn und Ende der Pause buchen. Die Pausenzeit zählt nicht als Arbeitszeit und nicht in deine Leistung.",
+      hu: "A szünet kezdetének és végének rögzítése. A szünet ideje nem számít munkaidőnek, és a teljesítményedbe sem.",
+      en: "Booking the start and end of your break. Break time doesn't count as working time or towards your performance.",
+    },
+  },
+  {
+    id: "nebenzeit",
+    term: "Nebenzeit",
+    kind: "word",
+    category: "zeiterfassung",
+    explanation: {
+      de: "Zeit für Arbeiten neben dem Kommissionieren, z. B. Aufräumen, Leergut wegbringen, Schulung oder Warten auf Ware. Wird extra gebucht, damit sie nicht als langsames Picken zählt.",
+      hu: "Mellékidő: a komissiózáson kívüli munkák ideje, pl. rendrakás, üres göngyöleg elvitele, oktatás vagy várakozás árura. Külön kell rögzíteni, hogy ne számítson lassú kiszedésnek.",
+      en: "Time for work besides picking, e.g. tidying up, taking away empties, training or waiting for goods. Booked separately so it doesn't count as slow picking.",
+    },
+  },
   {
     id: "mde",
     term: "MDE",
