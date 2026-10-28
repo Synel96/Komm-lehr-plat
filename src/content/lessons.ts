@@ -13,7 +13,12 @@
 
 import type { Localized } from "./types";
 
-export type TopicId = "scanner" | "kommissionierung" | "etiketten" | "sonderfaelle";
+export type TopicId =
+  | "scanner"
+  | "zeiterfassung"
+  | "kommissionierung"
+  | "etiketten"
+  | "sonderfaelle";
 
 export type Topic = {
   id: TopicId;
@@ -73,6 +78,15 @@ export const TOPICS: Topic[] = [
     },
   },
   {
+    id: "zeiterfassung",
+    title: { de: "Zeiterfassung", hu: "Időnyilvántartás", en: "Time tracking" },
+    description: {
+      de: "Kommen, Pause, Nebenzeit, Gehen – und warum das für deine Leistung zählt.",
+      hu: "Kommen, Pause, Nebenzeit, Gehen – és miért számít ez a Leistungodnál.",
+      en: "Kommen, Pause, Nebenzeit, Gehen – and why it matters for your Leistung.",
+    },
+  },
+  {
     id: "kommissionierung",
     title: { de: "Kommissionieren", hu: "Komissiózás", en: "Order picking" },
     description: {
@@ -109,16 +123,16 @@ export const LESSONS: Lesson[] = [
   {
     slug: "scanner-grundlagen",
     topic: "scanner",
-    minutes: 10,
+    minutes: 5,
     title: {
       de: "Scanner-Grundlagen",
       hu: "Szkenner alapok",
       en: "Scanner basics",
     },
     summary: {
-      de: "Anmelden, die wichtigsten Tasten, sicher scannen und Zeit buchen.",
-      hu: "Bejelentkezés, a legfontosabb gombok, biztos beolvasás és időrögzítés.",
-      en: "Logging in, the most important keys, scanning reliably and booking time.",
+      de: "Anmelden, die wichtigsten Tasten und wie man sicher scannt.",
+      hu: "Bejelentkezés, a legfontosabb gombok és a biztos beolvasás.",
+      en: "Logging in, the most important keys and scanning reliably.",
     },
     steps: [
       {
@@ -163,42 +177,6 @@ export const LESSONS: Lesson[] = [
           en: "Many cartons carry several barcodes. The scanner tells you what it expects (e.g. “Lagerplatz scannen” or “Artikel scannen”). Read the display before you scan.",
         },
         terms: ["ean", "lp"],
-      },
-      {
-        title: {
-          de: "Zeit buchen: Kommen, Pause, Nebenzeit, Gehen",
-          hu: "Időrögzítés: Kommen, Pause, Nebenzeit, Gehen",
-          en: "Booking time: Kommen, Pause, Nebenzeit, Gehen",
-        },
-        text: {
-          de: "Die Arbeitszeit buchst du am Scanner. Zuerst einloggen, dann im Menü „Zeiterfassung“ auf „Kommen“ – erst dann zählt deine Arbeitszeit. Im Lauf der Schicht buchst du dort auch „Pause“ (Anfang und Ende jeder Pause) und „Nebenzeit“, wenn du gerade nicht kommissionierst (z. B. Reinigung, Besprechung). Zum Feierabend: Zeiterfassung → „Gehen“, danach am Scanner abmelden.",
-          hu: "A munkaidődet a szkenneren rögzíted. Először bejelentkezel, aztán a „Zeiterfassung” menüben a „Kommen” – csak ezután számít a munkaidőd. A műszak alatt ugyanitt rögzíted a „Pause”-t (minden szünet elején és végén) és a „Nebenzeit”-et, ha épp nincs komissiózás (pl. Reinigung – takarítás, Besprechung – megbeszélés). Munka végén: Zeiterfassung → „Gehen”, utána kijelentkezés a szkennerről.",
-          en: "You book your working time on the scanner. First log in, then choose “Kommen” in the “Zeiterfassung” menu – only then does your working time count. During the shift you also book “Pause” there (start and end of every break) and “Nebenzeit” when you are not picking (e.g. Reinigung – cleaning, Besprechung – meeting). At the end: Zeiterfassung → “Gehen”, then log out of the scanner.",
-        },
-        terms: [
-          "einloggen",
-          "zeiterfassung",
-          "kommen",
-          "pause",
-          "nebenzeit",
-          "reinigung",
-          "besprechung",
-          "gehen",
-          "abmelden",
-        ],
-      },
-      {
-        title: {
-          de: "Warum Nebenzeit so wichtig ist: Leistung & Gap-Zeit",
-          hu: "Miért fontos a Nebenzeit: Leistung és Gap-Zeit",
-          en: "Why Nebenzeit matters: Leistung & Gap-Zeit",
-        },
-        text: {
-          de: "Das System misst deine Leistung über die Zeit zwischen deinen Buchungen am Scanner. Wenn du nichts buchst – weil du z. B. wartest, Pause machst oder etwas anderes arbeitest –, entsteht eine Gap-Zeit (Lücke). Die zählt gegen deine Leistung. Darum: Bei einer Pause oder einer anderen Tätigkeit immer Pause bzw. Nebenzeit buchen, damit es im System erfasst ist.",
-          hu: "A rendszer a teljesítményedet (Leistung) a szkenneres rögzítéseid közötti időből méri. Ha nem rögzítesz semmit – mert pl. vársz, szünetet tartasz vagy más munkát végzel –, Gap-Zeit (üres idő, rés) keletkezik. Ez rontja a Leistungodat. Ezért: ha szünet vagy más munkafolyamat van, mindig csekkold be a Pause-t, illetve a Nebenzeit-et, hogy rögzüljön a rendszerben.",
-          en: "The system measures your Leistung (performance) by the time between your bookings on the scanner. If you book nothing – e.g. because you're waiting, on a break or doing other work – a Gap-Zeit (gap) is created. It counts against your Leistung. So: for a break or any other task, always book Pause or Nebenzeit so it is recorded in the system.",
-        },
-        terms: ["nebenzeit", "gap-zeit", "leistung"],
       },
     ],
     exercises: [
@@ -278,6 +256,86 @@ export const LESSONS: Lesson[] = [
           en: "10–30 cm distance and a different angle fix most reading problems (e.g. reflecting foil).",
         },
       },
+    ],
+  },
+  {
+    slug: "zeiterfassung",
+    topic: "zeiterfassung",
+    minutes: 7,
+    title: {
+      de: "Zeit buchen am Scanner",
+      hu: "Időcsekkolás a szkenneren",
+      en: "Booking time on the scanner",
+    },
+    summary: {
+      de: "Einloggen, Kommen, Pause, Nebenzeit, Gehen – in der richtigen Reihenfolge, ohne Gap-Zeit.",
+      hu: "Bejelentkezés, Kommen, Pause, Nebenzeit, Gehen – helyes sorrendben, Gap-Zeit nélkül.",
+      en: "Logging in, Kommen, Pause, Nebenzeit, Gehen – in the right order, without Gap-Zeit.",
+    },
+    steps: [
+      {
+        title: {
+          de: "Schichtbeginn: Einloggen, dann Kommen",
+          hu: "Műszakkezdés: bejelentkezés, aztán Kommen",
+          en: "Start of shift: log in, then Kommen",
+        },
+        text: {
+          de: "Die Arbeitszeit buchst du am Scanner. Zuerst meldest du dich mit deinen eigenen Daten an. Dann öffnest du das Menü „Zeiterfassung“ und buchst „Kommen“ – erst ab jetzt zählt deine Arbeitszeit.",
+          hu: "A munkaidődet a szkenneren rögzíted. Először a saját adataiddal bejelentkezel. Aztán megnyitod a „Zeiterfassung” menüt, és becsekkolod a „Kommen”-t – csak innentől számít a munkaidőd.",
+          en: "You book your working time on the scanner. First log in with your own details. Then open the “Zeiterfassung” menu and book “Kommen” – your working time only counts from now on.",
+        },
+        terms: ["einloggen", "zeiterfassung", "kommen"],
+      },
+      {
+        title: { de: "Pause buchen", hu: "Szünet csekkolása", en: "Booking a break" },
+        text: {
+          de: "Am Anfang und am Ende jeder Pause buchst du in der Zeiterfassung „Pause“. Die Pausenzeit ist keine Arbeitszeit und zählt nicht in deine Leistung.",
+          hu: "Minden szünet elején és végén a Zeiterfassung menüben csekkolod a „Pause”-t. A szünet nem munkaidő, és nem számít bele a Leistungodba.",
+          en: "At the start and end of every break you book “Pause” in Zeiterfassung. Break time is not working time and doesn't count towards your Leistung.",
+        },
+        terms: ["pause"],
+      },
+      {
+        title: {
+          de: "Nebenzeit: wenn du nicht kommissionierst",
+          hu: "Nebenzeit: amikor épp nincs komissiózás",
+          en: "Nebenzeit: when you're not picking",
+        },
+        text: {
+          de: "Arbeitest du gerade an etwas anderem als Kommissionieren – z. B. Reinigung, Besprechung oder Schulung –, buchst du im eingeloggten Zustand „Nebenzeit“. Ist die Tätigkeit vorbei, geht es mit dem Kommissionieren weiter.",
+          hu: "Ha épp nem komissiózol, hanem mást dolgozol – pl. Reinigung (takarítás), Besprechung (megbeszélés) vagy oktatás –, bejelentkezett állapotban becsekkolod a „Nebenzeit”-et. Ha vége, folytatod a komissiózást.",
+          en: "If you're doing something other than picking – e.g. Reinigung (cleaning), Besprechung (meeting) or training – book “Nebenzeit” while logged in. When it's done, you continue picking.",
+        },
+        terms: ["nebenzeit", "reinigung", "besprechung"],
+      },
+      {
+        title: {
+          de: "Warum Nebenzeit so wichtig ist: Leistung & Gap-Zeit",
+          hu: "Miért fontos a Nebenzeit: Leistung és Gap-Zeit",
+          en: "Why Nebenzeit matters: Leistung & Gap-Zeit",
+        },
+        text: {
+          de: "Das System misst deine Leistung über die Zeit zwischen deinen Buchungen am Scanner. Wenn du nichts buchst – weil du z. B. wartest, Pause machst oder etwas anderes arbeitest –, entsteht eine Gap-Zeit (Lücke). Die zählt gegen deine Leistung. Darum: Bei einer Pause oder einer anderen Tätigkeit immer Pause bzw. Nebenzeit buchen, damit es im System erfasst ist.",
+          hu: "A rendszer a teljesítményedet (Leistung) a szkenneres rögzítéseid közötti időből méri. Ha nem rögzítesz semmit – mert pl. vársz, szünetet tartasz vagy más munkát végzel –, Gap-Zeit (üres idő, rés) keletkezik. Ez rontja a Leistungodat. Ezért: ha szünet vagy más munkafolyamat van, mindig csekkold be a Pause-t, illetve a Nebenzeit-et, hogy rögzüljön a rendszerben.",
+          en: "The system measures your Leistung (performance) by the time between your bookings on the scanner. If you book nothing – e.g. because you're waiting, on a break or doing other work – a Gap-Zeit (gap) is created. It counts against your Leistung. So: for a break or any other task, always book Pause or Nebenzeit so it is recorded in the system.",
+        },
+        terms: ["nebenzeit", "gap-zeit", "leistung"],
+      },
+      {
+        title: {
+          de: "Feierabend: Gehen, dann abmelden",
+          hu: "Műszak vége: Gehen, aztán kijelentkezés",
+          en: "End of shift: Gehen, then log out",
+        },
+        text: {
+          de: "Zum Schichtende buchst du in der Zeiterfassung „Gehen“. Erst danach meldest du dich am Scanner ab – ohne Login kann der Scanner nichts mehr buchen.",
+          hu: "Műszak végén a Zeiterfassung menüben becsekkolod a „Gehen”-t. Csak ezután jelentkezz ki a szkennerről – bejelentkezés nélkül a szkenner már nem tud rögzíteni.",
+          en: "At the end of the shift you book “Gehen” in Zeiterfassung. Only then log out of the scanner – without a login the scanner can't book anything.",
+        },
+        terms: ["gehen", "abmelden"],
+      },
+    ],
+    exercises: [
       {
         type: "order",
         question: {

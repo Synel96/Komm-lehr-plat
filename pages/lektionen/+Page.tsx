@@ -1,4 +1,12 @@
-import { AlertTriangle, CircleCheck, Clock, PackageSearch, ScanLine, Tag } from "lucide-react";
+import {
+  AlertTriangle,
+  CircleCheck,
+  Clock,
+  PackageSearch,
+  ScanLine,
+  Tag,
+  Timer,
+} from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { LESSONS, TOPICS, lessonsByTopic, type TopicId } from "@/src/content/lessons";
 import { useLang } from "@/src/hooks/use-lang";
@@ -6,6 +14,7 @@ import { useLessonProgress } from "@/src/hooks/use-lesson-progress";
 
 const TOPIC_ICONS: Record<TopicId, typeof ScanLine> = {
   scanner: ScanLine,
+  zeiterfassung: Timer,
   kommissionierung: PackageSearch,
   etiketten: Tag,
   sonderfaelle: AlertTriangle,
