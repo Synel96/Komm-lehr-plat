@@ -34,6 +34,28 @@ export type GlossaryEntry = {
 
 export const GLOSSARY: GlossaryEntry[] = [
   {
+    id: "leistung",
+    term: "Leistung",
+    kind: "word",
+    category: "zeiterfassung",
+    explanation: {
+      de: "Deine gemessene Arbeitsleistung, z. B. Picks pro Stunde. Wird aus deinen Buchungen am Scanner berechnet – Gap-Zeit senkt sie.",
+      hu: "A mért teljesítményed, pl. kiszedés óránként. A szkenneres rögzítéseidből számolják – a Gap-Zeit rontja.",
+      en: "Your measured performance, e.g. picks per hour. Calculated from your bookings on the scanner – Gap-Zeit lowers it.",
+    },
+  },
+  {
+    id: "gap-zeit",
+    term: "Gap-Zeit",
+    kind: "word",
+    category: "zeiterfassung",
+    explanation: {
+      de: "Lücke im System: Zeit, in der nichts gebucht wurde. Zählt gegen deine Leistung. Vermeiden: bei Pausen Pause buchen, bei anderen Tätigkeiten Nebenzeit.",
+      hu: "Üres idő, rés a rendszerben: amikor semmit nem rögzítettél. Rontja a Leistungodat. Elkerülése: szünetnél a Pause-t, más munkánál a Nebenzeit-et csekkold.",
+      en: "Gap in the system: time with no booking. Counts against your Leistung. Avoid it by booking Pause for breaks and Nebenzeit for other tasks.",
+    },
+  },
+  {
     id: "reinigung",
     term: "Reinigung",
     kind: "word",

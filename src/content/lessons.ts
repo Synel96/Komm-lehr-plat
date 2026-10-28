@@ -109,7 +109,7 @@ export const LESSONS: Lesson[] = [
   {
     slug: "scanner-grundlagen",
     topic: "scanner",
-    minutes: 8,
+    minutes: 10,
     title: {
       de: "Scanner-Grundlagen",
       hu: "Szkenner alapok",
@@ -186,6 +186,19 @@ export const LESSONS: Lesson[] = [
           "gehen",
           "abmelden",
         ],
+      },
+      {
+        title: {
+          de: "Warum Nebenzeit so wichtig ist: Leistung & Gap-Zeit",
+          hu: "Miért fontos a Nebenzeit: Leistung és Gap-Zeit",
+          en: "Why Nebenzeit matters: Leistung & Gap-Zeit",
+        },
+        text: {
+          de: "Das System misst deine Leistung über die Zeit zwischen deinen Buchungen am Scanner. Wenn du nichts buchst – weil du z. B. wartest, Pause machst oder etwas anderes arbeitest –, entsteht eine Gap-Zeit (Lücke). Die zählt gegen deine Leistung. Darum: Bei einer Pause oder einer anderen Tätigkeit immer Pause bzw. Nebenzeit buchen, damit es im System erfasst ist.",
+          hu: "A rendszer a teljesítményedet (Leistung) a szkenneres rögzítéseid közötti időből méri. Ha nem rögzítesz semmit – mert pl. vársz, szünetet tartasz vagy más munkát végzel –, Gap-Zeit (üres idő, rés) keletkezik. Ez rontja a Leistungodat. Ezért: ha szünet vagy más munkafolyamat van, mindig csekkold be a Pause-t, illetve a Nebenzeit-et, hogy rögzüljön a rendszerben.",
+          en: "The system measures your Leistung (performance) by the time between your bookings on the scanner. If you book nothing – e.g. because you're waiting, on a break or doing other work – a Gap-Zeit (gap) is created. It counts against your Leistung. So: for a break or any other task, always book Pause or Nebenzeit so it is recorded in the system.",
+        },
+        terms: ["nebenzeit", "gap-zeit", "leistung"],
       },
     ],
     exercises: [
@@ -347,6 +360,37 @@ export const LESSONS: Lesson[] = [
           de: "Pause = du arbeitest nicht. Nebenzeit = du arbeitest, aber kommissionierst gerade nicht (Reinigung, Besprechung …) – im eingeloggten Zustand extra buchen.",
           hu: "Pause = nem dolgozol. Nebenzeit = dolgozol, csak épp nincs komissiózás (Reinigung, Besprechung stb.) – bejelentkezve külön kell csekkolni.",
           en: "Pause = you're not working. Nebenzeit = you are working but not picking (Reinigung, Besprechung …) – book it separately while logged in.",
+        },
+      },
+      {
+        type: "choice",
+        question: {
+          de: "Du wartest 10 Minuten auf Nachschub und kannst nicht picken. Was machst du?",
+          hu: "10 percet vársz utántöltésre, és nem tudsz kiszedni. Mit teszel?",
+          en: "You wait 10 minutes for replenishment and can't pick. What do you do?",
+        },
+        options: [
+          {
+            de: "Nichts – ich warte einfach.",
+            hu: "Semmit – egyszerűen várok.",
+            en: "Nothing – I just wait.",
+          },
+          {
+            de: "Nebenzeit buchen, damit keine Gap-Zeit entsteht.",
+            hu: "Becsekkolom a Nebenzeit-et, hogy ne keletkezzen Gap-Zeit.",
+            en: "Book Nebenzeit so no Gap-Zeit is created.",
+          },
+          {
+            de: "Mich am Scanner abmelden.",
+            hu: "Kijelentkezem a szkennerről.",
+            en: "Log out of the scanner.",
+          },
+        ],
+        answer: 1,
+        explanation: {
+          de: "Zeit ohne Buchung wird zur Gap-Zeit und senkt deine Leistung. Mit Nebenzeit ist die Wartezeit im System erfasst.",
+          hu: "A rögzítés nélküli idő Gap-Zeit lesz, és rontja a Leistungodat. Nebenzeit-tel a várakozás rögzül a rendszerben.",
+          en: "Time without a booking becomes Gap-Zeit and lowers your Leistung. With Nebenzeit the waiting time is recorded in the system.",
         },
       },
     ],
