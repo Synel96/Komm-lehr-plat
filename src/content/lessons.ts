@@ -930,53 +930,53 @@ export const ALL_LESSONS: Lesson[] = [
       {
         type: "classify",
         question: {
-          de: "Einzelnes Stück oder mehrere in der Verpackung?",
-          hu: "Egy darab vagy több darab van a csomagolásban?",
-          en: "A single piece or several in the package?",
+          de: "Das zeigt der Scanner. Musst du die Ware öffnen oder nicht?",
+          hu: "Ezt írja a szkenner. Ki kell bontanod a terméket, vagy nem kell kibontanod?",
+          en: "This is what the scanner shows. Do you have to open the goods or not?",
         },
         categories: [
-          { de: "Ein Stück", hu: "Egy darab", en: "One piece" },
-          { de: "Mehrere Stück", hu: "Több darab", en: "Several pieces" },
+          { de: "Nicht öffnen", hu: "Nem kell kibontani", en: "Don't open" },
+          { de: "Öffnen", hu: "Ki kell bontani", en: "Open" },
         ],
         items: [
           {
             text: {
               de: "1 GVE – Staubsauger",
-              hu: "1 GVE – porszívó",
-              en: "1 GVE – vacuum cleaner",
+              hu: "1 GVE – Staubsauger",
+              en: "1 GVE – Staubsauger",
             },
             category: 0,
           },
           { text: { de: "1 GVE(4)", hu: "1 GVE(4)", en: "1 GVE(4)" }, category: 1 },
           {
             text: {
-              de: "1 GVE – „Topfset 5-tlg.“",
-              hu: "1 GVE – „Topfset 5-tlg.” (5 részes edénykészlet)",
-              en: "1 GVE – “Topfset 5-tlg.” (5-piece pot set)",
+              de: "1 GVE – Topfset 5-tlg.",
+              hu: "1 GVE – Topfset 5-tlg.",
+              en: "1 GVE – Topfset 5-tlg.",
             },
             category: 1,
           },
           {
             text: {
               de: "1 GVE – Wasserkocher",
-              hu: "1 GVE – vízforraló",
-              en: "1 GVE – kettle",
+              hu: "1 GVE – Wasserkocher",
+              en: "1 GVE – Wasserkocher",
             },
             category: 0,
           },
           {
             text: {
-              de: "1 GVE – „Gläser 6er Pack“",
-              hu: "1 GVE – „Gläser 6er Pack” (6 darabos pohárcsomag)",
-              en: "1 GVE – “Gläser 6er Pack” (pack of 6 glasses)",
+              de: "1 GVE – Gläser 6er Pack",
+              hu: "1 GVE – Gläser 6er Pack",
+              en: "1 GVE – Gläser 6er Pack",
             },
             category: 1,
           },
         ],
         explanation: {
-          de: "Ohne Faktor ist es meist ein Stück – außer der Artikelname sagt etwas anderes (Set, tlg., 6er Pack, Display).",
-          hu: "Faktor nélkül általában egy darab – kivéve, ha a cikk neve mást mond (Set, tlg., 6er Pack, Display).",
-          en: "Without a factor it's usually one piece – unless the article name says otherwise (Set, tlg., 6er Pack, Display).",
+          de: "Ohne Faktor ist es meist ein einzelnes Stück – nicht öffnen. Mit Faktor (z. B. GVE(4)) oder wenn der Artikelname mehrere Stück zeigt (Set, tlg., 6er Pack, Display), sind mehrere Produkte drin – öffnen.",
+          hu: "Faktor nélkül általában egy darab – nem kell kibontani. Ha van faktor (pl. GVE(4)), vagy a cikk neve több darabot jelez (Set, tlg., 6er Pack, Display), több termék van benne – ki kell bontani.",
+          en: "Without a factor it's usually a single piece – don't open. With a factor (e.g. GVE(4)) or if the article name shows several pieces (Set, tlg., 6er Pack, Display), there are several products inside – open.",
         },
       },
       {
