@@ -856,9 +856,9 @@ export const ALL_LESSONS: Lesson[] = [
           en: "Exceptions: no factor, but several pieces",
         },
         text: {
-          de: "Manchmal steht nach der Menge kein Faktor, und trotzdem sind mehrere Produkte in der Verpackung. Dann prüfst du den Artikelnamen und suchst nach: Set, tlg. (-teilig), Pcs, 2er / 3er / 6er Pack oder Display. Wichtig: Set-, tlg.-, Pcs- und Pack-Verpackungen darfst du nicht öffnen – sie gehören zusammen.",
-          hu: "Előfordul, hogy a mennyiség után nincs faktor, mégis több termék van a csomagolásban. Ilyenkor ellenőrizd az artikel (cikk) nevét, és ezeket keresd benne: Set, tlg. (-teilig, „részes”), Pcs, 2er / 3er / 6er Pack vagy Display. Fontos: a Set, tlg., Pcs és Pack csomagokat nem szabad kibontani – ezek egybe tartoznak.",
-          en: "Sometimes there's no factor after the quantity, yet there are several products in the package. Then check the article name and look for: Set, tlg. (-teilig, “-piece”), Pcs, 2er / 3er / 6er Pack or Display. Important: Set, tlg., Pcs and Pack packages must not be opened – they belong together.",
+          de: "Manchmal steht nach der Menge kein Faktor, und trotzdem sind mehrere Produkte in der Verpackung. Dann prüfst du den Artikelnamen und suchst nach: Set, tlg. (-teilig), Pcs, 2er / 3er / 6er Pack oder Display. Wichtig: Set-, tlg.-, Pcs-, Pack- und Display-Verpackungen darfst du nicht öffnen – sie gehören zusammen.",
+          hu: "Előfordul, hogy a mennyiség után nincs faktor, mégis több termék van a csomagolásban. Ilyenkor ellenőrizd az artikel (cikk) nevét, és ezeket keresd benne: Set, tlg. (-teilig, „részes”), Pcs, 2er / 3er / 6er Pack vagy Display. Fontos: a Set, tlg., Pcs, Pack és Display csomagokat nem szabad kibontani – ezek egybe tartoznak.",
+          en: "Sometimes there's no factor after the quantity, yet there are several products in the package. Then check the article name and look for: Set, tlg. (-teilig, “-piece”), Pcs, 2er / 3er / 6er Pack or Display. Important: Set, tlg., Pcs, Pack and Display packages must not be opened – they belong together.",
         },
         terms: ["set", "tlg", "pcs", "er-pack", "display"],
       },
@@ -961,6 +961,24 @@ export const ALL_LESSONS: Lesson[] = [
           de: "Nicht öffnen: Es ist ein Set – die 4 Kerzen gehören zusammen und sind 1 GVE.",
           hu: "Nem bontós: ez egy szett – a 4 gyertya egybe tartozik, és ez 1 GVE.",
           en: "Don't open: it's a set – the 4 candles belong together and are 1 GVE.",
+        },
+      },
+      {
+        type: "choice",
+        question: {
+          de: "Bontós oder nicht? Vor dir steht eine Schachtel, in der anscheinend mehrere Produkte sind. Der Scanner zeigt „1 GVE“, im Artikelnamen steht „Display“ (z. B. „Schlüsselanhänger Display“).",
+          hu: "Bontós vagy nem bontós? Előtted egy doboz, amiben látszólag több termék van. A szkennered „1 GVE”-t ír, a termék nevében szerepel a „Display” szó (pl. „Schlüsselanhänger Display”).",
+          en: "Bontós or not? In front of you is a box that seems to hold several products. The scanner shows “1 GVE”, and the article name contains “Display” (e.g. “Schlüsselanhänger Display”).",
+        },
+        options: [
+          { de: "Ich öffne ihn.", hu: "Kibontom.", en: "I open it." },
+          { de: "Ich öffne ihn nicht.", hu: "Nem bontom ki.", en: "I don't open it." },
+        ],
+        answer: 1,
+        explanation: {
+          de: "Nicht öffnen: Ein Display ist eine Verkaufsverpackung – die Produkte darin gehören zusammen und sind 1 GVE.",
+          hu: "Nem bontós: a Display egy bemutató csomagolás – a benne lévő termékek egybe tartoznak, és ez 1 GVE.",
+          en: "Don't open: a Display is a sales package – the products inside belong together and are 1 GVE.",
         },
       },
       {

@@ -190,9 +190,9 @@ export const GLOSSARY: GlossaryEntry[] = [
     kind: "word",
     category: "mengen",
     explanation: {
-      de: "Verkaufsverpackung mit mehreren Produkten (z. B. für die Kasse). Steht „Display“ im Artikelnamen, sind mehrere Stück drin.",
-      hu: "Bemutató csomagolás több termékkel (pl. a kasszához). Ha a cikk nevében „Display” szerepel, több darab van benne.",
-      en: "Sales packaging with several products (e.g. for the checkout). If “Display” is in the article name, there are several pieces inside.",
+      de: "Verkaufsverpackung mit mehreren Produkten (z. B. für die Kasse). Steht „Display“ im Artikelnamen, sind mehrere Stück drin. Nicht öffnen: Das Display gehört zusammen.",
+      hu: "Bemutató csomagolás több termékkel (pl. a kasszához). Ha a cikk nevében „Display” szerepel, több darab van benne. Nem szabad kibontani: a Display egybe tartozik.",
+      en: "Sales packaging with several products (e.g. for the checkout). If “Display” is in the article name, there are several pieces inside. Don't open it: the Display belongs together.",
     },
   },
   {
