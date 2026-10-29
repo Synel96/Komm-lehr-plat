@@ -928,67 +928,57 @@ export const ALL_LESSONS: Lesson[] = [
         },
       },
       {
-        type: "classify",
+        type: "choice",
         question: {
-          de: "Das zeigt der Scanner oder das siehst du am Karton. Musst du öffnen oder nicht?",
-          hu: "Ezt írja a szkenner, vagy ezt látod a kartonon. Ki kell bontanod, vagy nem kell kibontanod?",
-          en: "This is what the scanner shows or what you see on the carton. Do you have to open it or not?",
+          de: "Bontós oder nicht? Artikelname: „Marmelade Gläser 6er Pack“. Du siehst 6 Gläser in einer Packung, der Scanner zeigt „1 GVE“.",
+          hu: "Bontós vagy nem bontós? A termék neve: „Marmelade Gläser 6er Pack”. 6 darabot látsz egy csomagban, a szkennered „1 GVE”-t ír.",
+          en: "Bontós or not? Article name: “Marmelade Gläser 6er Pack”. You see 6 jars in one pack, the scanner shows “1 GVE”.",
         },
-        categories: [
-          { de: "Nicht öffnen", hu: "Nem kell kibontani", en: "Don't open" },
-          { de: "Öffnen", hu: "Ki kell bontani", en: "Open" },
+        options: [
+          { de: "Ich öffne ihn.", hu: "Kibontom.", en: "I open it." },
+          { de: "Ich öffne ihn nicht.", hu: "Nem bontom ki.", en: "I don't open it." },
         ],
-        items: [
-          {
-            text: {
-              de: "1 GVE – Staubsauger",
-              hu: "1 GVE – Staubsauger",
-              en: "1 GVE – Staubsauger",
-            },
-            category: 0,
-          },
-          { text: { de: "1 GVE(4)", hu: "1 GVE(4)", en: "1 GVE(4)" }, category: 0 },
-          {
-            text: {
-              de: "1 GVE – Topfset 5-tlg.",
-              hu: "1 GVE – Topfset 5-tlg.",
-              en: "1 GVE – Topfset 5-tlg.",
-            },
-            category: 0,
-          },
-          {
-            text: {
-              de: "1 GVE – Gläser 6er Pack",
-              hu: "1 GVE – Gläser 6er Pack",
-              en: "1 GVE – Gläser 6er Pack",
-            },
-            category: 0,
-          },
-          {
-            text: {
-              de: "Karton mit Etikett „ACHTUNG AUSPACK!“",
-              hu: "Karton mit Etikett „ACHTUNG AUSPACK!“",
-              en: "Karton mit Etikett „ACHTUNG AUSPACK!“",
-            },
-            category: 1,
-          },
-          {
-            text: { de: "1 GVE – Messerset", hu: "1 GVE – Messerset", en: "1 GVE – Messerset" },
-            category: 0,
-          },
-          {
-            text: {
-              de: "Überkarton mit mehreren GVE darin",
-              hu: "Überkarton, benne több GVE",
-              en: "Überkarton with several GVE inside",
-            },
-            category: 1,
-          },
-        ],
+        answer: 1,
         explanation: {
-          de: "Die GVE öffnest du nie – auch nicht mit Faktor, Set, tlg., Pcs oder Pack. Geöffnet wird nur der Überkarton (z. B. mit „ACHTUNG AUSPACK!“), damit du die GVE herausnehmen kannst.",
-          hu: "A GVE-t soha nem bontod ki – faktorral, Set, tlg., Pcs vagy Pack jelöléssel sem. Csak az Überkartont bontod meg (pl. „ACHTUNG AUSPACK!” címkével), hogy kivehesd belőle a GVE-ket.",
-          en: "You never open the GVE – not with a factor, Set, tlg., Pcs or Pack either. Only the Überkarton is opened (e.g. with “ACHTUNG AUSPACK!”) so you can take the GVE out.",
+          de: "Nicht öffnen: „6er Pack“ steht im Artikelnamen – die 6 Gläser gehören zusammen und sind 1 GVE.",
+          hu: "Nem bontós: a termék nevében ott a „6er Pack” – a 6 üveg egybe tartozik, és ez 1 GVE.",
+          en: "Don't open: “6er Pack” is in the article name – the 6 jars belong together and are 1 GVE.",
+        },
+      },
+      {
+        type: "choice",
+        question: {
+          de: "Bontós oder nicht? Der Scanner zeigt „1 GVE“. In der Schachtel vor dir sind 4 Kerzen, darauf steht „Set of 4“. Artikelname: „Duftkerze Set“.",
+          hu: "Bontós vagy nem bontós? A szkennered „1 GVE”-t ír. Az előtted lévő dobozban 4 darab gyertya van, „Set of 4” felirattal. A termék neve: „Duftkerze Set”.",
+          en: "Bontós or not? The scanner shows “1 GVE”. The box in front of you holds 4 candles and says “Set of 4”. Article name: “Duftkerze Set”.",
+        },
+        options: [
+          { de: "Ich öffne ihn.", hu: "Kibontom.", en: "I open it." },
+          { de: "Ich öffne ihn nicht.", hu: "Nem bontom ki.", en: "I don't open it." },
+        ],
+        answer: 1,
+        explanation: {
+          de: "Nicht öffnen: Es ist ein Set – die 4 Kerzen gehören zusammen und sind 1 GVE.",
+          hu: "Nem bontós: ez egy szett – a 4 gyertya egybe tartozik, és ez 1 GVE.",
+          en: "Don't open: it's a set – the 4 candles belong together and are 1 GVE.",
+        },
+      },
+      {
+        type: "choice",
+        question: {
+          de: "Der Scanner zeigt „1 GVE“. Auf dem gescannten Karton steht „48 STK“, der Barcode wurde richtig gelesen. Im Artikelnamen steht nichts von einer Stückzahl. Was machst du?",
+          hu: "A szkennered „1 GVE”-t ír. A dobozon, amit beszkenneltél, „48 STK” áll, és a kódot helyesen olvasta be. A termék nevében nincs utalás darabszámra. Mit csinálsz?",
+          en: "The scanner shows “1 GVE”. The scanned carton says “48 STK” and the barcode was read correctly. The article name says nothing about a quantity. What do you do?",
+        },
+        options: [
+          { de: "Ich öffne ihn.", hu: "Kibontom.", en: "I open it." },
+          { de: "Ich öffne ihn nicht.", hu: "Nem bontom ki.", en: "I don't open it." },
+        ],
+        answer: 0,
+        explanation: {
+          de: "Öffnen: 1 GVE ohne Hinweis im Artikelnamen ist ein Stück – im Karton sind aber 48. Das ist ein Überkarton: öffnen und 1 Stück herausnehmen.",
+          hu: "Kibontom: az 1 GVE darabszám-utalás nélkül egy darabot jelent – a dobozban viszont 48 van. Ez egy Überkarton: bontsd ki, és vegyél ki belőle 1 darabot.",
+          en: "Open it: 1 GVE without a quantity in the article name is one piece – but the carton holds 48. It's an Überkarton: open it and take out 1 piece.",
         },
       },
       {
