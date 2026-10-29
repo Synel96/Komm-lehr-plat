@@ -817,9 +817,9 @@ export const ALL_LESSONS: Lesson[] = [
           en: "“1 GVE(6)” – the factor",
         },
         text: {
-          de: "Steht nach GVE eine Zahl in Klammern, heißt das Faktor. Er zeigt, wie viele EVE in einer GVE sind. „1 GVE(6)“ bedeutet: In einem Karton sind 6 Produkte. Manchmal steckt so eine GVE zusätzlich noch in einem Überkarton oder Exportkarton.",
-          hu: "Ha a GVE után zárójelben egy szám áll, azt faktornak hívjuk. Azt mutatja, hány EVE van egy GVE-ben. Az „1 GVE(6)” azt jelenti: egy kartonban 6 termék van. Néha egy ilyen GVE még egy Überkartonban vagy Exportkartonban is benne van.",
-          en: "A number in brackets after GVE is called the factor. It shows how many EVE are in one GVE. “1 GVE(6)” means: one carton holds 6 products. Sometimes such a GVE is additionally packed in an Überkarton or Exportkarton.",
+          de: "Steht nach GVE eine Zahl in Klammern, heißt das Faktor. Er zeigt, wie viele EVE in einer GVE sind. „1 GVE(6)“ bedeutet: In einem Karton sind 6 Produkte. Diese GVE öffnest du nicht – du nimmst sie als Ganzes. Manchmal steckt so eine GVE zusätzlich noch in einem Überkarton oder Exportkarton.",
+          hu: "Ha a GVE után zárójelben egy szám áll, azt faktornak hívjuk. Azt mutatja, hány EVE van egy GVE-ben. Az „1 GVE(6)” azt jelenti: egy kartonban 6 termék van. Ezt a GVE-t nem bontod ki – egyben veszed ki. Néha egy ilyen GVE még egy Überkartonban vagy Exportkartonban is benne van.",
+          en: "A number in brackets after GVE is called the factor. It shows how many EVE are in one GVE. “1 GVE(6)” means: one carton holds 6 products. You don't open this GVE – you take it as a whole. Sometimes such a GVE is additionally packed in an Überkarton or Exportkarton.",
         },
         terms: ["faktor", "eve", "ueberkarton"],
       },
@@ -856,11 +856,11 @@ export const ALL_LESSONS: Lesson[] = [
           en: "Exceptions: no factor, but several pieces",
         },
         text: {
-          de: "Manchmal steht nach der Menge kein Faktor, und trotzdem sind mehrere Produkte in der Verpackung. Dann prüfst du den Artikelnamen und suchst nach: Set, tlg. (-teilig), 2er / 3er / 6er Pack oder Display.",
-          hu: "Előfordul, hogy a mennyiség után nincs faktor, mégis több termék van a csomagolásban. Ilyenkor ellenőrizd az artikel (cikk) nevét, és ezeket keresd benne: Set, tlg. (-teilig, „részes”), 2er / 3er / 6er Pack vagy Display.",
-          en: "Sometimes there's no factor after the quantity, yet there are several products in the package. Then check the article name and look for: Set, tlg. (-teilig, “-piece”), 2er / 3er / 6er Pack or Display.",
+          de: "Manchmal steht nach der Menge kein Faktor, und trotzdem sind mehrere Produkte in der Verpackung. Dann prüfst du den Artikelnamen und suchst nach: Set, tlg. (-teilig), Pcs, 2er / 3er / 6er Pack oder Display. Wichtig: Set-, tlg.-, Pcs- und Pack-Verpackungen darfst du nicht öffnen – sie gehören zusammen.",
+          hu: "Előfordul, hogy a mennyiség után nincs faktor, mégis több termék van a csomagolásban. Ilyenkor ellenőrizd az artikel (cikk) nevét, és ezeket keresd benne: Set, tlg. (-teilig, „részes”), Pcs, 2er / 3er / 6er Pack vagy Display. Fontos: a Set, tlg., Pcs és Pack csomagokat nem szabad kibontani – ezek egybe tartoznak.",
+          en: "Sometimes there's no factor after the quantity, yet there are several products in the package. Then check the article name and look for: Set, tlg. (-teilig, “-piece”), Pcs, 2er / 3er / 6er Pack or Display. Important: Set, tlg., Pcs and Pack packages must not be opened – they belong together.",
         },
-        terms: ["set", "tlg", "er-pack", "display"],
+        terms: ["set", "tlg", "pcs", "er-pack", "display"],
       },
       {
         title: {
@@ -930,9 +930,9 @@ export const ALL_LESSONS: Lesson[] = [
       {
         type: "classify",
         question: {
-          de: "Das zeigt der Scanner. Musst du die Ware öffnen oder nicht?",
-          hu: "Ezt írja a szkenner. Ki kell bontanod a terméket, vagy nem kell kibontanod?",
-          en: "This is what the scanner shows. Do you have to open the goods or not?",
+          de: "Das zeigt der Scanner oder das siehst du am Karton. Musst du öffnen oder nicht?",
+          hu: "Ezt írja a szkenner, vagy ezt látod a kartonon. Ki kell bontanod, vagy nem kell kibontanod?",
+          en: "This is what the scanner shows or what you see on the carton. Do you have to open it or not?",
         },
         categories: [
           { de: "Nicht öffnen", hu: "Nem kell kibontani", en: "Don't open" },
@@ -947,20 +947,12 @@ export const ALL_LESSONS: Lesson[] = [
             },
             category: 0,
           },
-          { text: { de: "1 GVE(4)", hu: "1 GVE(4)", en: "1 GVE(4)" }, category: 1 },
+          { text: { de: "1 GVE(4)", hu: "1 GVE(4)", en: "1 GVE(4)" }, category: 0 },
           {
             text: {
               de: "1 GVE – Topfset 5-tlg.",
               hu: "1 GVE – Topfset 5-tlg.",
               en: "1 GVE – Topfset 5-tlg.",
-            },
-            category: 1,
-          },
-          {
-            text: {
-              de: "1 GVE – Wasserkocher",
-              hu: "1 GVE – Wasserkocher",
-              en: "1 GVE – Wasserkocher",
             },
             category: 0,
           },
@@ -970,13 +962,33 @@ export const ALL_LESSONS: Lesson[] = [
               hu: "1 GVE – Gläser 6er Pack",
               en: "1 GVE – Gläser 6er Pack",
             },
+            category: 0,
+          },
+          {
+            text: {
+              de: "Karton mit Etikett „ACHTUNG AUSPACK!“",
+              hu: "Karton mit Etikett „ACHTUNG AUSPACK!“",
+              en: "Karton mit Etikett „ACHTUNG AUSPACK!“",
+            },
+            category: 1,
+          },
+          {
+            text: { de: "1 GVE – Messerset", hu: "1 GVE – Messerset", en: "1 GVE – Messerset" },
+            category: 0,
+          },
+          {
+            text: {
+              de: "Überkarton mit mehreren GVE darin",
+              hu: "Überkarton, benne több GVE",
+              en: "Überkarton with several GVE inside",
+            },
             category: 1,
           },
         ],
         explanation: {
-          de: "Ohne Faktor ist es meist ein einzelnes Stück – nicht öffnen. Mit Faktor (z. B. GVE(4)) oder wenn der Artikelname mehrere Stück zeigt (Set, tlg., 6er Pack, Display), sind mehrere Produkte drin – öffnen.",
-          hu: "Faktor nélkül általában egy darab – nem kell kibontani. Ha van faktor (pl. GVE(4)), vagy a cikk neve több darabot jelez (Set, tlg., 6er Pack, Display), több termék van benne – ki kell bontani.",
-          en: "Without a factor it's usually a single piece – don't open. With a factor (e.g. GVE(4)) or if the article name shows several pieces (Set, tlg., 6er Pack, Display), there are several products inside – open.",
+          de: "Die GVE öffnest du nie – auch nicht mit Faktor, Set, tlg., Pcs oder Pack. Geöffnet wird nur der Überkarton (z. B. mit „ACHTUNG AUSPACK!“), damit du die GVE herausnehmen kannst.",
+          hu: "A GVE-t soha nem bontod ki – faktorral, Set, tlg., Pcs vagy Pack jelöléssel sem. Csak az Überkartont bontod meg (pl. „ACHTUNG AUSPACK!” címkével), hogy kivehesd belőle a GVE-ket.",
+          en: "You never open the GVE – not with a factor, Set, tlg., Pcs or Pack either. Only the Überkarton is opened (e.g. with “ACHTUNG AUSPACK!”) so you can take the GVE out.",
         },
       },
       {
