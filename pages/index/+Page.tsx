@@ -43,13 +43,14 @@ export default function Page() {
   return (
     <div>
       <section className="relative overflow-hidden bg-linear-to-br from-(--brand-surface) via-indigo-800 to-indigo-600 text-white">
-        {/* Soft glow accents */}
+        {/* Soft glow accents: radial gradients rather than filter: blur,
+            which is costly to paint while scrolling on phones. */}
         <div
-          className="pointer-events-none absolute -top-24 -right-24 size-72 rounded-full bg-amber-400/20 blur-3xl"
+          className="pointer-events-none absolute -top-36 -right-36 size-96 rounded-full bg-[radial-gradient(closest-side,rgb(251_191_36/0.2),transparent)]"
           aria-hidden="true"
         />
         <div
-          className="pointer-events-none absolute -bottom-32 -left-16 size-80 rounded-full bg-sky-400/20 blur-3xl"
+          className="pointer-events-none absolute -bottom-44 -left-28 size-[26rem] rounded-full bg-[radial-gradient(closest-side,rgb(56_189_248/0.2),transparent)]"
           aria-hidden="true"
         />
         <div className="relative mx-auto w-full max-w-5xl px-6 py-14 sm:py-20">

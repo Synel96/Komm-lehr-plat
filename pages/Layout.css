@@ -153,4 +153,7 @@ body {
 
 html {
   font-family: "Geist Variable", sans-serif;
+  /* Keeps anchor targets (e.g. a glossary word opened from a lesson) clear
+     of the sticky header instead of scrolling them underneath it. */
+  scroll-padding-top: 5rem;
 }

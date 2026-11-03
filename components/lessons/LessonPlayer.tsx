@@ -88,7 +88,7 @@ export function LessonPlayer({ lesson, nextLesson, onFinished }: Props) {
 
   const scrollToTop = () => {
     const el = topRef.current;
-    if (el && el.getBoundingClientRect().top < 0) el.scrollIntoView({ behavior: "smooth" });
+    if (el && el.getBoundingClientRect().top < 64) el.scrollIntoView({ behavior: "smooth" });
   };
 
   const goToStep = (index: number) => {

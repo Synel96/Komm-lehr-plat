@@ -49,7 +49,7 @@ export function Navbar({ menuOpen, onMenuOpenChange }: NavbarProps = {}) {
       : "rounded-full px-3 py-1.5 text-white/75 transition-colors hover:bg-white/10 hover:text-(--brand-on-surface)";
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-(--brand-surface) text-(--brand-on-surface) shadow-sm backdrop-blur supports-backdrop-filter:bg-[color-mix(in_oklch,var(--brand-surface),transparent_8%)]">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-(--brand-surface) text-(--brand-on-surface) shadow-sm">
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6">
         <a
           href={langHref("/")}
